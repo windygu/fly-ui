@@ -2169,7 +2169,8 @@ Copyright (c) 2009 KuiyouLi
  	        this.createConnecion();
 
  	        var conn = this.connection
- 	        o.username != undefined ? conn.open(o.method, url, o.async, o.username, o.password) : conn.open(o.method, url, o.async);
+            var method=isGet?"GET":"POST"
+            o.username != undefined ? conn.open(method, url, o.async, o.username, o.password) : conn.open(method, url, o.async);
  	        conn.setRequestHeader("Content-Type", o.contentType)
  	        conn.setRequestHeader("Charset", o.charset)
  	        if (!isGet)
@@ -3864,11 +3865,12 @@ Copyright (c) 2009 KuiyouLi
         @return	:Json   形如{left:123,top:456}
         */
         pos: function () {
+            var el=this.item(0),s=ui.Style
             return {
-                left: parseInt(this.left()) || 0,
-                top: parseInt(this.top()) || 0,
-                bottom: parseInt(this.bottom()) || 0,
-                right: parseInt(this.right()) || 0
+                left: s.num(el, "left") || 0,
+                top: s.num(el, "top") || 0,
+                bottom: s.num(el, "bottom") || 0,
+                right: s.num(el, "right") || 0
             }
         },
 
