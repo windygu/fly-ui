@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.ui.js" type="text/javascript"></script>
+    <script src="../../plugins/dialog/dialog.js" type="text/javascript"></script>
+    <link href="../../plugins/themes/blue/fly-base.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/plain/dialog.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .dialog-content
+        {
+            background: gray;
+            color: Blue;
+            border: 1px solid black;
+        }
+        a
+        {
+            margin-left: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var dialog_content,dialog_url,dialog_iframe;
+        $(function () {
+            dialog_content = new fly.ui.Dialog({ 
+                title: 'Dialog demo',
+                width: 300,
+                height: 160,
+                content: ".dialog-content"
+            });
+
+            dialog_url = new fly.ui.Dialog({ 
+                title: 'Dialog demo',
+                width: 300,
+                height: 160,
+                url: 'loadUrl.htm',
+
+            });
+            
+            dialog_iframe = new fly.ui.Dialog({ 
+                title: 'Dialog demo',
+                width: 600,
+                height: 500,
+                url: 'http://www.ttchwl.com',
+                byIframe:true
+            });
+        })
+
+       
+    </script>
+</head>
+<body>
+    <a href="#" onclick="dialog_content.show()">显示 DIV </a><a href="#" onclick="dialog_url.show()">
+        显示 Url </a><a href="#" onclick="dialog_iframe.show()">在Iframe中显示Url </a>
+    <div class="dialog-content">
+        这是一个DIV
+    </div>
+</body>
+</html>

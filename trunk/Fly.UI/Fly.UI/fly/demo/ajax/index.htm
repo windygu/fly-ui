@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Fly ajax helper demo</title>
+    <style type="text/css">
+        textarea
+        {
+            width: 700px;
+            height: 150px;
+        }
+    </style>
+    <script src="../../fly-comment.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button").click(function () {
+                var js = $(this).find("<2").find('textarea').text();
+                eval(js);
+                return false;
+            })
+        });
+    </script>
+</head>
+<body>
+<div> Fly ajax helper demo</div>
+    <table>
+        <tr>
+            <td>
+                <textarea>
+                var helper=new fly.ajax.Helper({
+                    url:'data.txt',
+                    method:'get',
+                    success:function(data){
+                            alert(data)
+                        }
+                    })
+                helper.go();
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                 var helper=new fly.ajax.Helper()
+                 helper.setup({
+                    url:'data.txt',
+                    method:'get',
+                    success:function(data){
+                            alert(data)
+                        }
+                    })
+                helper.go();
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                 new fly.ajax({
+                    url:'data.txt',
+                    method:'get',
+                    success:function(data){
+                            alert(data)
+                        }
+                    }).go()
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                fly.get('data.txt',function(data){
+                        alert(data)
+                    });
+
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                fly.post('data.txt',function(data){
+                        alert(data)
+                    },function()
+                    {
+                        alert("data.txt Don't support post way request")
+                    });
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                var helper=fly.ajax.url('data.txt').method('get').onSuccess(function(data){
+                        alert(data)
+                    }).go();
+            
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+                 var helper=fly.ajax.url('data.txt').onSuccess(function(data){
+                        alert(data)
+                    }).get();
+                </textarea>
+            </td>
+            <td>
+                <button>
+                    Call</button>
+            </td>
+        </tr>
+        
+    </table>
+</body>
+</html>

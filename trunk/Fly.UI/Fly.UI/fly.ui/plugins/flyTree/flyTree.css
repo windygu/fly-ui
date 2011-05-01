@@ -1,0 +1,146 @@
+.flyTree {
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.flyTree LI {
+	list-style: none;
+	padding: 0px;
+	padding-left: 20px;
+	margin: 0px;
+	white-space: nowrap;
+	background-repeat:no-repeat;
+}
+
+.flyTree A:hover {
+	background-color: #BDF;
+}
+
+body .flyTree .hasCheckBox 
+{
+}
+
+.hasCheckBox input
+{
+}
+
+.flyTree LI a
+{
+    color: #333;
+	text-decoration: none;
+	padding: 3px 2px 3px 20px;
+    background-position:left center ;
+    background-repeat:no-repeat;
+}
+
+.flyTree .show-line
+{
+    background-repeat:no-repeat;
+    background-position:5px top;
+}
+
+.flyTree .f-line-dir
+{
+    background-image:url(images/line/line-dir.gif);
+}
+
+.flyTree .f-line-dir-end
+{
+    background-image:url(images/line/line-dir-end.gif);
+}
+
+/*
+.flyTree .show-line  LI.expanded0
+{
+    background-image:url(images/line/expanded.gif);
+}*/
+
+.flyTree LI.f-end-expanded
+{
+    background-image:url(images/line/end-expanded.gif);
+}
+
+.flyTree .f-line-file
+{
+    background-image:url(images/line/line-file.gif);
+}
+
+.flyTree .f-line-file-end
+{
+    background-image:url(images/line/line-file-end.gif);
+}
+
+/*.flyTree  UL.f-showLine
+{
+    background-image:url(images/line.gif);
+    background-repeat:repeat-y;
+    background-position-x:10px;
+}*/
+
+/* Core Styles */
+.flyTree .directory a{ background-image: url(images/directory.png); }
+.flyTree .expanded a{ background-image: url(images/folder_open.png); }
+.flyTree .file a{ background-image: url(images/file.png); }
+.flyTree .wait a{ background-image: url(images/spinner.gif); }
+/* File Extensions*/
+.flyTree .ext_3gp a{ background-image: url(images/film.png); }
+.flyTree .ext_afp a{ background-image: url(images/code.png); }
+.flyTree .ext_afpa a{ background-image: url(images/code.png); }
+.flyTree .ext_asp a{ background-image: url(images/code.png); }
+.flyTree .ext_aspx a{ background-image: url(images/code.png); }
+.flyTree .ext_avi a{ background-image: url(images/film.png); }
+.flyTree .ext_bat a{ background-image: url(images/application.png); }
+.flyTree .ext_bmp a{ background-image: url(images/picture.png); }
+.flyTree .ext_c a{ background-image: url(images/code.png); }
+.flyTree .ext_cfm a{ background-image: url(images/code.png); }
+.flyTree .ext_cgi a{ background-image: url(images/code.png); }
+.flyTree .ext_com a{ background-image: url(images/application.png); }
+.flyTree .ext_cpp a{ background-image: url(images/code.png); }
+.flyTree .ext_css a{ background-image: url(images/css.png); }
+.flyTree .ext_doc a{ background-image: url(images/doc.png); }
+.flyTree .ext_exe a{ background-image: url(images/application.png); }
+.flyTree .ext_gif a{ background-image: url(images/picture.png); }
+.flyTree .ext_fla a{ background-image: url(images/flash.png); }
+.flyTree .ext_h a{ background-image: url(images/code.png); }
+.flyTree .ext_htm a{ background-image: url(images/html.png); }
+.flyTree .ext_html a{ background-image: url(images/html.png); }
+.flyTree .ext_jar a{ background-image: url(images/java.png); }
+.flyTree .ext_jpg a{ background-image: url(images/picture.png); }
+.flyTree .ext_jpeg a{ background-image: url(images/picture.png); }
+.flyTree .ext_js a{ background-image: url(images/script.png); }
+.flyTree .ext_lasso a{ background-image: url(images/code.png); }
+.flyTree .ext_log a{ background-image: url(images/txt.png); }
+.flyTree .ext_m4p a{ background-image: url(images/music.png); }
+.flyTree .ext_mov a{ background-image: url(images/film.png); }
+.flyTree .ext_mp3 a{ background-image: url(images/music.png); }
+.flyTree .ext_mp4 a{ background-image: url(images/film.png); }
+.flyTree .ext_mpg a{ background-image: url(images/film.png); }
+.flyTree .ext_mpeg a{ background-image: url(images/film.png); }
+.flyTree .ext_ogg a{ background-image: url(images/music.png); }
+.flyTree .ext_pcx a{ background-image: url(images/picture.png); }
+.flyTree .ext_pdf a{ background-image: url(images/pdf.png); }
+.flyTree .ext_php a{ background-image: url(images/php.png); }
+.flyTree .ext_png a{ background-image: url(images/picture.png); }
+.flyTree .ext_ppt a{ background-image: url(images/ppt.png); }
+.flyTree .ext_psd a{ background-image: url(images/psd.png); }
+.flyTree .ext_pl a{ background-image: url(images/script.png); }
+.flyTree .ext_py a{ background-image: url(images/script.png); }
+.flyTree .ext_rb a{ background-image: url(images/ruby.png); }
+.flyTree .ext_rbx a{ background-image: url(images/ruby.png); }
+.flyTree .ext_rhtml a{ background-image: url(images/ruby.png); }
+.flyTree .ext_rpm a{ background-image: url(images/linux.png); }
+.flyTree .ext_ruby a{ background-image: url(images/ruby.png); }
+.flyTree .ext_sql a{ background-image: url(images/db.png); }
+.flyTree .ext_swf a{ background-image: url(images/flash.png); }
+.flyTree .ext_tif a{ background-image: url(images/picture.png); }
+.flyTree .ext_tiff a{ background-image: url(images/picture.png); }
+.flyTree .ext_txt a{ background-image: url(images/txt.png); }
+.flyTree .ext_vb a{ background-image: url(images/code.png); }
+.flyTree .ext_wav a{ background-image: url(images/music.png); }
+.flyTree .ext_wmv a{ background-image: url(images/film.png); }
+.flyTree .ext_xls a{ background-image: url(images/xls.png); }
+.flyTree .ext_xml a{ background-image: url(images/code.png); }
+.flyTree .ext_zip a{ background-image: url(images/zip.png); }

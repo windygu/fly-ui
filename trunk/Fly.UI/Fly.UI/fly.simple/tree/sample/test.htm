@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+    
+        var tree = new fly.simple.Tree({ 
+            root: "我的文档",
+            data: [
+            { text: "音乐" },
+            { text: "电影", items: ["喜剧", "动作", "科幻"] },
+            { text: "视频", items: ["视频日记", "自拍", "写真"] },
+            { text: "图片"}
+            ],
+            container:"treeDiv"
+            , quickly: true
+            , checkMode: fly.simple.checkMode.multi
+            , checkCascade: true
+           // ,rootVisible: false
+        });
+    </script>
+</body>
+</html>

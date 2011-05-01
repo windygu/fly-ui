@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fly.simple.Tree 多选</title>
+    <script src="../../../fly/fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <div>
+            fly.simple.Tree</div>
+        多选</div>
+    <br />
+    <input type="checkbox" style="border: none; background-color: White" id="checkAll"
+        onclick="tree.checkAll(this.checked)" />
+    <label for="checkAll">全选</label><br /><br />
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+        var items = [
+            { text: "音乐", icon: "4", leaf: false },
+            { text: "电影", icon: "1", leaf: false },
+            { text: "视频", icon: "2", leaf: false },
+            { text: "图片", icon: "3" }
+            ];
+
+        var tree = new fly.simple.Tree({ 
+            checkCascade: true,
+            checkMode:fly.simple.checkMode.multi,
+            root: { icon: "5", text: "我的文档", children: items },
+            iconFormat: "imgs/{0}.gif",
+            showToggle: true,
+            async: {
+                url: "data.txt?node={text}",
+                method: "get"
+            }
+        });
+
+        
+        tree.renderTo("treeDiv")
+    </script>
+</body>
+</html>

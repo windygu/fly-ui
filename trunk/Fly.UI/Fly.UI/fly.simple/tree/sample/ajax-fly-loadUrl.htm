@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fly.simple.Tree 通过 fly Ajax 加载数据</title>
+    <script src="../../../fly/fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <div>
+            fly.simple.Tree</div>
+        通过 fly Ajax 异步加载数据</div>
+    <br />
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+        var url="data.txt?node={text}"
+        var tree = new fly.simple.Tree({ 
+            checkMode:fly.simple.checkMode.multi,
+            checkCascade: {
+                check: { parent: true, children: true },
+                uncheck: { parent: true, children: true }
+            },
+            root: { icon: "5", text: "我的文档" },
+            iconFormat: "imgs/{0}.gif",
+            showToggle: true,
+            async: {
+                url: url,
+                method: "get"
+            }
+        });
+
+        tree.load(url);
+        tree.renderTo("treeDiv")
+    </script>
+</body>
+</html>

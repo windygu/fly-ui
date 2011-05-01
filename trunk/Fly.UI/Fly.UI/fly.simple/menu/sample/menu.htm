@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../../tree/skin/default/tree.css" rel="stylesheet" type="text/css" />
+    <link href="../skin/default/menu.css" rel="stylesheet" type="text/css" />
+    <script src="../../tree/tree.js" type="text/javascript"></script>
+    <script src="../menu.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="treeDiv" style="position:absolute;left:200px;top:100px">
+    </div>
+    <script type="text/javascript">
+    
+        var menu = new fly.simple.Menu({ 
+            container:"treeDiv",
+            checkCascade: {
+                check: { parent: true, children: true },
+                uncheck: { parent: true, children: true }
+            },
+            iconFormat: "../../icons/img ({icon}).gif"
+            //checkStyle: fly.simple.Tree.checkStyle.radio,
+            //checkboxPostion: "right"
+            //rootVisible:false
+        });
+
+        menu.load([
+            { text: "我发起的报送", icon: "1" },
+            { text: "统计分析", icon: "2", items: [
+                { text: "报送统计", icon: "3" },
+                { text: "单元格汇总", icon: "4", children: [
+                        "abcdefg", "12345667"
+                    ]
+                }
+                ]
+            },
+            { text: "常用报送报表", icon: "5" }
+            ]);
+
+            document.body.onclick = function () {
+                
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fly.simple.Tree 单选</title>
+    <script src="../../../fly/fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <div>
+            fly.simple.Tree</div>
+        单选</div>
+    <br />
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+
+        var tree = new fly.simple.Tree({ 
+            checkMode:fly.simple.checkMode.single,
+            root: { icon: "5", text: "我的文档" },
+            iconFormat: "imgs/{0}.gif",
+            showToggle: true,
+            
+            async: {
+                url: "data.txt?node={text}",
+                method: "get"
+            }
+        });
+
+        tree.load([
+            { text: "音乐", icon: "4", leaf: false },
+            { text: "电影", icon: "1", leaf: false },
+            { text: "视频", icon: "2", leaf: false },
+            { text: "图片", icon: "3" }
+            ]);
+        tree.renderTo("treeDiv")
+    </script>
+</body>
+</html>

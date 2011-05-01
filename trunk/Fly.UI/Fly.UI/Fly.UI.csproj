@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlyJS</RootNamespace>
+    <AssemblyName>FlyJS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="fly.simple\" />
+    <Folder Include="fly.ui\plugins\themes\gray\img\" />
+    <Folder Include="fly.ui\plugins\themes\plain\img\" />
+    <Folder Include="fly\doc\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fly.ui\demo\button\button.htm" />
+    <Content Include="fly.ui\demo\dialog\dialog-form.htm" />
+    <Content Include="fly.ui\demo\dialog\dialog.htm" />
+    <Content Include="fly.ui\demo\dialog\initcontent.htm" />
+    <Content Include="fly.ui\demo\dialog\loadUrl.htm" />
+    <Content Include="fly.ui\demo\dialog\loadUrlInIframe.htm" />
+    <Content Include="fly.ui\demo\drag\drag.htm" />
+    <Content Include="fly.ui\demo\grid\data.json.page1.txt" />
+    <Content Include="fly.ui\demo\grid\data.json.page2.txt" />
+    <Content Include="fly.ui\demo\grid\grid-ajax.htm" />
+    <Content Include="fly.ui\demo\grid\grid-array.htm" />
+    <Content Include="fly.ui\demo\grid\grid-gray-noscript.htm" />
+    <Content Include="fly.ui\demo\grid\grid-gray-noscript2.htm" />
+    <Content Include="fly.ui\demo\grid\grid-gray.htm" />
+    <Content Include="fly.ui\demo\grid\grid-gray2.htm" />
+    <Content Include="fly.ui\demo\grid\grid-json.htm" />
+    <Content Include="fly.ui\demo\grid\grid-pager.htm" />
+    <Content Include="fly.ui\demo\grid\grid-plain.htm" />
+    <Content Include="fly.ui\demo\pager\pager.htm" />
+    <Content Include="fly.ui\demo\panel\panel.htm" />
+    <Content Include="fly.ui\demo\selector\html.htm" />
+    <Content Include="fly.ui\demo\selector\testByJQuery.htm" />
+    <Content Include="fly.ui\demo\selector\unit.js" />
+    <Content Include="fly.ui\demo\toolbar\list-items.gif" />
+    <Content Include="fly.ui\demo\toolbar\menu-show.gif" />
+    <Content Include="fly.ui\demo\toolbar\preview.png" />
+    <Content Include="fly.ui\demo\toolbar\toolbar.htm" />
+    <Content Include="fly.ui\demo\toolbar\user.gif" />
+    <Content Include="fly.ui\fly,ui min.js" />
+    <Content Include="fly.ui\fly.ui.js" />
+    <Content Include="fly.ui\fly.ui-min.js" />
+    <Content Include="fly.ui\plugins\common\imgs\black-icons.png" />
+    <Content Include="fly.ui\plugins\common\imgs\blue-icons.png" />
+    <Content Include="fly.ui\plugins\common\imgs\lightbox-ico-loading.gif" />
+    <Content Include="fly.ui\plugins\dialog\dialog.js" />
+    <Content Include="fly.ui\plugins\dragLayout\domo.htm" />
+    <Content Include="fly.ui\plugins\dragLayout\drag-layout.js" />
+    <Content Include="fly.ui\plugins\dragLayout\fly-drag-layout.js" />
+    <Content Include="fly.ui\plugins\flyTree\flyTree.css" />
+    <Content Include="fly.ui\plugins\flyTree\flyTree.js" />
+    <Content Include="fly.ui\plugins\flyTree\images\application.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\code.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\css.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\db.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\directory.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\doc.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\file.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\film.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\flash.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\folder_open.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\html.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\java.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\line.GIF" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\end-expanded.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\expanded.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\line-dir-end.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\line-dir.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\line-file-end.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\line\line-file.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\linux.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\music.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\pdf.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\php.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\picture.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\ppt.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\psd.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\ruby.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\script.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\spinner.gif" />
+    <Content Include="fly.ui\plugins\flyTree\images\txt.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\xls.png" />
+    <Content Include="fly.ui\plugins\flyTree\images\zip.png" />
+    <Content Include="fly.ui\plugins\form-style\form-style.css" />
+    <Content Include="fly.ui\plugins\form-style\form-style.js" />
+    <Content Include="fly.ui\plugins\form-style\imgs\f-block-collapse.gif" />
+    <Content Include="fly.ui\plugins\form-style\imgs\f-block-expand.gif" />
+    <Content Include="fly.ui\plugins\grid\grid-min.js" />
+    <Content Include="fly.ui\plugins\grid\grid.js" />
+    <Content Include="fly.ui\plugins\locale\fly-zh_cn.js" />
+    <Content Include="fly.ui\plugins\pager\pager.js" />
+    <Content Include="fly.ui\plugins\themes\blue\button.css" />
+    <Content Include="fly.ui\plugins\themes\blue\fly-base.css" />
+    <Content Include="fly.ui\plugins\themes\blue\grid.css" />
+    <Content Include="fly.ui\plugins\themes\blue\img\bar-bgs.png" />
+    <Content Include="fly.ui\plugins\themes\blue\img\bgs.png" />
+    <Content Include="fly.ui\plugins\themes\blue\img\btn.gif" />
+    <Content Include="fly.ui\plugins\themes\blue\img\glyphs.png" />
+    <Content Include="fly.ui\plugins\themes\blue\img\grid-sort.gif" />
+    <Content Include="fly.ui\plugins\themes\blue\img\light-refresh.png" />
+    <Content Include="fly.ui\plugins\themes\blue\img\xsplit.gif" />
+    <Content Include="fly.ui\plugins\themes\blue\pager.css" />
+    <Content Include="fly.ui\plugins\themes\blue\toolbar.css" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\arrows.gif" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\black-icons.png" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\blue-icons.png" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\file.gif" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\folder-open.gif" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\folder.gif" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\leaf.gif" />
+    <Content Include="fly.ui\plugins\themes\common\imgs\lightbox-ico-loading.gif" />
+    <Content Include="fly.ui\plugins\themes\gray\grid.css" />
+    <Content Include="fly.ui\plugins\themes\img\arrows.gif" />
+    <Content Include="fly.ui\plugins\themes\img\bar-bgs.png" />
+    <Content Include="fly.ui\plugins\themes\img\bgs.png" />
+    <Content Include="fly.ui\plugins\themes\img\btn.gif" />
+    <Content Include="fly.ui\plugins\themes\img\folder-open.gif" />
+    <Content Include="fly.ui\plugins\themes\img\folder.gif" />
+    <Content Include="fly.ui\plugins\themes\img\glyphs.png" />
+    <Content Include="fly.ui\plugins\themes\img\icons.png" />
+    <Content Include="fly.ui\plugins\themes\img\leaf.gif" />
+    <Content Include="fly.ui\plugins\themes\img\xsplit.gif" />
+    <Content Include="fly.ui\plugins\themes\plain\dialog.css" />
+    <Content Include="fly.ui\plugins\themes\plain\dialog\dialog-bg.png" />
+    <Content Include="fly.ui\plugins\themes\plain\dialog\title-bg.png" />
+    <Content Include="fly.ui\plugins\themes\plain\grid.css" />
+    <Content Include="fly.ui\plugins\validate\css.css" />
+    <Content Include="fly.ui\plugins\validate\demo.htm" />
+    <Content Include="fly.ui\plugins\validate\imgs\icon.gif" />
+    <Content Include="fly.ui\plugins\validate\imgs\icons2.png" />
+    <Content Include="fly.ui\plugins\validate\validate-min.js" />
+    <Content Include="fly.ui\plugins\validate\validate.css" />
+    <Content Include="fly.ui\plugins\validate\validate.js" />
+    <Content Include="fly\demo\ajax\data.txt" />
+    <Content Include="fly\demo\ajax\index.htm" />
+    <Content Include="fly\demo\event\event.htm" />
+    <Content Include="fly\fly-comment.js" />
+    <Content Include="fly\fly-debug.js" />
+    <Content Include="fly\fly-min.js" />
+    <Content Include="fly\fly.js" />
+    <Content Include="fly\tests\memory\empty.htm" />
+    <Content Include="fly\tests\memory\memory.htm" />
+    <Content Include="fly\tests\qunit\qunit.css" />
+    <Content Include="fly\tests\qunit\qunit.js" />
+    <Content Include="fly\tests\unit\ajax\ajax.html" />
+    <Content Include="fly\tests\unit\ajax\ajax.js" />
+    <Content Include="fly\tests\unit\common\ajax.aspx" />
+    <Content Include="fly\tests\unit\core\core.html" />
+    <Content Include="fly\tests\unit\core\core.js" />
+    <Content Include="fly\tests\unit\core\selector.js" />
+    <Content Include="fly\tests\unit\event\event.html" />
+    <Content Include="fly\tests\unit\event\event.js" />
+    <Content Include="fly\tests\unit\event\JScript1.js" />
+    <Content Include="fly\tests\unit\form\form.html" />
+    <Content Include="fly\tests\unit\form\form.js" />
+    <Content Include="fly\tests\unit\frameSet\center.htm" />
+    <Content Include="fly\tests\unit\frameSet\frameSet.htm" />
+    <Content Include="fly\tests\unit\frameSet\top.htm" />
+    <Content Include="fly\tests\unit\IEnumerable\array.html" />
+    <Content Include="fly\tests\unit\IEnumerable\array.js" />
+    <Content Include="fly\tests\unit\index.html" />
+    <Content Include="fly\tests\unit\json\Copy of json.js" />
+    <Content Include="fly\tests\unit\json\json.html" />
+    <Content Include="fly\tests\unit\json\json.js" />
+    <Content Include="fly\tests\unit\style\css.css" />
+    <Content Include="fly\tests\unit\style\style.html" />
+    <Content Include="fly\tests\unit\style\style.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5299</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/FlyJS</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
