@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fly.simple.Tree Check事件</title>
+    <script src="../../../fly/fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        input
+        {
+            width:400px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            fly.simple.Tree</div>
+        Check事件，可以单击节点任何位置单选</div>
+    <br />
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                选中节点：
+            </td>
+            <td>
+                <input id="checkeds" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                未选中节点：
+            </td>
+            <td>
+                <input id="uncheckNodes" />
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+
+        var tree = new fly.simple.Tree({
+            checkMode: fly.simple.checkMode.multi,
+            checkCascade: {
+                check: { parent: true, children: true },
+                uncheck: { parent: true, children: true }
+            },
+            root: { icon: "5", text: "我的文档" },
+            iconFormat: "imgs/{0}.gif",
+            showToggle: true,
+            checkEvents: {
+                panel: "click"
+            },
+            onCheck: function (node) {
+                return node.text != "不能勾选";
+            },
+            onChecked: function (node) {
+                var checkTexts = [];
+                var checkedItems=tree.getCheckItems(true)
+                fly.simple.each(checkedItems, function (node) {
+                    checkTexts.push(node.text);
+                });
+                document.getElementById("checkeds").value = checkTexts.join(",");
+
+                var uncheckTexts = [];
+                var uncheckItems=tree.getCheckItems(false)
+                fly.simple.each(uncheckItems, function (node) {
+                    uncheckTexts.push(node.text);
+                });
+                document.getElementById("uncheckNodes").value = uncheckTexts.join(",");
+            },
+            async: {
+                url: "data.txt?node={text}",
+                method: "get"
+            }
+        });
+
+        tree.load([
+            { text: "单击事件:handler", icon: "4", leaf: false, handler: function () { alert(this.text); } },
+            { text: "电影", icon: "1", leaf: false },
+            { text: "不能勾选", icon: "2", leaf: false },
+            { text: "图片", icon: "3" }
+            ]);
+        tree.renderTo("treeDiv")
+    </script>
+</body>
+</html>

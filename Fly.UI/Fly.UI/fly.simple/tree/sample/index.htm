@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fly.simple.Tree domo </title>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <style type="text/css">
+        html, body, table, tr, iframe
+        {
+            height: 100%;
+            width: 100%;
+            vertical-align: top;
+            display: inline-block;
+            overflow: hidden;
+            margin: 0px;
+        }
+        
+        iframe
+        {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td id="nav" style="width: 200px">
+            </td>
+            <td style="width: 100%">
+                <iframe name="iframe" frameborder="0" style="width: 600px; height: 500px"></iframe>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var tree = new fly.simple.Tree(
+        {
+            container: "nav",
+            checkMode:fly.simple.checkMode.none,
+            style: "width:200px;height:500px",
+            itemKey:"text",
+            navTarget: "iframe",
+            data: [{ text: "简单", href: "sample.htm" },
+                { text: "图标样式", href: "icon-skin.htm" },
+                { text: "Ajax异步加载", items: [
+                        { text: "jQuery Ajax", href: "ajax-jQuery.htm" },
+                        { text: "fly Ajax", href: "ajax-fly.htm" },
+                        { text: "Ajax load url", href: "ajax-fly-loadUrl.htm" }
+                    ]
+                },
+                { text: "Check", items: [
+                        { text: "多选", href: "check-multi.htm" },
+                        { text: "单选", href: "check-single.htm" },
+                        { text: "同一级内单选", href: "check-singleByLevel.htm" },
+                        { text: "Checkbox 位于右侧", href: "check-right.htm" },
+                        { text: "Check事件", href: "check-event.htm" }
+                    ]
+                },
+                 { text: "Select", items: [
+                        { text: "多选", href: "select-multi.htm" },
+                        { text: "单选", href: "select-single.htm" },
+                        { text: "同一级内单选", href: "select-singleByLevel.htm" },
+                        { text: "Check 和 Select 同步", href: "select-check-single.htm" }
+                    ]
+                }
+            ]
+        });
+
+        tree.expandAll();
+
+        document.onclick = function () {
+            //debugger
+            //var node=tree.getCheckNodes(false)
+            
+        }
+    </script>
+</body>
+</html>

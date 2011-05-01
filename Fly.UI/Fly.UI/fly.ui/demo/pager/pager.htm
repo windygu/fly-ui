@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.ui.js" type="text/javascript"></script>
+    <script src="../../plugins/pager/pager.js" type="text/javascript"></script>
+    <script src="../../plugins/locale/fly-zh_cn.js" type="text/javascript"></script>
+    <link href="../../plugins/themes/blue/fly-base.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/button.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/toolbar.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/pager.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            var pager = new $.ui.Pager();
+            pager.render(document.body)
+
+
+            var pager = new $.ui.Pager({
+                currentType: $.ui.Pager.currentTypes.pageList,
+                style: "margin-top:20px"
+            });
+            pager.render(document.body)
+
+            var pager = new $.ui.Pager({
+                css: "f-pager-pageList-button-rect",
+                currentType: $.ui.Pager.currentTypes.pageList,
+                showNextButton: false,
+                showPreviousButton: false,
+                showButtonText: true,
+                showInfo:false,
+                style: "margin-top:20px"
+            });
+            pager.render(document.body)
+        })
+    </script>
+</head>
+<body>
+</body>
+</html>

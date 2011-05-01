@@ -1,0 +1,213 @@
+﻿.f-s-tree
+{
+	cursor:default;
+	font-size:10pt;
+}
+
+.f-s-tree-effect
+{
+	display:inline-block;
+    filter:blendTrans(Duration=0.3);
+}
+
+.f-s-item
+{
+	padding-top:2px;
+    padding-bottom:2px;
+    white-space: nowrap;
+}
+
+.f-s-item-wrap
+{
+   
+}
+
+.f-s-item img
+{
+	border:none;
+}
+
+.f-s-item-text
+{
+	color:#353535;
+	text-decoration:none;
+	vertical-align:middle;
+}
+
+.f-s-item-icon
+{
+	vertical-align:middle;
+	margin-right:3px;
+	margin-top:-2px;
+	background-repeat:no-repeat;
+}
+
+.f-s-icon-16
+{
+    height:16px;
+    width:16px;
+}
+
+.f-s-item-pad
+{
+    padding-left:15px;
+}
+
+.f-s-item-pad-root-hide
+{
+    padding-left:0px
+}
+
+.f-s-item-collapse .f-s-item-pad
+{
+    display:none;
+}
+
+.f-s-item-selected .f-s-item-text
+{
+	background-color: #425068;
+	color: white;
+}
+
+.f-s-item-check
+{
+    background-image:url(imgs/checkbox.png);
+    background-repeat:no-repeat;
+    width:13px;
+    height:13px;
+    display:inline-block;
+    vertical-align:middle;
+    line-height:0px;
+    margin-right:3px;
+    overflow:hidden;
+}
+
+.f-s-item-check:hover
+{
+    background-position:left -12px;
+}
+
+.f-s-item-checked .f-s-item-check
+{
+    background-position:left -24px;
+}
+
+.f-s-item-checked .f-s-item-check:hover
+{
+    background-position:left -36px;
+}
+/*
+.f-s-item-check-half .f-s-item-check
+{
+    background-position:left -72px;
+}
+*/
+.f-s-item-uncheck-half .f-s-item-check
+{
+    background-position:left -72px;
+}
+
+.f-s-item-checked-half .f-s-item-check
+{
+    background-position:left -48px;
+}
+
+.f-s-item-check-half .f-s-item-check:hover
+{
+    background-position:left -84px;
+}
+
+.f-s-t-check-radio .f-s-item-check
+{
+	background-image:url(imgs/radio.png);
+}
+
+.f-s-tree-toggle-arrow .f-s-item-toggle
+{
+    background-image:url(imgs/arrows.gif);
+}
+
+.f-s-item-leaf .f-s-item-toggle
+{
+    visibility:hidden;
+}
+
+.f-s-item-toggle
+{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    background-repeat:no-repeat;
+    vertical-align:middle;
+    background-position: -16px top;
+    overflow:hidden;
+}
+
+.f-s-item-toggle:hover
+{
+    background-position:-48px top;
+}
+
+.f-s-item-collapse .f-s-item-toggle
+{
+    background-position:0px top;
+}
+
+.f-s-item-collapse .f-s-item-toggle:hover
+{
+    background-position:-32px top;
+}
+
+body .f-s-tree .f-s-item-pad-root
+{
+	background-image:none;
+}
+
+.f-s-t-line .f-s-item-pad 
+{
+    background-image:url(imgs/line/line_conn.gif);
+    background-repeat:repeat-y;
+    background-position:left top;
+}
+
+
+.f-s-t-line .f-s-item-wrap .f-s-item
+{
+	background-image:url(imgs/line/line_center.gif);
+    background-repeat:no-repeat;
+    background-position:left center;
+}
+
+.f-s-t-line .f-s-item-wrap .f-s-item-first
+{
+	background-image:url(imgs/line/line_center.gif);
+    background-repeat:no-repeat;
+    background-position:left top;
+}
+
+.f-s-t-line .f-s-item-wrap .f-s-item-last
+{
+	background-image:url(imgs/line/line_center.gif);
+    background-repeat:no-repeat;
+    background-position:left bottom;
+}
+
+.f-s-t-line .f-s-item-wrap .f-s-item-single
+{
+	background-image:none;
+}
+
+
+/*flow layout*/
+.f-s-item-pad-flow .f-s-item-wrap
+{
+	display:inline-block;
+	margin-right:5px;
+}
+
+.f-s-t-line .f-s-item-pad-flow .f-s-item
+{
+	background-image:none;
+}
+
+/*end flow layout*/

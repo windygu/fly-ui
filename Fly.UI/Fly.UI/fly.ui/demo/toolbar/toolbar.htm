@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.ui.js" type="text/javascript"></script>
+    <link href="../../plugins/themes/blue/button.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/toolbar.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/fly-base.css" rel="stylesheet" type="text/css" />
+    <style>
+        .bmenu
+        {
+        	background-image:url(menu-show.gif);
+        }
+        
+        .users
+        {
+        	background-image:url(user.gif);
+        }
+        
+        .split,.quickTips
+        {
+        	background-image:url(list-items.gif);
+        }
+        
+        .scroll
+        {
+        	background-image:url(preview.png);
+        }
+    </style>
+    <script>
+        $(function () {
+            var panel = new $.ui.Toolbar({
+                id: 'toolbar',
+                items: [
+                {
+                    text: '菜单 / menus',
+                    handler: function () {
+                        alert(this.text)
+                    },
+                    iconCss: 'bmenu'
+                },
+                {
+                    text: '用户 / users',
+                    handler: function () {
+                    },
+                    iconCss: 'users',
+                    scope: this
+                }, {
+                    text: '分隔 / Split Button',
+                    iconCss: 'split',
+                    scope: this
+                },
+                "|"
+                ,{
+                    enableToggle: true,
+                    iconCss: 'quickTips',
+                    scope: this
+                }, "|",
+                {
+                    text: 'Scrolling Menu',
+                    iconCss: 'scroll',
+                    scope: this
+                }
+                ]
+            })
+            panel.render(document.body)
+        })
+    </script>
+</head>
+<body>
+   
+
+
+</body>
+</html>

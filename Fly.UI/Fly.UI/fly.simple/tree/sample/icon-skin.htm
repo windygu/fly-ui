@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../fly.simple-all-comment.js" type="text/javascript"></script>
+    <link href="../skin/default/tree.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .document
+        {
+            background-image: url(imgs/1.gif);
+        }
+        .music
+        {
+            background-image: url(imgs/2.gif);
+        }
+        .movie
+        {
+            background-image: url(imgs/3.gif);
+        }
+        .video
+        {
+            background-image: url(imgs/4.gif);
+        }
+        .image
+        {
+            background-image: url(imgs/5.gif);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            fly.simple.Tree
+        </div>
+        通过 iconCss 设置图标</div>
+    <br />
+    <br />
+    <div id="treeDiv">
+    </div>
+    <script type="text/javascript">
+
+        var tree = new fly.simple.Tree({
+            container: "treeDiv",
+            checkMode: fly.simple.checkMode.multi,
+            checkCascade: {
+                check: { parent: true, children: true },
+                uncheck: { parent: true, children: true }
+            },
+            root: { iconCss: "document", text: "我的文档" }
+        });
+
+        tree.load([
+            { text: "音乐", iconCss: "music" },
+            { text: "电影", iconCss: "movie", items: ["喜剧", "动作", "科幻"] },
+            { text: "视频", iconCss: "video", items: ["视频日记", "自拍", "写真"] },
+            { text: "图片", iconCss: "image" }
+            ]);
+
+     
+    </script>
+</body>
+</html>

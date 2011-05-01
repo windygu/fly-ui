@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.UI.API", "Fly.UI.API\Fly.UI.API.csproj", "{1C0F2B97-BC5E-41D3-9ED5-A56DF22CAE02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.UI", "Fly.UI\Fly.UI.csproj", "{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C0F2B97-BC5E-41D3-9ED5-A56DF22CAE02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0F2B97-BC5E-41D3-9ED5-A56DF22CAE02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0F2B97-BC5E-41D3-9ED5-A56DF22CAE02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0F2B97-BC5E-41D3-9ED5-A56DF22CAE02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58489F1A-AB4D-4F2D-8477-5DF9BF3FC79E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

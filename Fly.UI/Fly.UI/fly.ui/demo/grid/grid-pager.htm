@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>        var d = new Date()</script>
+    <script src="../../fly-comment.js" type="text/javascript"></script>
+    <script src="../../fly.ui.js" type="text/javascript"></script>
+    <script src="../../plugins/grid/grid.js" type="text/javascript"></script>
+    <script src="../../plugins/pager/pager.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        // alert(new Date() - d)
+    </script>
+    <link href="../../plugins/themes/blue/fly-base.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/button.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/gray/grid.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/toolbar.css" rel="stylesheet" type="text/css" />
+    <link href="../../plugins/themes/blue/pager.css" rel="stylesheet" type="text/css" />
+    <script>
+
+        $(function () {
+            //generate json data
+            var rows = []
+            while (rows.length < 200) {
+                rows.push({
+                    id: rows.length,
+                    f1: Math.random().toString(16).replace(/\d/g, ''),
+                    f2: Math.random(),
+                    f3: Math.random(),
+                    f4: Math.random() + " - " + Math.random(),
+                    f5: Math.random()
+                })
+            }
+
+            rows[0].children = [rows.pop(), rows.pop(), rows.pop(), rows.pop(), rows.pop()]
+
+            rows[3].children = [rows.pop(), rows.pop()]
+
+            rows[3].children[1].children = [rows.pop(), rows.pop(), rows.pop()]
+
+            //create store
+            var store = new $.data.Store(rows)
+
+            var pager = new $.ui.Pager({
+                //css: "f-pager-pageList-button-rect",
+                currentType: $.ui.Pager.currentTypes.pageList,
+                showNextButton: false,
+                showPreviousButton: false,
+                showButtonText: true
+                //, showInfo: false
+            });
+
+            //create grid
+            var panel = new $.ui.grid.GridPanel({
+                id: 'panel',
+                store: store,
+                width: 800,
+                height: 400,
+                rowHeight: 50,
+                plugins: new $.ui.grid.TreeGridPlugin({
+                    parentCascade: true,
+                    childCascade: true
+                }),
+                columns: [
+                    new $.ui.grid.RowNumberer({
+                        format: "{0}.",
+                        width: 150
+                    }),
+                    new $.ui.grid.CheckboxSelectionModel(),
+                    {
+                        dataIndex: "id",
+                        width: 40,
+                        css: 'blue',        //Merits CSS control column style
+                        headerCss: 'red',
+                        headerStyle: "font-size:20px"
+                    },
+                    {
+                        dataIndex: "f1",
+                        style: "color:red"  //Merits inline style control column style
+                    }, "f2", "f3", "f4"
+                ]
+                ,bbar: pager
+            })
+
+            panel.render(document.body)
+
+
+
+        })
+    </script>
+    <style>
+        body
+        {
+            height: 1000px;
+            font-size: 12px;
+            font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
+        }
+        
+        .blue
+        {
+            color: blue;
+        }
+        
+        .red
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <br />
+</body>
+</html>
