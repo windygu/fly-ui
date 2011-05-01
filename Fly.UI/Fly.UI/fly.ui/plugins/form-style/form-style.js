@@ -1,4 +1,4 @@
-﻿/// <reference path="../../fly-comment.js" />
+﻿/// <reference path="../../../fly/fly-comment.js" />
 /// <reference path="../../fly.ui.js" />
 
 fly.regPlugin('formstyle',function ($) {
