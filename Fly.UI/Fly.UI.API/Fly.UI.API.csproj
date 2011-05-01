@@ -35,8 +35,6 @@
     <Folder Include="fly\themes\gray\img\" />
     <Folder Include="fly\themes\plain\img\" />
     <Folder Include="Properties\" />
-    <Folder Include="skin\fly.simple\skin\" />
-    <Folder Include="skin\fly\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="API.htm" />
@@ -91,8 +89,6 @@
     <Content Include="index.htm" />
     <Content Include="index.js" />
     <Content Include="skin\default\index.css" />
-    <Content Include="skin\fly.simple\fly.simple-all-comment.js" />
-    <Content Include="skin\fly.simple\fly.simple-all-min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
