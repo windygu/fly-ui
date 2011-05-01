@@ -32,7 +32,67 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="fly\themes\gray\img\" />
+    <Folder Include="fly\themes\plain\img\" />
     <Folder Include="Properties\" />
+    <Folder Include="skin\fly.simple\skin\" />
+    <Folder Include="skin\fly\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="API.htm" />
+    <Content Include="API.js" />
+    <Content Include="fly.simple\fly.simple-all-comment.js" />
+    <Content Include="fly.simple\fly.simple-all-min.js" />
+    <Content Include="fly.simple\skin\default\imgs\arrows.gif" />
+    <Content Include="fly.simple\skin\default\imgs\checkbox.png" />
+    <Content Include="fly.simple\skin\default\imgs\line\line_center.gif" />
+    <Content Include="fly.simple\skin\default\imgs\line\line_conn.gif" />
+    <Content Include="fly.simple\skin\default\imgs\line\line_first.gif" />
+    <Content Include="fly.simple\skin\default\imgs\line\line_last.gif" />
+    <Content Include="fly.simple\skin\default\imgs\radio.png" />
+    <Content Include="fly.simple\skin\default\tree.css" />
+    <Content Include="fly\fly,ui,plugin min.js" />
+    <Content Include="fly\fly-comment.js" />
+    <Content Include="fly\themes\blue\button.css" />
+    <Content Include="fly\themes\blue\fly-base.css" />
+    <Content Include="fly\themes\blue\grid.css" />
+    <Content Include="fly\themes\blue\img\bar-bgs.png" />
+    <Content Include="fly\themes\blue\img\bgs.png" />
+    <Content Include="fly\themes\blue\img\btn.gif" />
+    <Content Include="fly\themes\blue\img\glyphs.png" />
+    <Content Include="fly\themes\blue\img\grid-sort.gif" />
+    <Content Include="fly\themes\blue\img\light-refresh.png" />
+    <Content Include="fly\themes\blue\img\xsplit.gif" />
+    <Content Include="fly\themes\blue\pager.css" />
+    <Content Include="fly\themes\blue\toolbar.css" />
+    <Content Include="fly\themes\common\imgs\arrows.gif" />
+    <Content Include="fly\themes\common\imgs\black-icons.png" />
+    <Content Include="fly\themes\common\imgs\blue-icons.png" />
+    <Content Include="fly\themes\common\imgs\file.gif" />
+    <Content Include="fly\themes\common\imgs\folder-open.gif" />
+    <Content Include="fly\themes\common\imgs\folder.gif" />
+    <Content Include="fly\themes\common\imgs\leaf.gif" />
+    <Content Include="fly\themes\common\imgs\lightbox-ico-loading.gif" />
+    <Content Include="fly\themes\gray\grid.css" />
+    <Content Include="fly\themes\img\arrows.gif" />
+    <Content Include="fly\themes\img\bar-bgs.png" />
+    <Content Include="fly\themes\img\bgs.png" />
+    <Content Include="fly\themes\img\btn.gif" />
+    <Content Include="fly\themes\img\folder-open.gif" />
+    <Content Include="fly\themes\img\folder.gif" />
+    <Content Include="fly\themes\img\glyphs.png" />
+    <Content Include="fly\themes\img\icons.png" />
+    <Content Include="fly\themes\img\leaf.gif" />
+    <Content Include="fly\themes\img\xsplit.gif" />
+    <Content Include="fly\themes\plain\dialog.css" />
+    <Content Include="fly\themes\plain\dialog\dialog-bg.png" />
+    <Content Include="fly\themes\plain\dialog\title-bg.png" />
+    <Content Include="fly\themes\plain\grid.css" />
+    <Content Include="index.htm" />
+    <Content Include="index.js" />
+    <Content Include="skin\default\index.css" />
+    <Content Include="skin\fly.simple\fly.simple-all-comment.js" />
+    <Content Include="skin\fly.simple\fly.simple-all-min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

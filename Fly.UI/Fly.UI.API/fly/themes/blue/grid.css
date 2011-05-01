@@ -1,0 +1,260 @@
+
+.f-grid-ellipsis .f-grid-c
+{
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-moz-text-overflow: ellipsis;
+}
+
+.f-grid-wrap
+{
+	position:relative;
+	border: #a6c9e2 1px solid;
+}
+
+.f-grid-t
+{
+    border-bottom:1px dotted #a6c9e2;
+}
+
+.f-grid-t .f-grid-t
+{
+    border-bottom:0px
+}
+
+.f-grid-h,.f-grid-t
+{
+    border-right:1px dotted #a6c9e2;
+	border-collapse:collapse;
+	table-layout:fixed;
+	width:100%;
+}
+
+.F-IE6 .f-grid-h-wrap,.F-IE6 .f-grid-body
+{
+	width:100%;
+}
+
+.f-grid-hc
+{
+	border-left:1px dotted #a6c9e2;
+	overflow:hidden;
+}
+
+.f-grid-c 
+{
+	border-left:1px dotted #a6c9e2;
+	border-top:1px dotted #a6c9e2;
+	overflow:hidden;
+}
+
+.f-grid-c-first
+{
+	border-left-width:0px;
+}
+
+.f-grid-r-first .f-grid-c 
+{
+	border-top-width:0px;
+}
+
+
+.f-grid-t tr:hover, .f-grid-tree .f-node-el:hover
+{
+	background-color: #F2F9FD;
+}
+
+.f-grid-tree tr:hover
+{
+	background-color:transparent;
+}
+
+.f-grid-r-selected .f-grid-c
+{
+	background-color: #fbec88;
+}
+
+.f-grid-t tr
+{
+    height:34px;
+}
+
+.f-grid-row-alt
+{
+	background-color: #F7F8FD;
+}
+
+.f-grid-h 
+{
+	height:28px;
+	font-weight:bold;
+	text-align:center;
+	
+}
+
+.f-grid-hc
+{
+	height:100%;
+	white-space:nowrap;
+}
+
+.f-grid-hc-text0
+{
+	position:relative;
+	top:2px;
+}
+
+.f-grid-col-resize
+{
+	float:right;
+	width:8px;
+	cursor:col-resize;
+	position:relative;
+}
+
+.f-grid-col-resize div
+{
+    width:100%;
+    height:45px;
+    top:-25px;
+    position:absolute;
+    border0:1px solid gray;
+}
+
+.F-Opera .f-grid-col-resize
+{
+     cursor: w-resize ;
+}
+
+.f-grid-resize-mark
+{
+    position: absolute;
+    border: 1px solid #B7B7B7;
+    background-color: gray;
+    width: 0px;
+    z-index:10;
+}
+
+/*
+.f-grid-col-resize0
+{
+	
+	padding-left:6px;	
+	
+	
+	z-index:1000;
+}
+
+.F-IE67 .f-grid-col-resize
+{
+	position:relative;
+}
+
+.F-IE67 .f-grid-col-resize span
+{
+	position:absolute;
+	left:-6px;
+}*/
+
+.f-grid-col-sort-ico
+{
+	position:relative;
+	left:0px;
+	float:left;	
+}
+
+.f-grid-col-sort-ico div
+{
+	background-image:url(img/grid-sort.gif);
+	background-repeat:no-repeat;
+	background-position: 100px 100px;
+	position:absolute;
+	width:14px;	
+	height:10px;
+	
+	z-index:10;
+	left:3px;
+}
+
+.f-grid-col-sort-ico-asc div
+{
+	background-position: 0px 3px;
+}
+
+.f-grid-col-sort-ico-desc div
+{
+	background-position: 0px -17px;
+}
+
+.f-grid-body
+{
+	overflow:auto;
+	position:relative;
+}
+
+.f-grid-h-wrap 
+{
+    position:relative;
+	overflow:hidden;
+}
+
+.f-grid-h-outer
+{
+	border-bottom:1px solid #a6c9e2;
+	border-right:0px solid #D7E7F2;
+	background-image:url(img/bgs.png);
+	background-position:center center ;
+	cursor:default;
+}
+
+.f-grid-tree .f-icon
+{
+	background-image:url(../common/imgs/file.gif);
+}
+
+.f-grid-tree .f-node-parent .f-icon
+{
+	background-image:url(../common/imgs/folder.gif);
+}
+
+.f-grid-tree .f-node-expand .f-icon
+{
+	background-image:url(../common/imgs/folder-open.gif);
+}
+
+.f-grid-tree .f-toggle
+{
+    background-image:url(../common/imgs/arrows.gif);
+    background-position:100px center;
+}
+
+.f-grid-tree .f-node-expand .f-toggle
+{
+    background-position:-16px center;
+}
+.f-grid-tree .f-node-expand .f-toggle:hover, .f-grid-tree .f-node-expand .f-toggle-over
+{
+    background-position:-48px center;
+}
+
+
+.f-grid-tree .f-node-collapse .f-toggle
+{
+    background-position:0px center;
+}
+
+.f-grid-tree .f-node-collapse .f-toggle:hover, .f-grid-tree .f-node-collapse .f-toggle-over
+{
+    background-position:-32px center;
+}
+
+.f-grid-child-table
+{
+	border-right-width:0px;
+	border-top:#a6c9e2 1px solid;
+}
+
+.f-node-cbox
+{
+	vertical-align:middle;
+}
