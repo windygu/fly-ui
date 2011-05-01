@@ -1,0 +1,3227 @@
+{ 
+    name:"",
+    remark:""
+    ,namespaces:[],
+classs:[{ 
+    name:"fly",
+    remark:"fly javacript library\r\nVersion 1.1 \r\nhttp//:www.flyui.net\r\nEmail:flyui&hotmail.com\r\nCopyright (c) 2009 KuiyouLi\r\n2009-11-23"
+    ,propertys:[{ 
+    name:"BREAK",
+    remark:"停止标识，在用each遍历某对象时，返回fly.BREAK将停止遍历"
+    ,type:""},
+{ 
+    name:"doc",
+    remark:"对象"
+    ,type:"document"},
+{ 
+    name:"body",
+    remark:"对象"
+    ,type:"document.body"}],
+methods:[{ 
+    name:"$",
+    remark:"查询Dom对象\r\n    调用方式：\r\n    fly.$(\"a\",\"div\")\r\n    fly.$(\"a,div\")\r\n    fly(\"a,div\")\r\n    fly(\"a\",\"div\")\r\n    $(\"a\",\"div\")\r\n    $(\"a,div\")\r\n    [document].$(\"a,div\")\r\n    [div1,div2].$(\"a,div\")"
+    ,args:[{ 
+    name:"selectors",
+    remark:"可变参数，任意多个选择器字符串或对象"
+    ,type:"String/Dom"}],
+ret:{ 
+    name:"",
+    remark:"符合条件的多个Dom对象数组"
+    ,type:"Array"}},
+{ 
+    name:"ns",
+    remark:"创建命名空间"
+    ,args:[{ 
+    name:"namespace",
+    remark:"要创建的命名空间，如 fly.ui"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"创建的命名空间"
+    ,type:"Namespace"}},
+{ 
+    name:"Class",
+    remark:"创建类"
+    ,args:[{ 
+    name:"options",
+    remark:"选项"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"创建的类"
+    ,type:"Class"}},
+{ 
+    name:"extend",
+    remark:"扩展"
+    ,args:[{ 
+    name:"target",
+    remark:"被扩展的对象"
+    ,type:""},{ 
+    name:"overrides",
+    remark:"包含扩展成员的任意多个参数"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@target"}},
+{ 
+    name:"regPlugin",
+    remark:"注册插件"
+    ,args:[{ 
+    name:"name",
+    remark:"插件名称"
+    ,type:"String"},{ 
+    name:"fn",
+    remark:"创建插件的函数"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"setup",
+    remark:"将fly安装到其他窗口"
+    ,args:[{ 
+    name:"window",
+    remark:"要安装的窗口对象"
+    ,type:"Window"},{ 
+    name:"match",
+    remark:"匹配要安装的插件，为空是安装所有插件"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"safeExtend",
+    remark:"扩展时检测"
+    ,args:[{ 
+    name:"prefix",
+    remark:"前缀"
+    ,type:"String"},{ 
+    name:"target",
+    remark:"被扩展的对象"
+    ,type:"Object"},{ 
+    name:"overrides",
+    remark:"包含扩展成员的任意多个参数"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@target"}},
+{ 
+    name:"extendIf",
+    remark:"扩展,扩展前检测是否存在"
+    ,args:[{ 
+    name:"target",
+    remark:"被扩展的对象"
+    ,type:""},{ 
+    name:"overrides",
+    remark:"包含扩展成员的任意多个参数"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@target"}},
+{ 
+    name:"copy",
+    remark:"复制一个对象"
+    ,args:[{ 
+    name:"obj",
+    remark:"要复制的对象"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"merge",
+    remark:"合并一组对象生成新对象\r\n	    例：var all=fly.merge(obj1,obj2,obj3,....,objn)"
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，要合并的多个对象"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:"包含多个对象成员的新对象"
+    ,type:"Object"}},
+{ 
+    name:"nullIf",
+    remark:"检查对象是否为null，为null时返回另一个对象"
+    ,args:[{ 
+    name:"chkObj",
+    remark:"要检测的对象"
+    ,type:"Object"},{ 
+    name:"replacement",
+    remark:"为null时返回的值"
+    ,type:"chkObj"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"get",
+    remark:"获取属性"
+    ,args:[{ 
+    name:"obj",
+    remark:"对象"
+    ,type:""},{ 
+    name:"attribute",
+    remark:"String 属性名"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"属性值"
+    ,type:"Object"}},
+{ 
+    name:"set",
+    remark:"设置属性"
+    ,args:[{ 
+    name:"obj",
+    remark:"对象"
+    ,type:""},{ 
+    name:"attribute",
+    remark:"String/Object 属性名或包属性名和属性值的键值对"
+    ,type:""},{ 
+    name:"value",
+    remark:"Object(可选) 值"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@obj"}},
+{ 
+    name:"attr",
+    remark:"获取或设置某对象的属性"
+    ,args:[{ 
+    name:"obj",
+    remark:"被操作对象"
+    ,type:"Object"},{ 
+    name:"prop",
+    remark:"要获取或设置的属性名，或者包含属性名和属性值的Json对象"
+    ,type:"String/Json"},{ 
+    name:"value",
+    remark:"对象的属性值"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:"当获取是返回属性值，设置时返回 fly"
+    ,type:"Object/fly"}},
+{ 
+    name:"value",
+    remark:"获取或设置元素的值"
+    ,args:[{ 
+    name:"el",
+    remark:"被操作对象"
+    ,type:"Element"},{ 
+    name:"value",
+    remark:"元素的值"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:"当获取是返回元素值，设置时返回 fly"
+    ,type:"Object/fly"}},
+{ 
+    name:"setBy",
+    remark:"设置属性"
+    ,args:[{ 
+    name:"obj",
+    remark:"对象"
+    ,type:""},{ 
+    name:"keyValues",
+    remark:"Object 包含属性名和属性值的键值对"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@obj"}},
+{ 
+    name:"is",
+    remark:"检测对象是否某类的实例或者是否等于某值"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""},{ 
+    name:"type",
+    remark:"类或者类名称或者用于比较的值"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:"如果obj是type的实例或者obj==type则返回true，否则返回false"
+    ,type:"Boolean"}},
+{ 
+    name:"isFun",
+    remark:"检测一个值是否函数"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isFunction",
+    remark:"检测一个值是否函数"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isDate",
+    remark:"检测一个值是否日期"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isNumber",
+    remark:"检测一个值是否数字"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isBoolean",
+    remark:"检测一个值是否布尔型"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isArray",
+    remark:"检测一个值是否数组"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isObject",
+    remark:"检测一个值是否Object"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isString",
+    remark:"检测一个值是否字符串"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isStr",
+    remark:"检测一个值是否字符串"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isHtml",
+    remark:"检测字符串是否html"
+    ,args:[{ 
+    name:"str",
+    remark:"要检测的字符串"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"str是html返回true，否则返回false"
+    ,type:"Boolean"}},
+{ 
+    name:"likeArray",
+    remark:"检测对象是否类似于数组，如 arguments、document.all"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"类似与数组返回true，否则返回false"
+    ,type:"Boolean"}},
+{ 
+    name:"isDom",
+    remark:"是否Dom对象"
+    ,args:[{ 
+    name:"obj",
+    remark:"要检测的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"toArray",
+    remark:"将对象转换为数组"
+    ,args:[{ 
+    name:"obj",
+    remark:"要转换的对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array"}},
+{ 
+    name:"slice",
+    remark:"获取集合的一部分"
+    ,args:[{ 
+    name:"obj",
+    remark:"集合对象"
+    ,type:""},{ 
+    name:"start",
+    remark:"开始位置"
+    ,type:"Int"},{ 
+    name:"end",
+    remark:"结束为置"
+    ,type:"Int(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array"}},
+{ 
+    name:"each",
+    remark:"遍历一个对象"
+    ,args:[{ 
+    name:"obj",
+    remark:"被遍历对象"
+    ,type:"Array"},{ 
+    name:"fn",
+    remark:"处理函数"
+    ,type:"Function"},{ 
+    name:"scope",
+    remark:"域"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"inArray",
+    remark:"检测对象是否在一组数据中,\r\n	    例	:fly.inArray(3,1,2,3,4,...,n),fly.inArray(3,[1,2,3,4])"
+    ,args:[{ 
+    name:"value",
+    remark:"要检测的一个值"
+    ,type:""},{ 
+    name:"params",
+    remark:"可变参数，一组数据"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:"返回在数组中的索引，如不在数组中则返回 null"
+    ,type:"Number"}},
+{ 
+    name:"emptyFun",
+    remark:"空函数"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"falseFun",
+    remark:"返回 false 的函数"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"false"}},
+{ 
+    name:"lambda",
+    remark:"对传入的对象进行函数封装,封装后的函数返回"
+    ,args:[{ 
+    name:"obj",
+    remark:"如果obj是函数，则返回obj，否则放一个新的函数，该函数返回值始终是obj"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Function"}},
+{ 
+    name:"toFun",
+    remark:"如果不是函数转换为函数"
+    ,args:[{ 
+    name:"fun",
+    remark:"或字符串"
+    ,type:"Object/String/Functon"},{ 
+    name:"onlyStr",
+    remark:"只有fun为字符串时转换"
+    ,type:"Boolean"},{ 
+    name:"format",
+    remark:"函数格式化字符串"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Function"}},
+{ 
+    name:"ifFun",
+    remark:"ifFun 假如是函数 则返回函数的执行结果"
+    ,args:[{ 
+    name:"obj",
+    remark:"函数或其它值"
+    ,type:"Function/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"format",
+    remark:"通过调用对象本身的 $format 方法格式化对象"
+    ,args:[{ 
+    name:"obj",
+    remark:"要格式化的对象"
+    ,type:"String/Date/Function"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:"格式化后的对象"
+    ,type:"String/Function"}},
+{ 
+    name:"In",
+    remark:"检测对象是否在一组数据中,功能等同于fly.inArray,\r\n    例	:fly.In(3,1,2,3,4,...,n),fly.In(3,[1,2,3,4])"
+    ,args:[{ 
+    name:"value",
+    remark:"要检测的一个值"
+    ,type:""},{ 
+    name:"params",
+    remark:"可变参数，一组数据"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:"返回在数组中的索引，如不在数组中则返回 null"
+    ,type:"Number"}},
+{ 
+    name:"onLoad",
+    remark:"绑定多个函数到 window.onload"
+    ,args:[{ 
+    name:"fu",
+    remark:"可变参数，要绑定的任意多个函数"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly"}},
+{ 
+    name:"ready",
+    remark:"绑定多个函数到 window.onload"
+    ,args:[{ 
+    name:"fu",
+    remark:"可变参数，要绑定的任意多个函数"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly"}},
+{ 
+    name:"onUnload",
+    remark:"绑定多个函数到	window.onunload"
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，要绑定的任意多个函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly"}},
+{ 
+    name:"onBeforeUnload",
+    remark:"绑定多个函数到	window.onBeforeUnload"
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，要绑定的任意多个函数"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly"}}],
+events:[]
+},{ 
+    name:"flyConfig",
+    remark:""
+    ,propertys:[],
+methods:[{ 
+    name:"addAlias",
+    remark:"给fly库命别名\r\n    fly库默认别名 $，如果 给fly库指定其它别名，默认别名 $ 将被取消\r\n    可以在 fly 库加载前用如下代码定义别名\r\n    var flyConfig={\r\n    alias:[\"myFly\",\"jimo\"]\r\n    }\r\n    也可以直接调用该函数定义别名\r\n    fly.addAlias(\"myFly\",\"jimo\")\r\n    经过以上定义后，便可以用别名访问fly库\r\n    如：\r\n    myFly.$(\"a,div\")\r\n    myFly(\"a\",\"div\")\r\n    jimo.$(\"a\",\"div\")\r\n    jimo(\"a,div\")"
+    ,args:[{ 
+    name:"alias",
+    remark:"可变参数，任意多个别名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"fly库"
+    ,type:"fly"}},
+{ 
+    name:"onLoad",
+    remark:"fly加载完成时执行回调函数\r\n    可以在 fly 库加载前用如下代码定义加载完成是的回调函数\r\n    var flyConfig={\r\n    alias:[\"myFly\",\"jimo\"],\r\n    onLoad:function(){\r\n    alert(\'fly已经加载完成\')\r\n    }\r\n    }"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}}],
+events:[]
+},{ 
+    name:"lib",
+    remark:""
+    ,propertys:[],
+methods:[],
+events:[]
+},{ 
+    name:"Function",
+    remark:"函数扩展"
+    ,propertys:[],
+methods:[{ 
+    name:"where",
+    remark:"根据条件判断是否执行"
+    ,args:[{ 
+    name:"predicate",
+    remark:"用来判断是否执行的表达式、函数或其它对象"
+    ,type:"Function/String/Object"},{ 
+    name:"args",
+    remark:"参数，要传递的任意多个参数"
+    ,type:"Array(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Function"}},
+{ 
+    name:"bind",
+    remark:"绑定域"
+    ,args:[{ 
+    name:"scope",
+    remark:"域"
+    ,type:"Object(可选)"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Function"}},
+{ 
+    name:"format",
+    remark:"格式化参数\r\n	    如：fn.$format(\'"
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，任意多个格式或参数\r\n	    可以是定位参数的字符串\"{1}\"、\"{"
+    ,type:"String/Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Function"}},
+{ 
+    name:"inherit",
+    remark:"继承"
+    ,args:[{ 
+    name:"base",
+    remark:"基类"
+    ,type:""},{ 
+    name:"overrides",
+    remark:"包含扩展成员的任意多个参数"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"extend",
+    remark:"扩展"
+    ,args:[{ 
+    name:"overrides",
+    remark:"包含扩展成员的任意多个参数"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}}],
+events:[]
+},{ 
+    name:"Date",
+    remark:"Data 扩展"
+    ,propertys:[],
+methods:[{ 
+    name:"format",
+    remark:"格式化日期"
+    ,args:[{ 
+    name:"format",
+    remark:"时间格式，默认 yyyy-MM-dd hh:mm:ss"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}}],
+events:[]
+},{ 
+    name:"String",
+    remark:"String 扩展"
+    ,propertys:[],
+methods:[{ 
+    name:"format",
+    remark:"格式化字符串，可以调用用参数的属性或者方法进行格式化\r\n	    例如\r\n	    \"a{0}b{1}\".format(\"-\",5) 结果等于 \"a-b5\"\r\n			\r\n	    var option={id:123,name:\"fly\"};\r\n	    \"a{0}b {name}\".format(\"-\",5,option) 结果等于 \"a-b fly\"\r\n			\r\n	    var option={\r\n	    getId:function(){\r\n	    return 123\r\n	    }\r\n	    };\r\n	    \"a{0}b {getId()}\".format(\"-\",option) 结果等于 \"a-b 123\""
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，用来格式化的任意多个参数"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"contains",
+    remark:"字符串是否包含另一个字符串"
+    ,args:[{ 
+    name:"subStr",
+    remark:"要检查的子串"
+    ,type:""},{ 
+    name:"ignoreCase",
+    remark:"忽略大小写,默认区分大小写"
+    ,type:"Boolean(可选)"},{ 
+    name:"separator",
+    remark:"分隔符"
+    ,type:"String(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"IndexOf",
+    remark:"子串出现的位置"
+    ,args:[{ 
+    name:"subStr",
+    remark:"要检查的子串"
+    ,type:""},{ 
+    name:"ignoreCase",
+    remark:"忽略大小写,默认区分大小写"
+    ,type:"Boolean(可选)"},{ 
+    name:"separator",
+    remark:"分隔符"
+    ,type:"String(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Int"}},
+{ 
+    name:"startWith",
+    remark:"字符串是否以指定字符串开头"
+    ,args:[{ 
+    name:"subStr",
+    remark:"要检查的子串"
+    ,type:""},{ 
+    name:"ignoreCase",
+    remark:"忽略大小写,默认区分大小写"
+    ,type:"Boolean(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"endWith",
+    remark:"字符串是否以指定字符串结尾"
+    ,args:[{ 
+    name:"subStr",
+    remark:"要检查的子串"
+    ,type:""},{ 
+    name:"ignoreCase",
+    remark:"忽略大小写,默认区分大小写"
+    ,type:"Boolean(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"trim",
+    remark:"去掉左右空白"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"trimLeft",
+    remark:"去掉左空白"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"trimRight",
+    remark:"去掉左空白"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"firstUpper",
+    remark:"将第一个字母转换为大写"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"repeat",
+    remark:"重复指定次数"
+    ,args:[{ 
+    name:"count",
+    remark:"重复次数"
+    ,type:"Int"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"padLeft",
+    remark:"填充左边到指定长度"
+    ,args:[{ 
+    name:"minLength",
+    remark:"最小长度"
+    ,type:"Int"},{ 
+    name:"_char",
+    remark:"用来填充不足的字符"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"padRight",
+    remark:"填充右边到指定长度"
+    ,args:[{ 
+    name:"minLength",
+    remark:"最小长度"
+    ,type:""},{ 
+    name:"_char",
+    remark:"用来填充不足的字符"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"camelCase",
+    remark:"将字符串转换为骆驼命名规则"
+    ,args:[{ 
+    name:"wordSplitChar",
+    remark:"字符串中的分隔符"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}}],
+events:[]
+},{ 
+    name:"Event",
+    remark:"事件处理器"
+    ,propertys:[],
+methods:[{ 
+    name:"on",
+    remark:"绑定事件"
+    ,args:[{ 
+    name:"el",
+    remark:"一个或多个DOM对象"
+    ,type:"Object/Array<Object>"},{ 
+    name:"eName",
+    remark:"一个或多个事件名"
+    ,type:"String/Array<String>"},{ 
+    name:"fn",
+    remark:"一个或多个处理函数"
+    ,type:"Function/Array<Function>"},{ 
+    name:"scope",
+    remark:"域"
+    ,type:""},{ 
+    name:"data",
+    remark:"要传递的数据"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@el"}},
+{ 
+    name:"un",
+    remark:"注销事件"
+    ,args:[{ 
+    name:"el",
+    remark:"一个或多个DOM对象"
+    ,type:"Object/Array<Object>"},{ 
+    name:"eName",
+    remark:"一个或多个事件名"
+    ,type:"String/Array<String>"},{ 
+    name:"fn",
+    remark:"一个或多个处理函数"
+    ,type:"Function/Array<Function>"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@el"}},
+{ 
+    name:"fire",
+    remark:"触发事件"
+    ,args:[{ 
+    name:"el",
+    remark:"一个或多个DOM对象"
+    ,type:"Object/Array<Object>"},{ 
+    name:"eName",
+    remark:"一个或多个事件名"
+    ,type:"String/Array<String>"},{ 
+    name:"scope",
+    remark:"域"
+    ,type:""},{ 
+    name:"args",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Array(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@el"}},
+{ 
+    name:"stop",
+    remark:"停止事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"false"
+    ,type:"Boolean"}},
+{ 
+    name:"createEventFn",
+    remark:"创建事件函数"
+    ,args:[{ 
+    name:"eName",
+    remark:"事件名称"
+    ,type:"String"},{ 
+    name:"fire",
+    remark:"事件的响应函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"附加或响应事件的函数"
+    ,type:"Function"}},
+{ 
+    name:"registEvent",
+    remark:"为对象注册事件"
+    ,args:[{ 
+    name:"obj",
+    remark:"要注册事件的对象"
+    ,type:""},{ 
+    name:"eventNames",
+    remark:"要注册的任意多个事件名称"
+    ,type:"Array"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.lib.Event"}},
+{ 
+    name:"eventAble",
+    remark:"使对象具有事件管理机制"
+    ,args:[{ 
+    name:"obj",
+    remark:"除值类型的任何对象"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.lib.Event"}}],
+events:[]
+},{ 
+    name:"Json",
+    remark:"Json工具"
+    ,propertys:[{ 
+    name:"urlDecode",
+    remark:"将字符串进行Url解码"
+    ,type:""}],
+methods:[{ 
+    name:"encodeArray",
+    remark:"对集合进行编码"
+    ,args:[{ 
+    name:"o",
+    remark:"要编码的集合"
+    ,type:"Array"},{ 
+    name:"jsonEncode",
+    remark:"是否Json格式"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"encodeDate",
+    remark:"对时间进行编码"
+    ,args:[{ 
+    name:"o",
+    remark:"要编码的时间对象"
+    ,type:"Date"},{ 
+    name:"jsonEncode",
+    remark:"是否Json格式,"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"encode",
+    remark:"将对象编码"
+    ,args:[{ 
+    name:"o",
+    remark:"要编码的对象"
+    ,type:""},{ 
+    name:"jsonEncode",
+    remark:"是否Json格式,"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"decode",
+    remark:"对Json字符串解码"
+    ,args:[{ 
+    name:"json",
+    remark:"要解码的Json对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"urlEncode",
+    remark:"将Json对象进行Url编码"
+    ,args:[{ 
+    name:"json",
+    remark:"要编码的对象"
+    ,type:"Object"},{ 
+    name:"memberToParam",
+    remark:"是否将成员编码为参数"
+    ,type:"Boolean"},{ 
+    name:"prefix",
+    remark:"前缀"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"编码后的字符串"
+    ,type:"String"}},
+{ 
+    name:"each",
+    remark:"遍历每一项"
+    ,args:[{ 
+    name:"json",
+    remark:"要遍历的对象"
+    ,type:""},{ 
+    name:"action",
+    remark:"处理函数"
+    ,type:"Function"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@json"}},
+{ 
+    name:"map",
+    remark:"将结果转换为数组"
+    ,args:[{ 
+    name:"json",
+    remark:"要转换的数组"
+    ,type:""},{ 
+    name:"evaluator",
+    remark:"计算值的函数"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array"}}],
+events:[]
+},{ 
+    name:"ajax",
+    remark:""
+    ,propertys:[],
+methods:[],
+events:[]
+},{ 
+    name:"Helper",
+    remark:"通过 HTTP 请求加载远程数据。\r\n    配置:\r\n    {\r\n    url     :String 请求的地址\r\n    method  :String 请求方式,get或post,默认get\r\n    async   :Boolean    是否异步,默认true\r\n    dataHandler:Function    对请求返回的数据进行处理后返回\r\n    charset :String 编码,默认GB2312\r\n    username:String 用户名,服务端验证用\r\n    password:String 密码,服务端验证用\r\n    timeout :Int    超时时间(毫秒)\r\n    data    :Json/String   向服务器传递的数据\r\n    }\r\n\r\n    调用:\r\n\r\n    var helper=new fly.ajax.Helper({\r\n    url:\'http://www.flyui.net/a.php\',\r\n    method:\'get\',\r\n    success:function(){\r\n    alert(\'请求成功!\')\r\n    }\r\n    })\r\n    helper.go();\r\n\r\n    ------------------------------------------\r\n    var helper=new fly.ajax.Helper()\r\n    helper.setup({\r\n    url:\'http://www.flyui.net/a.php\',\r\n    method:\'get\',\r\n    success:function(){\r\n    alert(\'请求成功!\')\r\n    }\r\n    })\r\n    helper.go();\r\n\r\n    ------------------------------------------\r\n    fly.get(\'http://www.flyui.net/a.php\',function(){\r\n    alert(\'请求成功!\')\r\n    });\r\n\r\n    ------------------------------------------\r\n    fly.post(\'http://www.flyui.net/a.php\',function(){\r\n    alert(\'请求成功!\')\r\n    });\r\n\r\n    ------------------------------------------\r\n    var helper=fly.ajax.url(\'http://www.flyui.net/a.php\').method(\'get\').onSuccess(function(){\r\n    alert(\'请求成功!\')\r\n    }).go();\r\n            \r\n    ------------------------------------------\r\n    var helper=fly.ajax.url(\'http://www.flyui.net/a.php\').onSuccess(function(){\r\n    alert(\'请求成功!\')\r\n    }).get();"
+    ,propertys:[{ 
+    name:"url",
+    remark:"请求的地址"
+    ,type:"String"},
+{ 
+    name:"method",
+    remark:"请求方式,get或post,默认get"
+    ,type:"String"},
+{ 
+    name:"async",
+    remark:"是否异步,默认true"
+    ,type:"Boolean"},
+{ 
+    name:"dataHandler",
+    remark:"对请求返回的数据进行处理后返回"
+    ,type:"Function"},
+{ 
+    name:"contentType",
+    remark:"默认application/x-www-form-urlencoded"
+    ,type:"String"},
+{ 
+    name:"charset",
+    remark:"编码,默认GB2312"
+    ,type:"String"},
+{ 
+    name:"username",
+    remark:"用户名,服务端验证用"
+    ,type:"String"},
+{ 
+    name:"password",
+    remark:"密码,服务端验证用"
+    ,type:"String"},
+{ 
+    name:"timeout",
+    remark:"超时时间(毫秒)"
+    ,type:"Int"},
+{ 
+    name:"data",
+    remark:"向服务器传递的数据"
+    ,type:"Json/String"}],
+methods:[{ 
+    name:"url",
+    remark:"设置请求的地址"
+    ,args:[{ 
+    name:"url",
+    remark:"地址"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"method",
+    remark:"设置请求方式"
+    ,args:[{ 
+    name:"method",
+    remark:"get或post,默认get"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"async",
+    remark:"设置是否采用异步请求"
+    ,args:[{ 
+    name:"async",
+    remark:"是否异步,默认true"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"dataHandler",
+    remark:"设置对请求返回的数据进行处理后返回的函数"
+    ,args:[{ 
+    name:"dataHandler",
+    remark:"处理函数"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"contentType",
+    remark:"设置HTTP头:contentType"
+    ,args:[{ 
+    name:"contentType",
+    remark:"默认application/x-www-form-urlencoded"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"charset",
+    remark:"设置HTTP头:charset"
+    ,args:[{ 
+    name:"charset",
+    remark:"编码,默认GB2312"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"username",
+    remark:"设置用户名,服务端验证用"
+    ,args:[{ 
+    name:"username",
+    remark:"用户名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"password",
+    remark:"设置密码,服务端验证用"
+    ,args:[{ 
+    name:"password",
+    remark:"密码"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"timeout",
+    remark:"设置超时时间(毫秒)"
+    ,args:[{ 
+    name:"timeout",
+    remark:"超时时间(毫秒)"
+    ,type:"Int"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"data",
+    remark:"设置向服务器传递的数据"
+    ,args:[{ 
+    name:"data",
+    remark:"向服务器传递的数据"
+    ,type:"Json"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"setup",
+    remark:"重新配置Ajax选项"
+    ,args:[{ 
+    name:"option",
+    remark:"包含详细配置的Json对象"
+    ,type:"Json"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"get",
+    remark:"用GET方式对服务器发起请求"
+    ,args:[{ 
+    name:"url",
+    remark:"请求的地址"
+    ,type:"String"},{ 
+    name:"data",
+    remark:"想服务器发送的数据"
+    ,type:"Json(可选)"},{ 
+    name:"success",
+    remark:"当请求成功时的回调函数"
+    ,type:"Function(可选)"},{ 
+    name:"error",
+    remark:"当请求失败时的回调函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例"
+    ,type:"Object/this"}},
+{ 
+    name:"post",
+    remark:"用POST方式对服务器发起请求"
+    ,args:[{ 
+    name:"url",
+    remark:"请求的地址"
+    ,type:"String"},{ 
+    name:"data",
+    remark:"想服务器发送的数据"
+    ,type:"Json(可选)"},{ 
+    name:"success",
+    remark:"当请求成功时的回调函数"
+    ,type:"Function(可选)"},{ 
+    name:"error",
+    remark:"当请求失败时的回调函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例"
+    ,type:"Object/this"}},
+{ 
+    name:"go",
+    remark:"对服务器发起请求"
+    ,args:[{ 
+    name:"url",
+    remark:"请求的地址"
+    ,type:"String"},{ 
+    name:"data",
+    remark:"想服务器发送的数据"
+    ,type:"Json(可选)"},{ 
+    name:"success",
+    remark:"当请求成功时的回调函数"
+    ,type:"Function(可选)"},{ 
+    name:"error",
+    remark:"当请求失败时的回调函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例"
+    ,type:"Object/this"}},
+{ 
+    name:"loadScript",
+    remark:"\" :\r\n				ajax.Accepts._default);\r\n 	        var c = this.createContext()\r\n 	        conn.onreadystatechange = c.stateChange;\r\n 	        if (this.fire(\"send\", this, conn, o) === false) return this\r\n 	        if (o.timeout > 0) {\r\n 	            var startT = new Date()\r\n 	            var h = setInterval(function () {\r\n 	                if (c.isComplete)\r\n 	                    clearInterval(h)\r\n 	                else if ((new Date() - startT) >= o.timeout) {\r\n 	                    clearInterval(h)\r\n 	                    c.isTimeout = \"timeout\"\r\n 	                    c.conn.abort()\r\n 	                }\r\n 	            }, 60);\r\n 	        }\r\n\r\n 	        conn.send(isGet ? null : o.dataEncode);\r\n 	        if (!o.async) {\r\n 	            c.stateChange()\r\n 	            return this.getContent()\r\n 	        }\r\n 	        return this\r\n 	    },\r\n 	    createContext: function () {\r\n 	        var context = { conn: this.connection, option: this.option, data: undefined, errMsg: undefined }\r\n 	        var me = this, c = context;\r\n 	        c.complete = function () {\r\n 	            me.fire(\"complete\", this, c.conn, c.data, c.option.status);\r\n 	            me.fire(\"stop\", this, c.conn, c.option);\r\n 	        }\r\n\r\n 	        c.stateChange = function () {\r\n 	            me.fire(\"readystatechange\", this, c.conn)\r\n 	            if (!c.conn || c.conn.readyState === 0 || c.isTimeout === \"abort\") {\r\n 	                if (!context.isComplete)\r\n 	                    c.complete();\r\n\r\n 	                c.isComplete = true;\r\n 	                if (c.conn)\r\n 	                    c.conn.onreadystatechange = $.emptyFun;\r\n 	            }\r\n\r\n 	            if (!c.isComplete && c.conn && (c.conn.readyState === 4 || c.isTimeout == \"timeout\")) {\r\n 	                context.isComplete = true;\r\n 	                c.conn.onreadystatechange = $.emptyFun;\r\n 	                c.option.status = c.isTimeout === \"timeout\" ?\r\n					    \"timeout\" :\r\n					    !ajax.isSuccess(c.conn) ? \"error\" : \"success\";\r\n\r\n 	                if (c.option.status === \"success\") {\r\n 	                    try {\r\n 	                        c.data = me.getContent();\r\n 	                    } catch (ex) {\r\n 	                        c.option.status = \"parsererror\";\r\n 	                        errMsg = ex;\r\n 	                    }\r\n 	                }\r\n\r\n 	                if (c.option.status === \"success\" || c.option.status === \"notmodified\")\r\n 	                    me.fire(\"success\", me, c.data, c.option.status, c.conn)\r\n 	                else\r\n 	                    me.fire(\"error\", me, c.conn, c.option.status, c.errMsg)\r\n\r\n 	                c.complete()\r\n 	            }\r\n 	        }\r\n 	        return c;\r\n 	    },\r\n 	    /"
+    ,args:[{ 
+    name:"url",
+    remark:"脚本文件地址"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"getContent",
+    remark:"获取服务端输出内容"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Object"}}],
+events:[{ 
+    name:"onStart",
+    remark:"在Ajax请求开始之前时执行,返回false取消请求。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onError",
+    remark:"在Ajax请求出错时执行。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onSuccess",
+    remark:"在Ajax请求成功时执行。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onComplete",
+    remark:"在Ajax请求完成时执行。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onSend",
+    remark:"在Ajax请发送数据前执行,返回false取消请求。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onStop",
+    remark:"在Ajax请求停止时执行。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onReadystatechange",
+    remark:"在Ajax请求中,服务端有响应时执行。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}}]
+},{ 
+    name:"Cookie",
+    remark:"Cookie 工具类"
+    ,propertys:[],
+methods:[{ 
+    name:"set",
+    remark:"设置Cookie"
+    ,args:[{ 
+    name:"name",
+    remark:"cookie名"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"cookie值"
+    ,type:"String"},{ 
+    name:"expires",
+    remark:"过期时间"
+    ,type:"Date"},{ 
+    name:"path",
+    remark:"路径"
+    ,type:"String"},{ 
+    name:"domain",
+    remark:"域"
+    ,type:"String"},{ 
+    name:"secure",
+    remark:""
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.lib.Cookie"}},
+{ 
+    name:"get",
+    remark:"获取Cookie"
+    ,args:[{ 
+    name:"path",
+    remark:"路径"
+    ,type:"String"},{ 
+    name:"name",
+    remark:"cookie名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"cookie 值"
+    ,type:"String"}},
+{ 
+    name:"remove",
+    remark:"删除 Cookie"
+    ,args:[{ 
+    name:"name",
+    remark:"cookie名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.lib.Cookie"}}],
+events:[]
+},{ 
+    name:"ui",
+    remark:""
+    ,propertys:[],
+methods:[],
+events:[]
+},{ 
+    name:"Style",
+    remark:"CSS 工具类"
+    ,propertys:[],
+methods:[{ 
+    name:"loadCss",
+    remark:"加载CSS"
+    ,args:[{ 
+    name:"url",
+    remark:"CSS文件地址"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"link元素"
+    ,type:"Element"}},
+{ 
+    name:"createStyleSheet",
+    remark:"创建CSS"
+    ,args:[{ 
+    name:"cssText",
+    remark:"CSS内容"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"style元素"
+    ,type:"Element"}},
+{ 
+    name:"createCssRule",
+    remark:"创建CSS类"
+    ,args:[{ 
+    name:"sheet",
+    remark:"CSS元素"
+    ,type:"StyleSheet(可选)"},{ 
+    name:"name",
+    remark:"CSS类名"
+    ,type:"String"},{ 
+    name:"cssText",
+    remark:"CSS内容"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"CSS类"
+    ,type:"StyleSheetRule"}},
+{ 
+    name:"currentStyle",
+    remark:"获取元素当前样式"
+    ,args:[{ 
+    name:"el",
+    remark:"元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"currentStyle"}},
+{ 
+    name:"checkValue",
+    remark:"检测样式值"
+    ,args:[{ 
+    name:"name",
+    remark:"样式名"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"样式值"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:"经处理过后的属性值"
+    ,type:"Object"}},
+{ 
+    name:"get",
+    remark:"获取元素样式"
+    ,args:[{ 
+    name:"el",
+    remark:"要获取样式的元素"
+    ,type:"Element"},{ 
+    name:"name",
+    remark:"要设置的样式名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"属性值"
+    ,type:"String"}},
+{ 
+    name:"num",
+    remark:"获取元素样式值"
+    ,args:[{ 
+    name:"el",
+    remark:"要获取样式的元素"
+    ,type:"Element"},{ 
+    name:"name",
+    remark:"要设置的样式名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"属性值"
+    ,type:"Number"}},
+{ 
+    name:"set",
+    remark:"设置元素样式"
+    ,args:[{ 
+    name:"el",
+    remark:"被设置样式的元素"
+    ,type:"Element"},{ 
+    name:"name",
+    remark:"要设置的样式名"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"样式值"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.ui.Style"}}],
+events:[]
+},{ 
+    name:"DomHelper",
+    remark:"Dom 工具类"
+    ,propertys:[],
+methods:[{ 
+    name:"getUniqueID",
+    remark:"获取元素唯一ID"
+    ,args:[{ 
+    name:"el",
+    remark:"Dom元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"元素ID"
+    ,type:"Int"}},
+{ 
+    name:"create",
+    remark:"根据Html创建DOM元素"
+    ,args:[{ 
+    name:"html",
+    remark:"html字符串"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"创建的DOM元素"
+    ,type:"Element/Array<Element>"}},
+{ 
+    name:"doInsert",
+    remark:"插入对象"
+    ,args:[{ 
+    name:"pos",
+    remark:"插入位置(beforeBegin,afterBegin,beforeEnd,afterEnd)"
+    ,type:"String"},{ 
+    name:"parent",
+    remark:"父元素"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"子元素"
+    ,type:"Element/Array<Element>"},{ 
+    name:"returnDom",
+    remark:"是否返回DOM元素"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:"returnDom等于true返回DOM对象，否则返回包含该元素的集合"
+    ,type:"Element/Array"}},
+{ 
+    name:"insertBefore",
+    remark:"在元素前插入对象"
+    ,args:[{ 
+    name:"el",
+    remark:"在该元素前插入对象"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"要插入的一个或多个Dom元素"
+    ,type:"Element/Array<Element>"},{ 
+    name:"returnDom",
+    remark:"是否返回DOM元素"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:"returnDom等于true返回DOM对象，否则返回包含该元素的集合"
+    ,type:"Element/Array"}},
+{ 
+    name:"insertAfter",
+    remark:"在元素后插入对象"
+    ,args:[{ 
+    name:"el",
+    remark:"在该元素后插入对象"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"要插入的一个或多个Dom元素"
+    ,type:"Element/Array<Element>"},{ 
+    name:"returnDom",
+    remark:"是否返回DOM元素"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:"returnDom等于true返回DOM对象，否则返回包含该元素的集合"
+    ,type:"Element/Array"}},
+{ 
+    name:"insertFirst",
+    remark:"在元素开始位置插入对象"
+    ,args:[{ 
+    name:"el",
+    remark:"在该元素开始位置插入对象"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"要插入的一个或多个Dom元素"
+    ,type:"Element/Array<Element>"},{ 
+    name:"returnDom",
+    remark:"是否返回DOM元素"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:"returnDom等于true返回DOM对象，否则返回包含该元素的集合"
+    ,type:"Element/Array"}},
+{ 
+    name:"append",
+    remark:"将元素附加到一个对象结尾"
+    ,args:[{ 
+    name:"el",
+    remark:"在该元素结束位置插入对象"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"要插入的一个或多个Dom元素"
+    ,type:"Element/Array<Element>"},{ 
+    name:"returnDom",
+    remark:"是否返回DOM元素"
+    ,type:"Boolean"}],
+ret:{ 
+    name:"",
+    remark:"returnDom等于true返回DOM对象，否则返回包含该元素的集合"
+    ,type:"Element/Array"}},
+{ 
+    name:"children",
+    remark:"获取该Dom元素的子元素，不含 #text"
+    ,args:[{ 
+    name:"child",
+    remark:"要获取子元素的Dom元素"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"元素的所有子元素"
+    ,type:"Array"}},
+{ 
+    name:"moveContent",
+    remark:"将所有内容转移至另一个元素"
+    ,args:[{ 
+    name:"from",
+    remark:"将元素的所有内容移至另一个元素"
+    ,type:"Element"},{ 
+    name:"to",
+    remark:"将移至该元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.ui.DomHelper"}},
+{ 
+    name:"empty",
+    remark:"清空元素内容"
+    ,args:[{ 
+    name:"el",
+    remark:"将元素的所有内容移至另一个元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"fly.ui.DomHelper"}},
+{ 
+    name:"changeClass",
+    remark:"改变CSS样式\r\n        调用示例：\r\n        var cls=fly.simple.changeCss(document.body,\"css-blue css-red\",\"css-yellow\")\r\n        给 document.body 移除 css-blue 和 css-red 样式后，追加 css-yellow 样式\r\n        \r\n        var oldCls=\"css-gray css-blue css-red\"\r\n        var cls=fly.simple.changeCss(oldCls,\"css-blue css-red\",\"css-yellow\")\r\n        给 oldCls 移除 css-blue 和 css-red 样式后，追加 css-yellow 样式\r\n        调用结果 cls 等于“css-gray css-yellow”\r\n\r\n        注意：\r\n        该方法执行是先移除后追加，如果同一个样式同时出现在 removeCss 和 addCss 参数中时，该样式最终被追加，如：\r\n        var oldCls=\"css-gray a b\"\r\n        var cls=fly.simple.changeCss(oldCls,\"a b\",\"b\")\r\n        给 oldCls 移除 a 和 b 样式后，追加 b 样式\r\n        调用结果 cls 等于 “css-gray b”"
+    ,args:[{ 
+    name:"el",
+    remark:"要改变样式的DOM对象或字符串"
+    ,type:"Element/String"},{ 
+    name:"removeCss",
+    remark:"要移除的样式,多个样式用空格隔开"
+    ,type:"String"},{ 
+    name:"addCss",
+    remark:"要追加的样式,多个样式用空格隔开"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"改变后的样式"
+    ,type:"String"}},
+{ 
+    name:"addClass",
+    remark:"添加CSS样式"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM 元素"
+    ,type:"Element"},{ 
+    name:"css",
+    remark:"要添加的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"改变后的样式"
+    ,type:"String"}},
+{ 
+    name:"removeClass",
+    remark:"移除CSS样式"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM 元素"
+    ,type:"Element"},{ 
+    name:"css",
+    remark:"要移除的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"改变后的样式"
+    ,type:"String"}},
+{ 
+    name:"hasClass",
+    remark:"是否包含某一CSS名称"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM 元素"
+    ,type:"Element"},{ 
+    name:"css",
+    remark:"要检测的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"clone",
+    remark:"克隆元素"
+    ,args:[{ 
+    name:"el",
+    remark:"要克隆的元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"克隆产生的新元素"
+    ,type:"Element"}},
+{ 
+    name:"toHtml",
+    remark:"转换为HTML"
+    ,args:[{ 
+    name:"el",
+    remark:"Html元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"元素的HTML"
+    ,type:"String"}},
+{ 
+    name:"contains",
+    remark:"检测元素是否包含另一个元素"
+    ,args:[{ 
+    name:"parent",
+    remark:"上级元素"
+    ,type:"Element"},{ 
+    name:"child",
+    remark:"子元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"当parent包含child时返回true,否则返回false"
+    ,type:"Boolean"}},
+{ 
+    name:"focusable",
+    remark:"检测某元素是否可以获取焦点"
+    ,args:[{ 
+    name:"el",
+    remark:"要检测的元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"可以获取焦点返回 true,否则返回 false"
+    ,type:"Boolean"}},
+{ 
+    name:"tabbable",
+    remark:"检测元素是否接受Tab键"
+    ,args:[{ 
+    name:"el",
+    remark:"要检测的元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"可以接受Tab键则返回 true,否则返回 false"
+    ,type:"Boolean"}},
+{ 
+    name:"isVisible",
+    remark:"元素是否可见（visibility）"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isDisplay",
+    remark:"元素是否显示（display）"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"isHidden",
+    remark:"元素是否被隐藏（visibility、display）"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"tabIndex",
+    remark:"获取元素的   tabindex"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Int"}},
+{ 
+    name:"unSelection",
+    remark:"取消页面的选择"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"rect",
+    remark:"获取元素在页面中的位置和大小"
+    ,args:[{ 
+    name:"el",
+    remark:"DOM元素"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:"包含元素在页面中的位置和大小信息的Json对象"
+    ,type:"Json"}}],
+events:[]
+},{ 
+    name:"collection",
+    remark:""
+    ,propertys:[],
+methods:[],
+events:[]
+},{ 
+    name:"IList",
+    remark:"用来扩展 collection 对象"
+    ,propertys:[{ 
+    name:"$type",
+    remark:"原始类型"
+    ,type:"Class"},
+{ 
+    name:"isIList",
+    remark:"fly.collection.IList标识"
+    ,type:"Boolean"},
+{ 
+    name:"before",
+    remark:"在每个元素之前插入内容。"
+    ,type:""},
+{ 
+    name:"after",
+    remark:"在每个元素之后插入内容。"
+    ,type:""},
+{ 
+    name:"insertBefore",
+    remark:"把所有匹配的元素插入到另一个、指定的元素集合的前面。"
+    ,type:""},
+{ 
+    name:"insertAfter",
+    remark:"把所有匹配的元素插入到另一个、指定的元素集合的后面。"
+    ,type:""},
+{ 
+    name:"end",
+    remark:"结束最近的“破坏性”操作，把匹配的元素列表回复到前一个状态。"
+    ,type:""},
+{ 
+    name:"constructor",
+    remark:",step,start,end,achieve,target"
+    ,type:"speed"}],
+methods:[{ 
+    name:"extend",
+    remark:"扩展 fly.collection.IList 成员"
+    ,args:[{ 
+    name:"name",
+    remark:"成员名称或包含多个成员的键值对"
+    ,type:"String/Json"},{ 
+    name:"v",
+    remark:"成员"
+    ,type:"Function/Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"$create",
+    remark:"创建新的实例"
+    ,args:[{ 
+    name:"arr",
+    remark:"初始元素"
+    ,type:"Array"}],
+ret:{ 
+    name:"",
+    remark:"IList新对象"
+    ,type:"IList"}},
+{ 
+    name:"getItems",
+    remark:"获取可遍历的对象"
+    ,args:[{ 
+    name:"obj",
+    remark:"如果传递该参数，这获取该对象的可遍历对象，否则返回当前对象的可遍历对象"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array"}},
+{ 
+    name:"updateLength",
+    remark:"更新长度"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"item",
+    remark:"获取指定位置的项"
+    ,args:[{ 
+    name:"index",
+    remark:"从0开始的索引"
+    ,type:"Int"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Object"}},
+{ 
+    name:"selectMany",
+    remark:"生成一个新IList对象,将每一项中的项合并"
+    ,args:[{ 
+    name:"evaluator",
+    remark:"计算值的函数"
+    ,type:""},{ 
+    name:"scope",
+    remark:"域"
+    ,type:""},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数,"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"selectNotNull",
+    remark:"生成一个新IList对象,忽略空值"
+    ,args:[{ 
+    name:"evaluator",
+    remark:"计算值的函数"
+    ,type:""},{ 
+    name:"scope",
+    remark:"域"
+    ,type:""},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数,"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"select",
+    remark:"生成一个新IList对象"
+    ,args:[{ 
+    name:"evaluator",
+    remark:"计算值的函数"
+    ,type:""},{ 
+    name:"scope",
+    remark:"域"
+    ,type:""},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数,"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"take",
+    remark:"从序列的开头返回指定数量的连续元素"
+    ,args:[{ 
+    name:"count",
+    remark:"要获取的数量，可以是负整数。\r\n        isAssending	: Boolean 是否升序"
+    ,type:"int"},{ 
+    name:"predicate",
+    remark:"用于测试每个元素是否满足条件的函数。"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"each",
+    remark:"遍历所有项"
+    ,args:[{ 
+    name:"action",
+    remark:"处理每一项的回调函数"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"uniquelize",
+    remark:"得到一个不重复的集合\r\n        comparer:Function 一个对值进行比较的相等比较器"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"notIn",
+    remark:"返回不在指定集合中的元素"
+    ,args:[{ 
+    name:"list",
+    remark:"用来比较的另一个集合"
+    ,type:""},{ 
+    name:"comparer",
+    remark:"一个对值进行比较的相等比较器"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"intersect",
+    remark:"返回两个集合的交集"
+    ,args:[{ 
+    name:"list",
+    remark:"用来求交集的另一个集合"
+    ,type:""},{ 
+    name:"comparer",
+    remark:"一个对值进行比较的相等比较器"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:"连个集合的交集"
+    ,type:"IList"}},
+{ 
+    name:"toJson",
+    remark:"转换为Json"
+    ,args:[{ 
+    name:"keySelector",
+    remark:"用于从每个元素中提取键的函数。"
+    ,type:"Function"},{ 
+    name:"valueSelector",
+    remark:"用于从每个元素产生结果元素值的转换函数。\r\n        return :Json"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"on",
+    remark:"为每一项添加事件"
+    ,args:[{ 
+    name:"eNames",
+    remark:"一个或多个事件类型"
+    ,type:"Object/Array<Object>"},{ 
+    name:"actions",
+    remark:"一个或多个回调函数"
+    ,type:"Function/Array<Function>"},{ 
+    name:"data",
+    remark:"要传递的数据"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"un",
+    remark:"为每一项卸载事件\r\n        eNames	:Object/Array<Object> 一个或多个事件类型\r\n        actions	:Function/Array<Function> 一个或多个回调函数"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"fire",
+    remark:"为每一项卸载事件\r\n        eNames	:Object/Array<Object> 一个或多个事件类型\r\n        actions	:Function/Array<Function> 一个或多个回调函数"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"sort",
+    remark:"排序"
+    ,args:[{ 
+    name:"dir",
+    remark:"排序方向,false,\"DESC\" 表示降序,其它标识升序"
+    ,type:"Boolean/String"},{ 
+    name:"compare",
+    remark:"排序比较规则,可以是一个字段名字,可以是一个函数"
+    ,type:"Object/Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"add",
+    remark:"添加到集合后面"
+    ,args:[{ 
+    name:"item",
+    remark:"要添加的新项"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"addRange",
+    remark:"批量添加到集合后"
+    ,args:[{ 
+    name:"items",
+    remark:"要添加的新项"
+    ,type:"Array"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"insert",
+    remark:"插入"
+    ,args:[{ 
+    name:"index",
+    remark:"插入的目标位置(从0开始)"
+    ,type:"Int"},{ 
+    name:"items",
+    remark:"要插入的任意多个项"
+    ,type:"Array(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"remove",
+    remark:"删除"
+    ,args:[{ 
+    name:"index",
+    remark:"要删除的目标位置(从0开始)"
+    ,type:"Int"},{ 
+    name:"items",
+    remark:"在该位置插入的任意多个项"
+    ,type:"Array(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"indexOf",
+    remark:"搜索第一个匹配项在集合中的索引"
+    ,args:[{ 
+    name:"value",
+    remark:"搜索的值"
+    ,type:""},{ 
+    name:"startIndex",
+    remark:"开始位置"
+    ,type:"Int"},{ 
+    name:"endIndex",
+    remark:"结束位置"
+    ,type:"Int"},{ 
+    name:"comparer",
+    remark:"一个对值进行比较的相等比较器"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:"如果找到 item 的第一个匹配项，则为该项的从零开始的索引；否则为 -1。"
+    ,type:"Int"}},
+{ 
+    name:"lastIndexOf",
+    remark:"搜索最后一个匹配项在集合中的索引"
+    ,args:[{ 
+    name:"value",
+    remark:"搜索的值"
+    ,type:""},{ 
+    name:"startIndex",
+    remark:"开始位置"
+    ,type:"Int"},{ 
+    name:"comparer",
+    remark:"一个对值进行比较的相等比较器"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:"如果找到 item 的最后一个匹配项，则为该项的从零开始的索引；否则为 -1。"
+    ,type:"Int"}},
+{ 
+    name:"findIndex",
+    remark:"//"
+    ,args:[{ 
+    name:"predicate",
+    remark:"用于测试每个元素是否满足条件的函数。\r\n        //"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"findLastIndex",
+    remark:"//"
+    ,args:[{ 
+    name:"predicate",
+    remark:"用于测试每个元素是否满足条件的函数。\r\n        //"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"contains",
+    remark:"判断值在集合中是否存在"
+    ,args:[{ 
+    name:"value",
+    remark:"搜索的值"
+    ,type:""},{ 
+    name:"startIndex",
+    remark:"开始位置"
+    ,type:"Int"},{ 
+    name:"comparer",
+    remark:"一个对值进行比较的相等比较器"
+    ,type:"Function/String/Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"copyTo",
+    remark:"复制到新的数组"
+    ,args:[{ 
+    name:"index",
+    remark:"插入目标位置(0开始)"
+    ,type:"Int"},{ 
+    name:"arr",
+    remark:"复制到该数组,为空将生成新的数组"
+    ,type:"Array"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@arr"}},
+{ 
+    name:"copy",
+    remark:"复制"
+    ,args:[{ 
+    name:"index",
+    remark:"插入目标位置(0开始)"
+    ,type:"Int"},{ 
+    name:"arr",
+    remark:"复制到该数组,为空将生成新的数组"
+    ,type:"Array"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"@arr"}},
+{ 
+    name:"merge",
+    remark:"合并多个对象"
+    ,args:[{ 
+    name:"params",
+    remark:"可变参数，任意多个对象"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"setAttr",
+    remark:"设置对象属性"
+    ,args:[{ 
+    name:"properties",
+    remark:"包含多个属性和属性值的键值对"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"css",
+    remark:"获取或设置对象的Css属性，只传递 name 参数时则，获取该属性值。"
+    ,args:[{ 
+    name:"name",
+    remark:"属性名或要应用到对象Css属性的键值对"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"Css属性值"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"data",
+    remark:"获取或设置对象的属性，只传递 name 参数时则，获取该属性值。"
+    ,args:[{ 
+    name:"name",
+    remark:"属性名或要应用到对象属性的键值对"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"属性值"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"attr",
+    remark:"获取或设置对象的属性，只传递 name 参数时则，获取该属性值。"
+    ,args:[{ 
+    name:"name",
+    remark:"属性名或要应用到对象属性的键值对"
+    ,type:"String"},{ 
+    name:"value",
+    remark:"属性值"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"removeAttr",
+    remark:"移除对象属性"
+    ,args:[{ 
+    name:"name",
+    remark:"要移除的属性名"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"values",
+    remark:"获取或设置多个表单元素值"
+    ,args:[{ 
+    name:"values",
+    remark:"设置到多个表单元素的值,为空则是获取表单元素值"
+    ,type:"KeyValue(可选)"},{ 
+    name:"ignoreDisabled",
+    remark:"是否忽略已禁用元素"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"value",
+    remark:"获取或设置value，不指定value参数时则获取"
+    ,args:[{ 
+    name:"value",
+    remark:"设置的值"
+    ,type:"Object"}],
+ret:{ 
+    name:"",
+    remark:"当不指定value参数时返回第一个元素的值，指定value参数时则返回当前对象"
+    ,type:"Object/this"}},
+{ 
+    name:"serialize",
+    remark:"将所以元素值进行url编码"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"hasChild",
+    remark:"指定元素是否当前元素的子元素"
+    ,args:[{ 
+    name:"child",
+    remark:"子元素"
+    ,type:"Selector/Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"hasParent",
+    remark:"指定元素是否当前元素的父元素"
+    ,args:[{ 
+    name:"parent",
+    remark:"父元素"
+    ,type:"Selector/Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"changeClass",
+    remark:"改变每一项的样式"
+    ,args:[{ 
+    name:"removeCss",
+    remark:"要移除的样式,多个样式用空格隔开"
+    ,type:"String"},{ 
+    name:"addCss",
+    remark:"要追加的样式,多个样式用空格隔开"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:"改变后的样式"
+    ,type:"String"}},
+{ 
+    name:"addClass",
+    remark:"为每一项添加CSS样式"
+    ,args:[{ 
+    name:"css",
+    remark:"要添加的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"removeClass",
+    remark:"为每一项移除CSS样式"
+    ,args:[{ 
+    name:"css",
+    remark:"要移除的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"hasClass",
+    remark:"第一项是否包含某一CSS名称"
+    ,args:[{ 
+    name:"css",
+    remark:"要检测的CSS名称"
+    ,type:"String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"toHtml",
+    remark:"转换为HTML"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"String"}},
+{ 
+    name:"clone",
+    remark:"克隆元素"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Element"}},
+{ 
+    name:"rect",
+    remark:"获取第一个元素在页面中的位置和大小"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"包含元素在页面中的位置和大小信息的Json对象"
+    ,type:"Json"}},
+{ 
+    name:"pos",
+    remark:"获取第一项的偏移量"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"形如{left:123,top:456}"
+    ,type:"Json"}},
+{ 
+    name:"offset",
+    remark:"获取第一项的偏移量"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"形如{left:123,top:456}"
+    ,type:"Json"}},
+{ 
+    name:"size",
+    remark:"获取第一项的大小"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"形如{width:123,height:456}"
+    ,type:"Json"}},
+{ 
+    name:"blur",
+    remark:"移除焦点"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"focus",
+    remark:"设置焦点"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"focusable",
+    remark:"检测第一个元素是否可以获取焦点"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"tabbable",
+    remark:"检测第一个元素是否可以接受Tab键"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"append",
+    remark:"为每一个元素追加内容"
+    ,args:[{ 
+    name:"el",
+    remark:"附加的内容"
+    ,type:"Html/Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"appendTo",
+    remark:"将所有元素追加到指定元素"
+    ,args:[{ 
+    name:"to",
+    remark:"将附加到该元素下"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"prepend",
+    remark:"将元素开始位置追加内容"
+    ,args:[{ 
+    name:"content",
+    remark:"追加的内容"
+    ,type:"Element/String"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"prependTo",
+    remark:"将所有元素追加到指定元素开始位置"
+    ,args:[{ 
+    name:"to",
+    remark:"将追加到该元素下"
+    ,type:"Element"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"empty",
+    remark:"删除每个元素的所有子节点。"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"disable",
+    remark:"禁用每一项"
+    ,args:[{ 
+    name:"disabled",
+    remark:"是否禁用"
+    ,type:"Boolean(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"enable",
+    remark:"启用每一项"
+    ,args:[{ 
+    name:"enable",
+    remark:"是否启用"
+    ,type:"Boolean(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"hide",
+    remark:"隐藏每一项"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"show",
+    remark:"显示每一项"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"map",
+    remark:"生成一个新IList对象"
+    ,args:[{ 
+    name:"evaluator",
+    remark:"计算值的函数"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"any",
+    remark:"确定是否有满足条件的元素,如果不指定条件,将返回集合长度。"
+    ,args:[{ 
+    name:"predicate",
+    remark:"用于测试每个元素是否满足条件的函数。"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"all",
+    remark:"确定序列中的所有元素是否都满足条件,如果不指定条件,将返回所有元素。"
+    ,args:[{ 
+    name:"predicate",
+    remark:"用于测试每个元素是否满足条件的函数。"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Boolean"}},
+{ 
+    name:"where",
+    remark:"查询"
+    ,args:[{ 
+    name:"predicate",
+    remark:"查询条件"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"IList"}},
+{ 
+    name:"sum",
+    remark:"求和"
+    ,args:[{ 
+    name:"selector",
+    remark:"获取元素用于计算的值的函数"
+    ,type:"Function(可选)"},{ 
+    name:"filter",
+    remark:"过滤出参与计算元素的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Number/String"}},
+{ 
+    name:"max",
+    remark:"最大值"
+    ,args:[{ 
+    name:"selector",
+    remark:"获取元素用于计算的值的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Number"}},
+{ 
+    name:"min",
+    remark:"最小值"
+    ,args:[{ 
+    name:"selector",
+    remark:"获取元素用于计算的值的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Number"}},
+{ 
+    name:"average",
+    remark:"求平均"
+    ,args:[{ 
+    name:"selector",
+    remark:"获取元素用于计算的值的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Number"}},
+{ 
+    name:"count",
+    remark:"计数"
+    ,args:[{ 
+    name:"selector",
+    remark:"获取元素用于计算的值的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"满足条件的元素数量"
+    ,type:"Int"}},
+{ 
+    name:"distinct",
+    remark:"去掉重复元素"
+    ,args:[{ 
+    name:"comparer",
+    remark:"比较元素的函数"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"groupBy",
+    remark:"对元素进行分组"
+    ,args:[{ 
+    name:"keySelector",
+    remark:"获取元素用于分组的键"
+    ,type:"Function(可选)"},{ 
+    name:"itemSelector",
+    remark:"获取分组内容"
+    ,type:"Function(可选)"}],
+ret:{ 
+    name:"",
+    remark:"包含分组的Json对象"
+    ,type:"Json"}},
+{ 
+    name:"clear",
+    remark:"清除所以元素"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"first",
+    remark:"获取第一项"
+    ,args:[{ 
+    name:"predicate",
+    remark:"查询条件"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Object"}},
+{ 
+    name:"last",
+    remark:"获取最后一项"
+    ,args:[{ 
+    name:"predicate",
+    remark:"查询条件"
+    ,type:"Function/String/Object"},{ 
+    name:"params",
+    remark:"可变参数，要传递的任意多个参数"
+    ,type:"Object(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Object"}},
+{ 
+    name:"parent",
+    remark:"匹配所有元素的上级元素，对应选择器 “<”"
+    ,args:[{ 
+    name:"layersOrSelector",
+    remark:"往上的级数,或者特定的选择器，默认 1"
+    ,type:"Int/Selector(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"children",
+    remark:"匹配所有元素的子级元素，对应选择器 “>”"
+    ,args:[{ 
+    name:"layers",
+    remark:"往下的级数，默认 1"
+    ,type:"Int(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"next",
+    remark:"匹配所有元素的之后的元素，对应选择器 “+”"
+    ,args:[{ 
+    name:"offset",
+    remark:"往后的偏移量，默认 1"
+    ,type:"Int(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"previous",
+    remark:"匹配所有元素的之前的元素，对应选择器 “-”"
+    ,args:[{ 
+    name:"offset",
+    remark:"往前的偏移量，默认 1"
+    ,type:"Int(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"sibling",
+    remark:"匹配所有元素的兄弟元素，对应选择器 “~”"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"hover",
+    remark:"为元素添加鼠标事件"
+    ,args:[{ 
+    name:"over",
+    remark:"鼠标进入时执行"
+    ,type:"Function"},{ 
+    name:"out",
+    remark:"鼠标移开时执行"
+    ,type:"Function"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"this"}},
+{ 
+    name:"disabled",
+    remark:"获取或设置元素disabled属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"id",
+    remark:"获取或设置元素id属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"name",
+    remark:"获取或设置元素name属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"title",
+    remark:"获取或设置元素title属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"className",
+    remark:"获取或设置元素className属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"text",
+    remark:"获取或设置元素innerText属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"html",
+    remark:"获取或设置元素innerHTML属性"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onBlur",
+    remark:"为元素绑定 onblur 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onFocus",
+    remark:"为元素绑定 onfocus 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onLoad",
+    remark:"为元素绑定 onload 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onResize",
+    remark:"为元素绑定 onresize 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onScroll",
+    remark:"为元素绑定 onscroll 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onUnload",
+    remark:"为元素绑定 onunload 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onDblClick",
+    remark:"为元素绑定 ondblclick 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onContextMenu",
+    remark:"为元素绑定 oncontextmenu 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseDown",
+    remark:"为元素绑定 onmouseDown 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseUp",
+    remark:"为元素绑定 onmouseup 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseMove",
+    remark:"为元素绑定 onmousemove 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseOver",
+    remark:"为元素绑定 onmouseover 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseOut",
+    remark:"为元素绑定 onmouseout 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseEnter",
+    remark:"为元素绑定 onmouseenter 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onMouseLeave",
+    remark:"为元素绑定 onmouseleave 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onChange",
+    remark:"为元素绑定 onchange 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onSelect",
+    remark:"为元素绑定 onselect 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onSelectStart",
+    remark:"为元素绑定 onselectstart 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onSubmit",
+    remark:"为元素绑定 onsubmit 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onKeyDown",
+    remark:"为元素绑定 onkeydown 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onKeyPress",
+    remark:"为元素绑定 onkeypress 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onKeyUp",
+    remark:"为元素绑定 onkeyup 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}},
+{ 
+    name:"onError",
+    remark:"为元素绑定 onerror 事件"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:""}}],
+events:[]
+},{ 
+    name:"selector",
+    remark:"选择器"
+    ,propertys:[],
+methods:[{ 
+    name:"extendSelector",
+    remark:"扩展选择器"
+    ,args:[{ 
+    name:"selectors",
+    remark:"多个选择器"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"无"
+    ,type:""}},
+{ 
+    name:"extendFilter",
+    remark:"扩展过滤选择器"
+    ,args:[{ 
+    name:"filters",
+    remark:"多个选择器"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"无"
+    ,type:""}},
+{ 
+    name:"extendOperator",
+    remark:"扩展表达式运算符"
+    ,args:[{ 
+    name:"operators",
+    remark:"{String} 多个运算符"
+    ,type:""}],
+ret:{ 
+    name:"",
+    remark:"无"
+    ,type:""}}],
+events:[]
+},{ 
+    name:"DomQuery",
+    remark:"Dom对象查询类"
+    ,propertys:[],
+methods:[{ 
+    name:"find",
+    remark:"查找Dom对象"
+    ,args:[],
+ret:{ 
+    name:"",
+    remark:"查找到的Dom对象"
+    ,type:"Array"}},
+{ 
+    name:"closest",
+    remark:"匹配所有元素的第一个与表达式匹配的上级元素，"
+    ,args:[{ 
+    name:"selectors",
+    remark:"选择器"
+    ,type:"String(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"parent",
+    remark:"匹配所有元素的第一个与表达式匹配的上级元素，"
+    ,args:[{ 
+    name:"selectors",
+    remark:"选择器"
+    ,type:"String(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}},
+{ 
+    name:"parents",
+    remark:"匹配所有元素的第一个与表达式匹配的上级元素，"
+    ,args:[{ 
+    name:"selectors",
+    remark:"选择器"
+    ,type:"String(可选)"}],
+ret:{ 
+    name:"",
+    remark:""
+    ,type:"Array<Element>"}}],
+events:[]
+}]}
