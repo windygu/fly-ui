@@ -32,13 +32,58 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="fly.simple\" />
     <Folder Include="fly.ui\plugins\themes\gray\img\" />
     <Folder Include="fly.ui\plugins\themes\plain\img\" />
     <Folder Include="fly\doc\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fly.simple\fly.simple-all-comment.js" />
+    <Content Include="fly.simple\fly.simple-all-min.js" />
+    <Content Include="fly.simple\fly.simple-all.js" />
+    <Content Include="fly.simple\menu\menu-min.js" />
+    <Content Include="fly.simple\menu\menu.js" />
+    <Content Include="fly.simple\menu\sample\menu.htm" />
+    <Content Include="fly.simple\menu\skin\default\imgs\item-over.gif" />
+    <Content Include="fly.simple\menu\skin\default\imgs\menu-parent.gif" />
+    <Content Include="fly.simple\menu\skin\default\imgs\menu.gif" />
+    <Content Include="fly.simple\menu\skin\default\menu.css" />
+    <Content Include="fly.simple\plugins\tree-layout-column\layout-column.css" />
+    <Content Include="fly.simple\plugins\tree-layout-column\layout-column.js" />
+    <Content Include="fly.simple\tree\sample\ajax-fly-loadUrl.htm" />
+    <Content Include="fly.simple\tree\sample\ajax-fly.htm" />
+    <Content Include="fly.simple\tree\sample\ajax-jQuery.htm" />
+    <Content Include="fly.simple\tree\sample\check-event.htm" />
+    <Content Include="fly.simple\tree\sample\check-multi.htm" />
+    <Content Include="fly.simple\tree\sample\check-right.htm" />
+    <Content Include="fly.simple\tree\sample\check-single.htm" />
+    <Content Include="fly.simple\tree\sample\check-singleByLevel.htm" />
+    <Content Include="fly.simple\tree\sample\data.txt" />
+    <Content Include="fly.simple\tree\sample\icon-skin.htm" />
+    <Content Include="fly.simple\tree\sample\imgs\1.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\2.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\3.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\4.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\5.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\6.gif" />
+    <Content Include="fly.simple\tree\sample\imgs\document.png" />
+    <Content Include="fly.simple\tree\sample\imgs\music.png" />
+    <Content Include="fly.simple\tree\sample\index.htm" />
+    <Content Include="fly.simple\tree\sample\sample-expand.htm" />
+    <Content Include="fly.simple\tree\sample\sample.htm" />
+    <Content Include="fly.simple\tree\sample\select-check-single.htm" />
+    <Content Include="fly.simple\tree\sample\select-multi.htm" />
+    <Content Include="fly.simple\tree\sample\select-single.htm" />
+    <Content Include="fly.simple\tree\sample\select-singleByLevel.htm" />
+    <Content Include="fly.simple\tree\sample\test.htm" />
+    <Content Include="fly.simple\tree\skin\default\imgs\arrows.gif" />
+    <Content Include="fly.simple\tree\skin\default\imgs\checkbox.png" />
+    <Content Include="fly.simple\tree\skin\default\imgs\line\line_center.gif" />
+    <Content Include="fly.simple\tree\skin\default\imgs\line\line_conn.gif" />
+    <Content Include="fly.simple\tree\skin\default\imgs\line\line_first.gif" />
+    <Content Include="fly.simple\tree\skin\default\imgs\line\line_last.gif" />
+    <Content Include="fly.simple\tree\skin\default\imgs\radio.png" />
+    <Content Include="fly.simple\tree\skin\default\tree.css" />
     <Content Include="fly.ui\demo\button\button.htm" />
     <Content Include="fly.ui\demo\dialog\dialog-form.htm" />
     <Content Include="fly.ui\demo\dialog\dialog.htm" />
