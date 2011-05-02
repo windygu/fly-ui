@@ -1,11 +1,16 @@
 { 
-    name:"",
+    name:"Fly UI",
     remark:""
-    ,namespaces:[],
+    ,title:"Lightweight front-end framework",
+version:"1.1",
+site:"http://www.flyui.net",
+source:"http://code.google.com/p/flyjs",
+copy:"© 2011 Kuiyou Li",
 classs:[{ 
     name:"fly",
-    remark:"fly javacript library\r\nVersion 1.1 \r\nhttp//:www.flyui.net\r\nEmail:flyui&hotmail.com\r\nCopyright (c) 2009 KuiyouLi\r\n2009-11-23"
-    ,propertys:[{ 
+    remark:"fly javacript library"
+    ,path:"fly",
+propertys:[{ 
     name:"BREAK",
     remark:"停止标识，在用each遍历某对象时，返回fly.BREAK将停止遍历"
     ,type:""},
@@ -574,7 +579,8 @@ events:[]
 },{ 
     name:"flyConfig",
     remark:""
-    ,propertys:[],
+    ,path:"flyConfig",
+propertys:[],
 methods:[{ 
     name:"addAlias",
     remark:"给fly库命别名\r\n    fly库默认别名 $，如果 给fly库指定其它别名，默认别名 $ 将被取消\r\n    可以在 fly 库加载前用如下代码定义别名\r\n    var flyConfig={\r\n    alias:[\"myFly\",\"jimo\"]\r\n    }\r\n    也可以直接调用该函数定义别名\r\n    fly.addAlias(\"myFly\",\"jimo\")\r\n    经过以上定义后，便可以用别名访问fly库\r\n    如：\r\n    myFly.$(\"a,div\")\r\n    myFly(\"a\",\"div\")\r\n    jimo.$(\"a\",\"div\")\r\n    jimo(\"a,div\")"
@@ -598,13 +604,15 @@ events:[]
 },{ 
     name:"lib",
     remark:""
-    ,propertys:[],
+    ,path:"fly.lib",
+propertys:[],
 methods:[],
 events:[]
 },{ 
     name:"Function",
     remark:"函数扩展"
-    ,propertys:[],
+    ,path:"fly.lib.Function",
+propertys:[],
 methods:[{ 
     name:"where",
     remark:"根据条件判断是否执行"
@@ -673,7 +681,8 @@ events:[]
 },{ 
     name:"Date",
     remark:"Data 扩展"
-    ,propertys:[],
+    ,path:"fly.lib.Date",
+propertys:[],
 methods:[{ 
     name:"format",
     remark:"格式化日期"
@@ -689,7 +698,8 @@ events:[]
 },{ 
     name:"String",
     remark:"String 扩展"
-    ,propertys:[],
+    ,path:"fly.lib.String",
+propertys:[],
 methods:[{ 
     name:"format",
     remark:"格式化字符串，可以调用用参数的属性或者方法进行格式化\r\n	    例如\r\n	    \"a{0}b{1}\".format(\"-\",5) 结果等于 \"a-b5\"\r\n			\r\n	    var option={id:123,name:\"fly\"};\r\n	    \"a{0}b {name}\".format(\"-\",5,option) 结果等于 \"a-b fly\"\r\n			\r\n	    var option={\r\n	    getId:function(){\r\n	    return 123\r\n	    }\r\n	    };\r\n	    \"a{0}b {getId()}\".format(\"-\",option) 结果等于 \"a-b 123\""
@@ -849,7 +859,8 @@ events:[]
 },{ 
     name:"Event",
     remark:"事件处理器"
-    ,propertys:[],
+    ,path:"fly.lib.Event",
+propertys:[],
 methods:[{ 
     name:"on",
     remark:"绑定事件"
@@ -961,7 +972,8 @@ events:[]
 },{ 
     name:"Json",
     remark:"Json工具"
-    ,propertys:[{ 
+    ,path:"fly.lib.Json",
+propertys:[{ 
     name:"urlDecode",
     remark:"将字符串进行Url解码"
     ,type:""}],
@@ -1073,13 +1085,15 @@ events:[]
 },{ 
     name:"ajax",
     remark:""
-    ,propertys:[],
+    ,path:"fly.ajax",
+propertys:[],
 methods:[],
 events:[]
 },{ 
     name:"Helper",
     remark:"通过 HTTP 请求加载远程数据。\r\n    配置:\r\n    {\r\n    url     :String 请求的地址\r\n    method  :String 请求方式,get或post,默认get\r\n    async   :Boolean    是否异步,默认true\r\n    dataHandler:Function    对请求返回的数据进行处理后返回\r\n    charset :String 编码,默认GB2312\r\n    username:String 用户名,服务端验证用\r\n    password:String 密码,服务端验证用\r\n    timeout :Int    超时时间(毫秒)\r\n    data    :Json/String   向服务器传递的数据\r\n    }\r\n\r\n    调用:\r\n\r\n    var helper=new fly.ajax.Helper({\r\n    url:\'http://www.flyui.net/a.php\',\r\n    method:\'get\',\r\n    success:function(){\r\n    alert(\'请求成功!\')\r\n    }\r\n    })\r\n    helper.go();\r\n\r\n    ------------------------------------------\r\n    var helper=new fly.ajax.Helper()\r\n    helper.setup({\r\n    url:\'http://www.flyui.net/a.php\',\r\n    method:\'get\',\r\n    success:function(){\r\n    alert(\'请求成功!\')\r\n    }\r\n    })\r\n    helper.go();\r\n\r\n    ------------------------------------------\r\n    fly.get(\'http://www.flyui.net/a.php\',function(){\r\n    alert(\'请求成功!\')\r\n    });\r\n\r\n    ------------------------------------------\r\n    fly.post(\'http://www.flyui.net/a.php\',function(){\r\n    alert(\'请求成功!\')\r\n    });\r\n\r\n    ------------------------------------------\r\n    var helper=fly.ajax.url(\'http://www.flyui.net/a.php\').method(\'get\').onSuccess(function(){\r\n    alert(\'请求成功!\')\r\n    }).go();\r\n            \r\n    ------------------------------------------\r\n    var helper=fly.ajax.url(\'http://www.flyui.net/a.php\').onSuccess(function(){\r\n    alert(\'请求成功!\')\r\n    }).get();"
-    ,propertys:[{ 
+    ,path:"fly.ajax.Helper",
+propertys:[{ 
     name:"url",
     remark:"请求的地址"
     ,type:"String"},
@@ -1378,7 +1392,8 @@ ret:{
 },{ 
     name:"Cookie",
     remark:"Cookie 工具类"
-    ,propertys:[],
+    ,path:"fly.lib.Cookie",
+propertys:[],
 methods:[{ 
     name:"set",
     remark:"设置Cookie"
@@ -1434,13 +1449,15 @@ events:[]
 },{ 
     name:"ui",
     remark:""
-    ,propertys:[],
+    ,path:"fly.ui",
+propertys:[],
 methods:[],
 events:[]
 },{ 
     name:"Style",
     remark:"CSS 工具类"
-    ,propertys:[],
+    ,path:"fly.ui.Style",
+propertys:[],
 methods:[{ 
     name:"loadCss",
     remark:"加载CSS"
@@ -1554,7 +1571,8 @@ events:[]
 },{ 
     name:"DomHelper",
     remark:"Dom 工具类"
-    ,propertys:[],
+    ,path:"fly.ui.DomHelper",
+propertys:[],
 methods:[{ 
     name:"getUniqueID",
     remark:"获取元素唯一ID"
@@ -1885,13 +1903,15 @@ events:[]
 },{ 
     name:"collection",
     remark:""
-    ,propertys:[],
+    ,path:"fly.collection",
+propertys:[],
 methods:[],
 events:[]
 },{ 
     name:"IList",
     remark:"用来扩展 collection 对象"
-    ,propertys:[{ 
+    ,path:"fly.collection.IList",
+propertys:[{ 
     name:"$type",
     remark:"原始类型"
     ,type:"Class"},
@@ -3143,7 +3163,8 @@ events:[]
 },{ 
     name:"selector",
     remark:"选择器"
-    ,propertys:[],
+    ,path:"fly.ui.selector",
+propertys:[],
 methods:[{ 
     name:"extendSelector",
     remark:"扩展选择器"
@@ -3181,7 +3202,8 @@ events:[]
 },{ 
     name:"DomQuery",
     remark:"Dom对象查询类"
-    ,propertys:[],
+    ,path:"fly.ui.selector.DomQuery",
+propertys:[],
 methods:[{ 
     name:"find",
     remark:"查找Dom对象"
