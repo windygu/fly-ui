@@ -21,7 +21,7 @@ function showType() {
 function API() {
     var me = this;
     this.rightRoot = $('#rightRoot');
-    $.ajax.get("API.js", function (ms) {
+    $.ajax.get("data.js", function (ms) {
         me.apiData = $.Json.decode(ms);
         me.apply();
     });
