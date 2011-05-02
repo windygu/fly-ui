@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="API.htm" />
-    <Content Include="API.js" />
+    <Content Include="data.js" />
     <Content Include="fly.simple\fly.simple-all-comment.js" />
     <Content Include="fly.simple\fly.simple-all-min.js" />
     <Content Include="fly.simple\skin\default\imgs\arrows.gif" />
@@ -88,6 +88,7 @@
     <Content Include="fly\themes\plain\grid.css" />
     <Content Include="index.htm" />
     <Content Include="index.js" />
+    <Content Include="language\en\fly-comment.en.js" />
     <Content Include="skin\default\index.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,18 +1,19 @@
-﻿/* #L 
-name:Fly UI 
-title:Lightweight front-end framework
-version:1.1 
-site:http://www.flyui.net
-source:http://code.google.com/p/flyjs
-copy:© 2011 Kuiyou Li
-*/
-
-/* #C path:fly fly javacript library
-*/
+﻿//## fly
+/* 
+ * #C path:fly fly javacript library
+ *
+ * Copyright (c) 2009 KuiyouLi
+ *
+ * WebSite: http//:www.flyui.net
+ *
+ * Email:   flyui&hotmail.com
+ * Version: 1.1 
+ * Date:    2011-05-1
+ */
 (function () {
     var win = window, doc = win.document, docE = doc.documentElement
 
-    function destroy(obj) { 
+    function destroy(obj) {
         if (arguments.length == 1) {
             if (!obj) return
             if (obj.destroy && obj.destroy != arguments.callee)
@@ -32,8 +33,8 @@ copy:© 2011 Kuiyou Li
     }
 
     /*	path:fly.$
-    查询Dom对象
-    调用方式：
+    Dom Query
+    Call way：
     fly.$("a","div")
     fly.$("a,div")
     fly("a,div")
@@ -43,8 +44,8 @@ copy:© 2011 Kuiyou Li
     [document].$("a,div")
     [div1,div2].$("a,div")
 		
-    @selectors:String/Dom 可变参数，任意多个选择器字符串或对象
-    @return :Array 符合条件的多个Dom对象数组
+    @selectors:String/Dom Any number of selectors(strings or elements)
+    @return :Array Return eligible Dom object array 
     */
     function $(selectors) {
         var a = arguments, c = null;
@@ -80,37 +81,46 @@ copy:© 2011 Kuiyou Li
     $.version = '1.1';
 
     /*	path:flyConfig.addAlias
-    给fly库命别名
-    fly库默认别名 $，如果 给fly库指定其它别名，默认别名 $ 将被取消
-    可以在 fly 库加载前用如下代码定义别名
-    var flyConfig={
+    Named to the fly library that you can use the named variable to access fly library
+    you can use the default variable $ like jquery or other variable
+    you can named the variable to the fly library before loading fly library
+
+    Example:
+
+    flyConfig={
     alias:["myFly","jimo"]
     }
-    也可以直接调用该函数定义别名
+
+    Or call the addAlias function add a new name named for fly
+
+    Example:
+
     fly.addAlias("myFly","jimo")
-    经过以上定义后，便可以用别名访问fly库
-    如：
+    now you can access fly library
+
+    Usage：
     myFly.$("a,div")
     myFly("a","div")
     jimo.$("a","div")
     jimo("a,div")
 			
-    @alias :String 可变参数，任意多个别名
-    @return :fly fly库
+    @alias :String Variable parameters，any number of alias name
+    @return :fly
     */
     config.alias && (window[config.alias] = $);
 
     /* #M	path:flyConfig.onLoad
-    fly加载完成时执行回调函数
-    可以在 fly 库加载前用如下代码定义加载完成是的回调函数
-    var flyConfig={
+    Trigger callback function When fly library loaded 
+
+    Example:
+
+    flyConfig={
     alias:["myFly","jimo"],
     onLoad:function(){
-    alert('fly已经加载完成')
+    alert('fly has been loaded')
     }
     }
     */
-
 
     if (win.fly) {
         for (var k in win.fly)
@@ -142,9 +152,9 @@ copy:© 2011 Kuiyou Li
     /* #C path:$=fly */
 
     //##
-    /*	创建命名空间
-    @namespace:String 要创建的命名空间，如 fly.ui
-    @return	:Namespace 创建的命名空间
+    /*	Create namespace
+    @namespace:String namespace name，such as： fly.ui
+    @return	:Namespace
     */
     $.ns = function (namespace) {
         if (arguments.length > 1) {
@@ -159,9 +169,9 @@ copy:© 2011 Kuiyou Li
         return root
     }
 
-    /*	创建类
-    @options: 选项
-    @return	:Class 创建的类
+    /*	Create Class
+    @options: Options
+    @return	:Class
     */
     $.Class = function (options) {
         var base = options.base
@@ -295,10 +305,10 @@ copy:© 2011 Kuiyou Li
     //#end
 
 
-    //## extend
-    /*	扩展
-    @target	:被扩展的对象
-    @overrides:包含扩展成员的任意多个参数
+    //## Extend
+    /*	Extend
+    @target	:Extended object
+    @overrides:Contains parameters of any number of extended members
     @return :target
     */
     $.extend = function (target, overrides) {
@@ -330,9 +340,9 @@ copy:© 2011 Kuiyou Li
 
     $.extend($,
 	{
-	    /*  注册插件
-	    @name   :String 插件名称
-	    @fn     :Function 创建插件的函数
+	    /* Register plugin
+	    @name   :String plugin name
+	    @fn     :Function plugin function
 	    */
 	    regPlugin: function (name, fn) {
 	        var p = { name: fn ? name : "", fn: fn || name };
@@ -340,9 +350,9 @@ copy:© 2011 Kuiyou Li
 	        $.context.plugins.push(p);
 	        return this;
 	    },
-	    /*  将fly安装到其他窗口
-	    @window :Window 要安装的窗口对象
-	    @match  :匹配要安装的插件，为空是安装所有插件
+	    /* Install fly to other window
+	    @window :Window The target window to be installing
+	    @match  :match The plugin which to install,if empty install all plugins
 	    */
 	    setup: function (w, m) {
 	        w.eval("(" + fSetup + ")()");
@@ -351,12 +361,12 @@ copy:© 2011 Kuiyou Li
 	                w.eval("fly.regPlugin(" + p.fn + ")")
 	        })
 	    },
-	    /*  停止标识，在用each遍历某对象时，返回fly.BREAK将停止遍历 */
+	    /* Stop symbol:Stop to loop when break appear */
 	    BREAK: {},
-	    /*	扩展时检测
-	    @prefix	:String 前缀
-	    @target	:Object 被扩展的对象
-	    @overrides	:Object 包含扩展成员的任意多个参数
+	    /* Verify
+	    @prefix	:String The string used to be Prefix
+	    @target	:Object The Object to be extended
+	    @overrides	:Object Contains parameters of any number of extended members
 	    @return	:target
 	    */
 	    safeExtend: function (prefix, target, overrides) {
@@ -364,41 +374,41 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	扩展,扩展前检测是否存在
-	    @target	:被扩展的对象
-	    @overrides:包含扩展成员的任意多个参数
+	    /*  Check if exists before extend
+	    @target	:Object to be extended
+	    @overrides:Object Contains parameters of any number of extended members
 	    @return	:target
 	    */
 	    extendIf: function (target, overrides) {
 	        return $.extend.apply(false, arguments);
 	    },
-	    /*  复制一个对象
-	    @obj    :Object 要复制的对象
-	    @return :@obj   的副本
+	    /*  Copy object
+	    @obj    :Object the original object
+	    @return :@obj   the new target from the original object
 	    */
 	    copy: function (obj) {
 	        return $.extend({}, obj);
 	    },
-	    /*	合并一组对象生成新对象
-	    例：var all=fly.merge(obj1,obj2,obj3,....,objn)
-	    @params	:Object 可变参数，要合并的多个对象
-	    @return	:Object 包含多个对象成员的新对象
+	    /*	Combine a group of objects to a new array object
+	    Example：var all=fly.merge(obj1,obj2,obj3,....,objn)
+	    @params	:Object Varible objects which be combind
+	    @return	:Object A new array object which contains a group of objects 
 	    */
 	    //	    merge: function (params) {
 	    //	        return $.extend.apply(null, [{}].concat(slice(arguments, 0)))
 	    //	    },
-	    /*  检查对象是否为null，为null时返回另一个对象
-	    @chkObj :Object 要检测的对象
-	    @replacement    :chkObj 为null时返回的值
+	    /*  check object is null,if it's null,return the appointed object
+	    @chkObj :Object the object to be detected
+	    @replacement    :returned replacement when the chkObj is null
 	    */
 	    //	    nullIf: function (chkObj, replacement) {
 	    //	        return chkObj == null ? replacement : chkObj
 	    //	    },
 
-	    /*  获取属性
-	    @obj:		对象
-	    @attribute:	String 属性名
-	    @return	:Object 属性值
+	    /*  Get property
+	    @obj:		object
+	    @attribute:	String Property name
+	    @return	:Object Property value
 	    */
 	    //	    get: function (obj, attribute) {
 	    //	        if ($.isStr(obj)) return lib.ajax.get.apply(this, arguments);
@@ -410,10 +420,10 @@ copy:© 2011 Kuiyou Li
 	    //	    },
 
 
-	    /*  设置属性
-	    @obj:		对象
-	    @attribute:	String/Object 属性名或包属性名和属性值的键值对
-	    @value	:	Object(可选) 值
+	    /*  Set property
+	    @obj:		Object
+	    @attribute:	String/Object Contains property name or keyValue that contains property name and property value
+	    @value	:	Object(not required) value
 	    @return	:obj
 	    */
 	    //	    set: function (obj, attribute, value) {
@@ -442,11 +452,11 @@ copy:© 2011 Kuiyou Li
 	    foucsableTypeRegs: /(BUTTON|INPUT|OBJECT|SELECT|TEXTAREA)/,
 	    clickableTypeRegs: /^(A|AREA)$/,
 	    attrGeters: {},
-	    /*  获取或设置某对象的属性
-	    @obj    :Object 被操作对象
-	    @prop   :String/Json    要获取或设置的属性名，或者包含属性名和属性值的Json对象
-	    @value  :Object(可选) 对象的属性值
-	    @return :Object/fly    当获取是返回属性值，设置时返回 fly
+	    /*  Get or set property of the objects
+	    @obj    :The objects which need to get or set attribute
+	    @prop   :The property name or a json object
+	    @value  :The value of the property
+	    @return :Return the property value when value is empty or return fly object when value is not empty
 	    */
 	    attr: function (obj, prop, value) {
 	        var isObj = $.isObject(prop)
@@ -494,10 +504,10 @@ copy:© 2011 Kuiyou Li
 	            }
 	        }
 	    },
-	    /*  获取或设置元素的值
-	    @el    :Element 被操作对象
-	    @value  :Object(可选) 元素的值
-	    @return :Object/fly    当获取是返回元素值，设置时返回 fly
+	    /*  Get or set value of elements
+	    @el    :The elements which need to get property value or set property value
+	    @value  :If it is null to get the value, otherwise set the new value
+	    @return :If it is null to return the value,otherwise return fly object
 	    */
 	    value: function (el, value) {
 	        if (arguments.length == 1) {
@@ -521,9 +531,9 @@ copy:© 2011 Kuiyou Li
 	    //	                return arguments[i]
 	    //	        },
 
-	    /*  设置属性
-	    @obj:		对象
-	    @keyValues:	Object 包含属性名和属性值的键值对
+	    /*  Set property
+	    @obj:		Object
+	    @keyValues:	Object Contains property name or keyValue that contains property name and property value
 	    @return	:obj
 	    */
 	    //	        setBy: function (obj, keyValues) {
@@ -532,10 +542,10 @@ copy:© 2011 Kuiyou Li
 	    //	            return obj
 	    //	        },
 
-	    /*  检测对象是否某类的实例或者是否等于某值
-	    @obj    :要检测的对象
-	    @type   :Function/String/Object 类或者类名称或者用于比较的值
-	    @return :Boolean    如果obj是type的实例或者obj==type则返回true，否则返回false
+	    /*  check object is instance of class or not
+	    @obj    :The object of detection
+	    @type   :Class name or value
+	    @return :If obj is the instance of type or obj equal type to return true,othorwise return false
 	    */
 	    is: function () {
 	        var is = function (obj, type) {
@@ -560,57 +570,57 @@ copy:© 2011 Kuiyou Li
 	            } (types[i]))
 	        }
 
-	        /*	检测一个值是否函数
-	        @obj	:要检测的对象
+	        /*	Detect whether a value function
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 	        $.isFun = $.isFunction
 
-	        /* #M	path:fly.isFunction 检测一个值是否函数
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isFunction detect whether a value Function
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isDate 检测一个值是否日期
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isDate detect whether a value Date
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isNumber 检测一个值是否数字
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isNumber detect whether a value Number
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isBoolean 检测一个值是否布尔型
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isBoolean detect whether a value Boolean
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isArray 检测一个值是否数组
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isArray detect whether a value Array
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isObject 检测一个值是否Object
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isObject detect whether a value Object
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /* #M	path:fly.isString 检测一个值是否字符串
-	        @obj	:要检测的对象
+	        /* #M	path:fly.isString detect whether a value String
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 
-	        /*	检测一个值是否字符串
-	        @obj	:要检测的对象
+	        /*	detect whether a value String
+	        @obj	:The object of detection
 	        @return	:Boolean
 	        */
 	        $.isStr = $.isString
 	        return is;
 	    } (),
-	    /*  检测字符串是否html
-	    @str    :String 要检测的字符串
-	    @return :Boolean    str是html返回true，否则返回false
+	    /*      Detect whether a value is html
+	    @str    :Detect whether a value is string
+	    @return :Whether the string is html,return true or false
 	    */
 	    isHtml: function () {
 	        var htmlExp = /<[\w]+[\s\S]+>/
@@ -619,17 +629,17 @@ copy:© 2011 Kuiyou Li
 	        }
 	    } (),
 
-	    /*	检测对象是否类似于数组，如 arguments、document.all
-	    @obj:要检测的对象
-	    @return	:Boolean 类似与数组返回true，否则返回false
+	    /*	Detect if obj is Array
+	    @obj:The object of detection
+	    @return	:if obj is Array to return true,otherwise return false
 	    */
 	    likeArray: function (obj) {
 	        return obj && (obj instanceof Array || (typeof (obj.length) == 'number' && !$.isFun(obj) && !$.isStr(obj) && !obj._$isWindow && (!obj.nodeName || !obj.ownerDocument)))
 	    },
 
 
-	    /*	是否Dom对象
-	    @obj:要检测的对象
+	    /*	Detect if obj is Dom 
+	    @obj:The object of detection
 	    @return	:Boolean
 	    */
 	    isDom: function (obj) {
@@ -637,8 +647,8 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*  将对象转换为数组
-	    @obj   :要转换的对象
+	    /*  Convert obj to Array
+	    @obj   :The object of detection
 	    @return	:Array
 	    */
 	    toArray: function (obj) {
@@ -655,10 +665,10 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*  获取集合的一部分
-	    @obj		:集合对象
-	    @start	:Int 开始位置
-	    @end	:Int(可选) 结束为置
+	    /*  Get a part of collection
+	    @obj	:collection object
+	    @start	:start position
+	    @end	:end position
 	    @return	:Array
 	    */
 	    slice: function (obj, start, end) {
@@ -666,10 +676,10 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	遍历一个对象
-	    @obj	:Array 被遍历对象
-	    @fn		:Function 处理函数
-	    @scope	:Object(可选) 域
+	    /*	Traverse an object
+	    @obj	:A array object
+	    @fn		:Function 
+	    @scope	:scope
 	    @return	:@obj
 	    */
 	    each: function (obj, fn, scope) {
@@ -687,11 +697,11 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	检测对象是否在一组数据中,
+	    /*	Detect whether an object in Array
 	    例	:fly.inArray(3,1,2,3,4,...,n),fly.inArray(3,[1,2,3,4])
-	    @value	:要检测的一个值
-	    @params	:Object(可选) 可变参数，一组数据
-	    @return	:Number 返回在数组中的索引，如不在数组中则返回 null
+	    @value	:The detected value
+	    @params	:Variable parameters,a group of object
+	    @return	:return the index of the detected value in params
 	    */
 	    inArray: function (value, params) {
 	        var arr = arguments, i = 1;
@@ -704,7 +714,7 @@ copy:© 2011 Kuiyou Li
 	        return null
 	    },
 
-	    /*	空函数
+	    /*	Empty Function
 	    @return	:this
 	    */
 	    emptyFun: function () {
@@ -712,7 +722,7 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	返回 false 的函数
+	    /*	return flaseFun
 	    @return	:false
 	    */
 	    falseFun: function () {
@@ -720,8 +730,8 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	对传入的对象进行函数封装,封装后的函数返回 @obj
-	    @obj	:如果obj是函数，则返回obj，否则放一个新的函数，该函数返回值始终是obj
+	    /*Package the object base on afferent parameters
+	    @obj	:if obj is function to return obj，otherwise return a new function always return obj
 	    @return	:Function
 	    */
 	    lambda: function (obj) {
@@ -731,10 +741,10 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	如果不是函数转换为函数
-	    @fun	:Object/String/Functon或字符串
-	    @onlyStr:Boolean 只有fun为字符串时转换
-	    @format	:String 函数格式化字符串
+	    /*	if it's not function,then convert to function
+	    @fun	:Object/String/Functon or string
+	    @onlyStr:Boolean only function is string then convert
+	    @format	:String
 	    @return	:Function
 	    */
 	    toFun: toFun = function () {
@@ -794,9 +804,9 @@ copy:© 2011 Kuiyou Li
 	    } (),
 
 
-	    /*	ifFun 假如是函数 则返回函数的执行结果
-	    @obj	:Function/Object 函数或其它值
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*If function return result
+	    @obj	:Function/Object 
+	    @params	:Object any number of variable parameters
 	    @return	:Boolean
 	    */
 	    ifFun: function (obj, params) {
@@ -805,10 +815,10 @@ copy:© 2011 Kuiyou Li
 	        return obj
 	    },
 
-	    /*  通过调用对象本身的 $format 方法格式化对象
-	    @obj    :String/Date/Function 要格式化的对象
-	    @params :Object(可选) 可变参数，要传递的任意多个参数
-	    @return :String/Function  格式化后的对象
+	    /* $format which extend to selector object
+	    @obj    :String/Date/Function 
+	    @params :any number of variable parameters
+	    @return :String/Function  formated result
 	    */
 	    format: function (obj, params) {
 	        return (obj.$format || obj.format).apply(obj, slice.call(arguments, 1))
@@ -825,22 +835,22 @@ copy:© 2011 Kuiyou Li
 	    }
 	})
 
-    /*	检测对象是否在一组数据中,功能等同于fly.inArray,
-    例	:fly.In(3,1,2,3,4,...,n),fly.In(3,[1,2,3,4])
-    @value	:要检测的一个值
-    @params	:Object(可选) 可变参数，一组数据
-    @return	:Number 返回在数组中的索引，如不在数组中则返回 null
+    /*	Detect whether an object in Array which the same as fly.inArray,
+    Example	:fly.In(3,1,2,3,4,...,n),fly.In(3,[1,2,3,4])
+    @value	:detected value
+    @params	:any number of variable parameters
+    @return	:return the index of value in Array
     */
     $.In = $.inArray
     //#end
 
     //## Function
-    /* #C 函数扩展*/
+    /* #C function extend*/
     fly.lib.Function = $.extend(
 	{
-	    /*	根据条件判断是否执行
-	    @predicate:Function/String/Object 用来判断是否执行的表达式、函数或其它对象 
-	    @args	:Array(可选) 参数，要传递的任意多个参数
+	    /*	Whether execute base on the condition
+	    @predicate:determine whether to implement the expression, function or other objects
+	    @args	:any number of variable parameters
 	    @return	:Function
 	    */
 	    where: function (predicate, params) {
@@ -855,9 +865,9 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	绑定域
-	    @scope	:Object(可选) 域
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Bind scope
+	    @scope	:scope
+	    @params	:any number of variable parameters
 	    @return	:Function
 	    */
 	    bind: function (scope, params) {
@@ -869,10 +879,9 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	格式化参数
-	    如：fn.$format('@{2}','@{*}',12,"@{1,5}","@{2-6}")
-	    @params:String/Object 可变参数，任意多个格式或参数
-	    可以是定位参数的字符串"{1}"、"{*}"、"{2-6}"、或者任意对象
+	    /*	Formate parameters
+	    如：fn.$format('@{2}','@{*}',12,"@{1,5}","@{2-6}") or "{1}"、"{*}"、"{2-6}"
+	    @params:String/Object 
 	    @return	:Function
 	    */
 	    format: function (params) {
@@ -925,9 +934,9 @@ copy:© 2011 Kuiyou Li
 	        }
 	    },
 
-	    /*	继承
-	    @base	:基类
-	    @overrides:包含扩展成员的任意多个参数
+	    /*	Inherit
+	    @base	:Base class
+	    @overrides:Contains any number of extended members
 	    @return	:this
 	    */
 	    inherit: function (base, overrides) {
@@ -937,8 +946,8 @@ copy:© 2011 Kuiyou Li
 	        return $.Class(o);
 	    },
 
-	    /*	扩展
-	    @overrides:包含扩展成员的任意多个参数
+	    /*	Extend
+	    @overrides:Contains any number of extended members
 	    @return	:this
 	    */
 	    extend: function (overrides) {
@@ -955,36 +964,36 @@ copy:© 2011 Kuiyou Li
 
 
     //## Date
-    /*#C Data 扩展*/
+    /*#C Data extend*/
     fly.lib.Date = $.extend(
 	{
-	    /*	格式化日期
-	    @format	:String 时间格式，默认 yyyy-MM-dd hh:mm:ss
+	    /*	formate date
+	    @format	:String date formate default: yyyy-MM-dd hh:mm:ss
 	    @return	:String 
 	    */
 	    format: function (format) {
 	        format = format || "yyyy-MM-dd HH:mm:ss";
 	        var o =
 			{
-			    //年
+			    //year
 			    "y+": this.getFullYear(),
-			    //月
+			    //month 
 			    "M+": this.getMonth() + 1,
-			    //日
+			    //day
 			    "d+": this.getDate(),
-			    //小时24
+			    //24 hour
 			    "H+": this.getHours(),
-			    //小时12
+			    //12 hour
 			    "h+": this.getHours() % 12,
-			    //分
+			    //minute
 			    "m+": this.getMinutes(),
-			    //秒
+			    //second
 			    "s+": this.getSeconds(),
-			    //毫秒
+			    //millisecond
 			    "S+": this.getMilliseconds(),
-			    //星期大写
+			    //week upper case
 			    "W+": fly.lib.Date.W[this.getDay()],
-			    //星期小写
+			    //week lower case
 			    "w": fly.lib.Date.w[this.getDay()]
 			}
 
@@ -1004,25 +1013,25 @@ copy:© 2011 Kuiyou Li
 
 
     //## String
-    /*#C String 扩展*/
+    /*#C String Extend*/
     fly.lib.String = $.extend(
 	{
 	    formatReg: /\{([^{}]+)\}/g,
-	    /*	格式化字符串，可以调用用参数的属性或者方法进行格式化
-	    例如
-	    "a{0}b{1}".format("-",5) 结果等于 "a-b5"
+	    /*	format string
+	    Example:
+	    the result of "a{0}b{1}".format("-",5) is "a-b5"
 			
 	    var option={id:123,name:"fly"};
-	    "a{0}b {name}".format("-",5,option) 结果等于 "a-b fly"
+	    the result of "a{0}b {name}".format("-",option) is "a-b fly"
 			
 	    var option={
 	    getId:function(){
 	    return 123
 	    }
 	    };
-	    "a{0}b {getId()}".format("-",option) 结果等于 "a-b 123"
+	    the result of "a{0}b {getId()}".format("-",option) is "a-b 123"
 			
-	    @params	:Object 可变参数，用来格式化的任意多个参数
+	    @params	:Object Any number of variable parameters
 	    @return	:String
 	    */
 	    format: function (params) {
@@ -1050,20 +1059,20 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	字符串是否包含另一个字符串
-	    @subStr	:要检查的子串
-	    @ignoreCase:Boolean(可选) 忽略大小写,默认区分大小写
-	    @separator:String(可选) 分隔符
+	    /*	If a string contains another string
+	    @subStr	:string to be checked
+	    @ignoreCase:ignoreCase
+	    @separator:separator
 	    @return	:Boolean
 	    */
 	    contains: function (subStr, ignoreCase, separator) {
 	        return this.IndexOf(subStr, ignoreCase, separator) > -1;
 	    },
 
-	    /*	子串出现的位置
-	    @subStr	:要检查的子串
-	    @ignoreCase:Boolean(可选) 忽略大小写,默认区分大小写
-	    @separator:String(可选) 分隔符
+	    /*	Get The index of substring
+	    @subStr	:The substring 
+	    @ignoreCase:Ignore case
+	    @separator:Separator
 	    @return	:Int
 	    */
 	    IndexOf: function (subStr, ignoreCase, separator) {
@@ -1075,9 +1084,9 @@ copy:© 2011 Kuiyou Li
 	        return ignoreCase ? s.toUpperCase().indexOf(sub.toUpperCase()) : s.indexOf(sub);
 	    },
 
-	    /*	字符串是否以指定字符串开头
-	    @subStr	:要检查的子串
-	    @ignoreCase:Boolean(可选) 忽略大小写,默认区分大小写
+	    /*	Whether the specified string at the beginning of the string
+	    @subStr	:The specified string
+	    @ignoreCase:ignore case
 	    @return	:Boolean
 	    */
 	    startWith: function (subStr, ignoreCase) {
@@ -1086,9 +1095,9 @@ copy:© 2011 Kuiyou Li
 	        return ignoreCase ? (s.toUpperCase() == subStr.toUpperCase()) : (s == subStr)
 	    },
 
-	    /*	字符串是否以指定字符串结尾
-	    @subStr	:要检查的子串
-	    @ignoreCase:Boolean(可选) 忽略大小写,默认区分大小写
+	    /*	Whether the specified string at the end of the string
+	    @subStr	:The specified string
+	    @ignoreCase:ignore case
 	    @return	:Boolean
 	    */
 	    endWith: function (subStr, ignoreCase) {
@@ -1098,27 +1107,27 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	去掉左右空白 
+	    /*	Trim empty string in string's left and right
 	    @return	:String
 	    */
 	    trim: function () {
 	        return this.replace(/(^\s+)|(\s+$)/g, "");
 	    },
-	    /*	去掉左空白 
+	    /*	Trim left empty string 
 	    @return	:String
 	    */
 	    trimLeft: function () {
 	        return this.replace(/^\s+/g, "");
 	    },
 
-	    /*	去掉左空白 
+	    /*	Trim right empty string 
 	    @return	:String
 	    */
 	    trimRight: function () {
 	        return this.replace(/\s+$/g, "");
 	    },
 
-	    /*	将第一个字母转换为大写
+	    /*	Uppercase first letter
 	    @return	:String
 	    */
 	    firstUpper: function () {
@@ -1126,8 +1135,8 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	重复指定次数
-	    @count	:Int 重复次数
+	    /*	Repeat the specified number of times
+	    @count	:the number of times
 	    @return	:String
 	    */
 	    repeat: function (count) {
@@ -1138,9 +1147,9 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	填充左边到指定长度
-	    @minLength:Int 最小长度
-	    @_char	:String 用来填充不足的字符
+	    /*	Fill the specified number of times of char to string's left
+	    @minLength:Int Mininum length
+	    @_char	:String The char will be filled in
 	    @return	:String
 	    */
 	    padLeft: function (minLength, _char) {
@@ -1148,16 +1157,16 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	填充右边到指定长度
-	    @minLength:最小长度
-	    @_char	:String 用来填充不足的字符
+	    /*	Fill the specified number of times of char to string's right
+	    @minLength:Int Mininum length
+	    @_char	:String The char will be filled in
 	    @return	:String
 	    */
 	    padRight: function (minLength, _char) {
 	        return this + (_char == null ? ' ' : _char.toString()).$repeat(minLength - this.length)
 	    },
-	    /*  将字符串转换为骆驼命名规则
-	    @wordSplitChar  :String 字符串中的分隔符
+	    /*  Convert a string to camel naming
+	    @wordSplitChar  :String The separator of string
 	    @return :String
 	    */
 	    camelCase: function (wordSplitChar) {
@@ -1176,7 +1185,7 @@ copy:© 2011 Kuiyou Li
 
     //## fly.lib.Event
     /* #C path:fly.lib.Event
-    事件处理器
+    Event disposer
     */
     fly.lib.EventManager = function () {
         var me = this
@@ -1225,7 +1234,7 @@ copy:© 2011 Kuiyou Li
             }
         });
 
-        //设置事件
+        //Set event
         this.setEvent = function (e) {
             if (e == me.event || (e && e.browserEvent) || e == me.browserEvent) {
                 return e;
@@ -1237,15 +1246,15 @@ copy:© 2011 Kuiyou Li
                 evt.previous = previous
 
             if (e) {
-                // 鼠标键
+                // mouse key
                 evt.button = e.button ? this.btnMap[e.button] : (e.which ? e.which - 1 : -1);
                 if (e.type == 'click' && evt.button == -1)
                     evt.button = 0;
-                // 是否按下Ctrl键
+                // check press the Ctrl key
                 evt.ctrlKey = e.ctrlKey || e.metaKey || false;
-                //键盘按键
+                //Keyboard keycode
                 evt.keyCode = e.keyCode == undefined ? e.which : e.keyCode
-                // 事件源
+                // event source
                 evt.target = e.srcElement || e.target
             }
             else {
@@ -1260,7 +1269,7 @@ copy:© 2011 Kuiyou Li
             return evt;
         }
 
-
+        //Restore event
         this.restoreEvent = function (evt) {
             $.$event = win.$event = me.event = evt
             win.$$event = $.$$event = me.browserEvent = evt ? evt.browserEvent : null;
@@ -1319,12 +1328,12 @@ copy:© 2011 Kuiyou Li
 			        })
         }
 
-        /*	绑定事件
-        @el	:Object/Array<Object> 一个或多个DOM对象
-        @eName	:String/Array<String> 一个或多个事件名
-        @fn		:Function/Array<Function> 一个或多个处理函数
-        @scope  :域
-        @data	:Object(可选) 要传递的数据
+        /*	Bind the event for the elements
+        @el	:Object/Array<Object> Any number of DOM object
+        @eName	:String/Array<String> Any number of Event Name
+        @fn		:Function/Array<Function> One or more Event handler
+        @scope  :scope 
+        @data	:Object parameters
         @return	:el
         */
         this.on = function (el, eName, fn, scope, data) {
@@ -1358,10 +1367,10 @@ copy:© 2011 Kuiyou Li
 
         this.bind = this.on
 
-        /*	注销事件
-        @el	:Object/Array<Object> 一个或多个DOM对象
-        @eName	:String/Array<String> 一个或多个事件名
-        @fn		:Function/Array<Function> 一个或多个处理函数
+        /*	Cancel the Event for the elements
+        @el	:Object/Array<Object> Any number of DOM object
+        @eName	:String/Array<String> Any number of Event Name
+        @fn		:Function/Array<Function> One or more Event handler
         @return	:el
         */
         this.un = function (el, eName, fn) {
@@ -1444,11 +1453,11 @@ copy:© 2011 Kuiyou Li
         }
 
 
-        /*	触发事件
-        @el	:Object/Array<Object> 一个或多个DOM对象
-        @eName	:String/Array<String> 一个或多个事件名
-        @scope  :域
-        @args	:Array(可选) 可变参数，要传递的任意多个参数
+        /*	Trigger Event
+        @el	:Object/Array<Object> Any number of DOM object
+        @eName	:String/Array<String> Any number of Event Name
+        @scope  :scope
+        @args	:parameters
         @return :el
         */
         this.fire = function (el, eName, scope, args) {
@@ -1500,7 +1509,7 @@ copy:© 2011 Kuiyou Li
             return ret
         }
 
-        /*	停止事件
+        /*	Stop the propagation of event and prevent the default event of the elements
         @return:Boolean false
         */
         this.stop = function () {
@@ -1517,10 +1526,10 @@ copy:© 2011 Kuiyou Li
             return this == me ? this : false
         }
 
-        /*  创建事件函数
-        @eName  :String 事件名称
-        @fire   :Function(可选) 事件的响应函数
-        @return :Function 附加或响应事件的函数
+        /* Create custom event
+        @eName  :String Event Name
+        @fire   :Function  Event handler
+        @return :Function Additional functions or respond to events
         */
         this.createEventFn = function (eName, fire) {
             var eName = eName.replace(/^on/i, '')
@@ -1535,9 +1544,9 @@ copy:© 2011 Kuiyou Li
             }
         }
 
-        /*	为对象注册事件
-        @obj :要注册事件的对象
-        @eventNames	:Array 要注册的任意多个事件名称
+        /*	Register events for Dom object
+        @obj :Object which be waitting to register events
+        @eventNames	:Array Any number of registered event's names
         @return	:fly.lib.Event
         */
         this.registEvent = function (obj, eventNames) {
@@ -1552,8 +1561,8 @@ copy:© 2011 Kuiyou Li
             return this
         }
 
-        /*  使对象具有事件管理机制
-        @obj    :Object 除值类型的任何对象
+        /*  Make the object with the event management mechanism
+        @obj    :Object In addition to any value type object
         @return :fly.lib.Event
         */
         this.eventAble = function (obj) {
@@ -1584,13 +1593,14 @@ copy:© 2011 Kuiyou Li
         }
     } .$inherit(lib.EventManager);
 
-    //事件处理对象
+    //Event handler object
     fly.Event = fly.lib.Event = new lib.EventManager()
 
-    /*	绑定多个函数到 window.onload
-    @fu	:Function 可变参数，要绑定的任意多个函数
-    @return	:fly
-    */
+    /*	
+     * Bind multiple objects to  window.onload
+     * @fu	:Function Any number of varible parameters
+     * @return	:fly
+     */
     $.onLoad = function (fn, scope, data) {
         if (doc.readyState == "complete" || doc.readyState == "loaded") {
             var args = slice.call(arguments, 2);
@@ -1610,8 +1620,8 @@ copy:© 2011 Kuiyou Li
     }
 
 
-    /*	绑定多个函数到 window.onload
-    @fu	:Function 可变参数，要绑定的任意多个函数
+    /*	Bind multiple objects to  window.onload
+    @fu	:Function Any number of varible parameters
     @return	:fly
     */
     $.ready = function (fn, scope, data) {
@@ -1649,8 +1659,8 @@ copy:© 2011 Kuiyou Li
     }
 
 
-    /*	绑定多个函数到	window.onunload
-    @params	:Function(可选) 可变参数，要绑定的任意多个函数
+    /* Bind multiple functions to window.onunload
+    @params	:Any number of variable parameters
     @return	:fly
     */
     $.onUnload = function (params) {
@@ -1658,8 +1668,8 @@ copy:© 2011 Kuiyou Li
         return $
     }
 
-    /*	绑定多个函数到	window.onBeforeUnload
-    @params	:Function 可变参数，要绑定的任意多个函数
+    /* Bind multiple functions window.onBeforeUnload
+    @params	:Function Any number of variable parameters
     @return	:fly
     */
     $.onBeforeUnload = function (params) {
@@ -1670,7 +1680,7 @@ copy:© 2011 Kuiyou Li
 
     //## fly.lib.Json
     /*#C path:fly.lib.Json
-    Json工具
+    Json tool
     */
     fly.lib.JsonUtils = function () {
         var me = this, useHasOwn = !!{}.hasOwnProperty;
@@ -1706,9 +1716,9 @@ copy:© 2011 Kuiyou Li
         };
 
         var encodeArray =
-        /*	对集合进行编码
-        @o   :Array 要编码的集合
-        @jsonEncode  :Boolean 是否Json格式
+        /*	Encode array
+        @o   :Array array
+        @jsonEncode  :Boolean Whether json format or not
         @return	:String
         */
  		this.encodeArray = function (o, jsonEncode) {
@@ -1735,9 +1745,9 @@ copy:© 2011 Kuiyou Li
  		};
 
 
-        /*  对时间进行编码
-        @o   :Date 要编码的时间对象
-        @jsonEncode  :Boolean 是否Json格式,
+        /*  Encode datetime
+        @o   :Date datetime object
+        @jsonEncode  :Boolean Whether json format or not
         @return	:String
         */
         this.encodeDate = function (o, jsonEncode) {
@@ -1746,9 +1756,9 @@ copy:© 2011 Kuiyou Li
         };
 
 
-        /*  将对象编码
-        @o   :要编码的对象
-        @jsonEncode  :Boolean 是否Json格式,
+        /*  Encode object
+        @o   :object Which need to be encode
+        @jsonEncode  :Boolean Whether json format or not
         @return	:String
         */
         this.encode = function (o, jsonEncode) {
@@ -1787,8 +1797,8 @@ copy:© 2011 Kuiyou Li
         };
 
 
-        /*  对Json字符串解码
-        @json   :要解码的Json对象	    
+        /*  Eecode string
+        @json   :json Object which need to be decode   
         @return	:String
         */
         this.decode = function (json) {
@@ -1804,11 +1814,11 @@ copy:© 2011 Kuiyou Li
                 win.eval(o)
             }
         },
-        /*  将Json对象进行Url编码
-        @json   :Object 要编码的对象
-        @memberToParam :Boolean 是否将成员编码为参数
-        @prefix :String 前缀
-        @return :String 编码后的字符串
+        /*  Encode the Json object to string that after url encoded
+        @json   :Object The object to be encode
+        @memberToParam :Boolean Whether encoding members to parameters
+        @prefix :String prefix
+        @return :String encoded string
         */
         this.urlEncode = function (json, memberToParam, prefix, buf) {
             var fromSelf = !!buf
@@ -1845,7 +1855,7 @@ copy:© 2011 Kuiyou Li
             return buf.join('');
         },
 
-        /*  将字符串进行Url解码*/
+        /*  Decode the string that after url encoded to Json object */
         this.urlDecode = function (str, override) {
             if (!str)
                 return {};
@@ -1873,10 +1883,10 @@ copy:© 2011 Kuiyou Li
         }
 
 
-        /*	遍历每一项
-        @json	:要遍历的对象
-        @action	:Function 处理函数
-        @params	:Object(可选) 可变参数，要传递的任意多个参数
+        /*	Traverse object 
+        @json	:object
+        @action	:Function Handler function
+        @params	:Object Any number of variable parameters
         @return :json
         */
         this.each = function (json, action, params) {
@@ -1884,10 +1894,10 @@ copy:© 2011 Kuiyou Li
         }
 
 
-        /*	将结果转换为数组
-        @json	:要转换的数组
-        @evaluator:Function/String/Object 计算值的函数
-        @params	:Object(可选) 可变参数，要传递的多个参数
+        /*	Convert result to array
+        @json	:array
+        @evaluator:Function/String/Object Eval handler
+        @params	:Object(not Required) any number of variable parameters
         @return	:Array
         */
         this.map = function (json, evaluator, params) {
@@ -1921,27 +1931,28 @@ copy:© 2011 Kuiyou Li
     //#end
 
     /* #C path:fly.ajax.Helper
-    通过 HTTP 请求加载远程数据。
-    配置:
+
+    HTTP request to load remote data
+    usage:
     {
-    url     :String 请求的地址
-    method  :String 请求方式,get或post,默认get
-    async   :Boolean    是否异步,默认true
-    dataHandler:Function    对请求返回的数据进行处理后返回
-    charset :String 编码,默认GB2312
-    username:String 用户名,服务端验证用
-    password:String 密码,服务端验证用
-    timeout :Int    超时时间(毫秒)
-    data    :Json/String   向服务器传递的数据
+    url     :String requst url
+    method  :String request method(get or post) default get
+    async   :Boolean    Whether asynchronous(default true)
+    dataHandler:Function    handle the return data then return handled data
+    charset :String encode,default:GB2312
+    username:String username,verify for server 
+    password:String pwd,verify for server 
+    timeout :Int    Timeout(millisecond)
+    data    :Json/String   the data send to server
     }
 
-    调用:
+    call:
 
     var helper=new fly.ajax.Helper({
     url:'http://www.flyui.net/a.php',
     method:'get',
     success:function(){
-    alert('请求成功!')
+    alert('Request successful!')
     }
     })
     helper.go();
@@ -1952,29 +1963,29 @@ copy:© 2011 Kuiyou Li
     url:'http://www.flyui.net/a.php',
     method:'get',
     success:function(){
-    alert('请求成功!')
+    alert('Request successful!')
     }
     })
     helper.go();
 
     ------------------------------------------
     fly.get('http://www.flyui.net/a.php',function(){
-    alert('请求成功!')
+    alert('Request successful!')
     });
 
     ------------------------------------------
     fly.post('http://www.flyui.net/a.php',function(){
-    alert('请求成功!')
+    alert('Request successful!')
     });
 
     ------------------------------------------
     var helper=fly.ajax.url('http://www.flyui.net/a.php').method('get').onSuccess(function(){
-    alert('请求成功!')
+    alert('Request successful!')
     }).go();
             
     ------------------------------------------
     var helper=fly.ajax.url('http://www.flyui.net/a.php').onSuccess(function(){
-    alert('请求成功!')
+    alert('Request successful!')
     }).get();
 
     */
@@ -1986,77 +1997,71 @@ copy:© 2011 Kuiyou Li
         return helper;
     }
 
-    /*#M path:fly.ajax.Helper.url 设置请求的地址
-    @url    :String 地址
+    /*#M path:fly.ajax.Helper.url set request url
+    @url    :String address
     @return :this
     */
-    /*#M path:fly.ajax.Helper.method 设置请求方式
-    @method    :String get或post,默认get
-    @return :this
-    */
-
-    /*#M path:fly.ajax.Helper.async 设置是否采用异步请求
-    @async    :Boolean 是否异步,默认true
+    /*#M path:fly.ajax.Helper.method Set request method
+    @method    :String Get or post,default:get
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.dataHandler 设置对请求返回的数据进行处理后返回的函数
-    @dataHandler    :Function   处理函数
+    /*#M path:fly.ajax.Helper.async set whether async request
+    @async    :Boolean Whether async,default:true
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.contentType 设置HTTP头:contentType
-    @contentType    :String   默认application/x-www-form-urlencoded
+    /*#M path:fly.ajax.Helper.dataHandler set the return function when requst the server data
+    @dataHandler    :Function   handler function
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.charset 设置HTTP头:charset
-    @charset    :String   编码,默认GB2312
+    /*#M path:fly.ajax.Helper.contentType set HTTP header:contentType
+    @contentType    :String   default:application/x-www-form-urlencoded
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.username 设置用户名,服务端验证用
-    @username    :String   用户名
+    /*#M path:fly.ajax.Helper.charset set HTTP header:charset
+    @charset    :String   encode,default:GB2312
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.password 设置密码,服务端验证用
-    @password    :String   密码
+    /*#M path:fly.ajax.Helper.username set username verify in server
+    @username    :String   username
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.timeout 设置超时时间(毫秒)
-    @timeout    :Int   超时时间(毫秒)
+    /*#M path:fly.ajax.Helper.password set password verify in server
+    @password    :String   password
     @return :this
     */
 
-    /*#M path:fly.ajax.Helper.data 设置向服务器传递的数据
-    @data    :Json   向服务器传递的数据
+    /*#M path:fly.ajax.Helper.timeout set Timeout(millisecond)
+    @timeout    :Int   Timeout(millisecond)
+    @return :this
+    */
+
+    /*#M path:fly.ajax.Helper.data set the data send to server
+    @data    :Json   the data send to server
     @return :this
     */
 
     ajax.Option = {
-        /*String 请求的地址*/
         url: location.href,
-        /*String 请求方式,get或post,默认get*/
         method: null,
         dataType: "",
-        /*Boolean    是否异步,默认true*/
         async: true,
         parameterName: "par_{0}",
-        /*Function    对请求返回的数据进行处理后返回*/
-        dataHandler: undefined,
-        /*String    默认application/x-www-form-urlencoded*/
+        dataHandler: undefined, /*Function    handler the data of the server'response to create a new data*/
+        /*String    default:application/x-www-form-urlencoded*/
         contentType: "application/x-www-form-urlencoded",
-        /*String 编码,默认GB2312*/
         charset: "GB2312",
-        /*String 用户名,服务端验证用*/
-        username: undefined,
-        /*String 密码,服务端验证用*/
+        username: undefined,/*String username verify in server*/
+        /*String password,verify in server*/
         password: undefined,
-        /*Int    超时时间(毫秒)*/
+        /*Int    Timeout(millisecond)*/
         timeout: -1,
-        /*Json/String   向服务器传递的数据*/
+        /*Json/String   the data send to server*/
         data: undefined
     }
 
@@ -2074,25 +2079,25 @@ copy:© 2011 Kuiyou Li
         _default: "*/*"
     }
     /* #E path:fly.ajax.Helper.onStart
-    在Ajax请求开始之前时执行,返回false取消请求。*/
+    Execute before the beginning of Ajax request, return false to cancel the request*/
 
     /* #E path:fly.ajax.Helper.onError
-    在Ajax请求出错时执行。*/
+    Execute when Ajax request error*/
 
     /* #E path:fly.ajax.Helper.onSuccess
-    在Ajax请求成功时执行。*/
+    Execute when Ajax request success。*/
 
     /* #E path:fly.ajax.Helper.onComplete
-    在Ajax请求完成时执行。*/
+    Execute when Ajax request complete*/
 
     /* #E path:fly.ajax.Helper.onSend
-    在Ajax请发送数据前执行,返回false取消请求。*/
+    Execute before Ajax request send data,return false cancel the request*/
 
     /* #E path:fly.ajax.Helper.onStop
-    在Ajax请求停止时执行。*/
+    Execute when Ajax request stop*/
 
     /* #E path:fly.ajax.Helper.onReadystatechange
-    在Ajax请求中,服务端有响应时执行。*/
+    Execute when Ajax is requesting and server has respond*/
 
 
     ajax.Eevents = ["onStart", "onError", "onSuccess", "onComplete", "onSend", "onStop", "onReadystatechange"]
@@ -2100,8 +2105,8 @@ copy:© 2011 Kuiyou Li
     ajax.Helper.$extend(
  	{
  	    option: null,
- 	    /*重新配置Ajax选项
- 	    @option :Json   包含详细配置的Json对象
+ 	    /*Re-config ajax option
+ 	    @option :Json Contain detailed configuration of Json object
  	    @return :this
  	    */
  	    setup: function (option) {
@@ -2116,34 +2121,34 @@ copy:© 2011 Kuiyou Li
  	        }
  	        return this;
  	    },
- 	    /*  用GET方式对服务器发起请求
- 	    @url    :String 请求的地址
- 	    @data   :Json(可选) 想服务器发送的数据
- 	    @success:Function(可选)   当请求成功时的回调函数
- 	    @error  :Function(可选)   当请求失败时的回调函数
- 	    @return :Object/this    当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例
+ 	    /*  Send a request to server using “get” method
+ 	    @url    :String request url
+ 	    @data   :Json(not required) the data send to server
+ 	    @success:Function(not required)   the callback function when request success
+ 	    @error  :Function(not required)   the callback function when failed 
+ 	    @return :Object/this  When the synchronization request is to return the server output, asynchronous call is to return an instance of the current fly.ajax.Helper instance
  	    */
  	    get: function () {
  	        this.option.method = "GET"
  	        return this.go.apply(this, arguments)
  	    },
- 	    /*  用POST方式对服务器发起请求
- 	    @url    :String 请求的地址
- 	    @data   :Json(可选) 想服务器发送的数据
- 	    @success:Function(可选)   当请求成功时的回调函数
- 	    @error  :Function(可选)   当请求失败时的回调函数
- 	    @return :Object/this    当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例
+ 	    /*  Send a request to server using “post” method
+ 	    @url    :String request url
+ 	    @data   :Json(not required) the data send to server
+ 	    @success:Function(not required)   the callback function when request success
+ 	    @error  :Function(not required)   the callback function when failed 
+ 	    @return :Object/this   When the synchronization request is to return the server output, asynchronous call is to return an instance of the current fly.ajax.Helper instance
  	    */
  	    post: function () {
  	        this.option.method = "POST"
  	        return this.go.apply(this, arguments)
  	    },
- 	    /*  对服务器发起请求
- 	    @url    :String 请求的地址
- 	    @data   :Json(可选) 想服务器发送的数据
- 	    @success:Function(可选)   当请求成功时的回调函数
- 	    @error  :Function(可选)   当请求失败时的回调函数
- 	    @return :Object/this    当同步请求是返回服务器输出内容,异步调用是返回当前的fly.ajax.Helper实例
+ 	    /*  Send request to server
+ 	    @url    :String request url
+ 	    @data   :Json(not required) the data send to server
+ 	    @success:Function(not required)   the callback function when request success
+ 	    @error  :Function(not required)   the callback function when failed 
+ 	    @return :Object/this    When the synchronization request is to return the server output, asynchronous call is to return an instance of the current fly.ajax.Helper instance
  	    */
  	    go: function (url, data, success, error) {
  	        var o = this.option
@@ -2172,8 +2177,7 @@ copy:© 2011 Kuiyou Li
  	        this.createConnecion();
 
  	        var conn = this.connection
-            var method=isGet?"GET":"POST"
-            o.username != undefined ? conn.open(method, url, o.async, o.username, o.password) : conn.open(method, url, o.async);
+ 	        o.username != undefined ? conn.open(o.method, url, o.async, o.username, o.password) : conn.open(o.method, url, o.async);
  	        conn.setRequestHeader("Content-Type", o.contentType)
  	        conn.setRequestHeader("Charset", o.charset)
  	        if (!isGet)
@@ -2251,8 +2255,8 @@ copy:© 2011 Kuiyou Li
  	        }
  	        return c;
  	    },
- 	    /*  加载js脚本文件
- 	    @url    :脚本文件地址
+ 	    /*  Dynamic loading js file
+ 	    @url    :file url
  	    @return :this
  	    */
  	    loadScript: function (url) {
@@ -2277,7 +2281,7 @@ copy:© 2011 Kuiyou Li
  	        head.appendChild(e);
  	        return this;
  	    },
- 	    /*  获取服务端输出内容
+ 	    /*  Output from the server
  	    @return :Object
  	    */
  	    getContent: function () {
@@ -2382,15 +2386,15 @@ copy:© 2011 Kuiyou Li
 
 
     //## fly.Cookie
-    /*#C Cookie 工具类*/
+    /*#C Cookie Tools*/
     fly.lib.Cookie = fly.Cookie = $.extend(
 	{
-	    /*	设置Cookie
-	    @name	:String cookie名
-	    @value	:String cookie值
-	    @expires:Date 过期时间
-	    @path	:String 路径
-	    @domain	:String 域
+	    /*	Set Cookie
+	    @name	:String cookie name
+	    @value	:String cookie value
+	    @expires:Date expiry date 
+	    @path	:String path
+	    @domain	:String scope
 	    @secure	:Boolean 
 	    @return	:fly.lib.Cookie
 	    */
@@ -2401,10 +2405,10 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	获取Cookie
-	    @path	:String 路径
-	    @name	:String cookie名
-	    @return	:String cookie 值
+	    /*	Get Cookie
+	    @path	:String path
+	    @name	:String cookie name
+	    @return	:String cookie value
 	    */
 	    get: function (path, name) {
 	        var cookie = doc.cookie
@@ -2424,8 +2428,8 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	删除 Cookie
-	    @name	:String cookie名
+	    /*	Delete Cookie
+	    @name	:String cookie name
 	    @return	:fly.lib.Cookie
 	    */
 	    remove: function (name) {
@@ -2439,13 +2443,13 @@ copy:© 2011 Kuiyou Li
 
     //## fly.ui.Style
     /* #C path:fly.ui.Style
-    CSS 工具类
+    CSS tools
     */
     fly.ui.StyleUtils = function () {
         var me = this
-        /*  加载CSS
-        @url:String CSS文件地址
-        @return:Element link元素
+        /*  Load CSS
+        @url:String CSS filepath
+        @return:Element link element
         */
         this.loadCss = function (url) {
             var el = doc.createElement("link");
@@ -2460,9 +2464,9 @@ copy:© 2011 Kuiyou Li
             return me.sheet || (me.sheet = me.createStyleSheet())
         }
 
-        /*  创建CSS
-        @cssText:String CSS内容
-        @return :Element style元素
+        /*  Create CSS
+        @cssText:String CSS content
+        @return :Element style element
         */
         this.createStyleSheet = function (cssText) {
             var style
@@ -2483,11 +2487,11 @@ copy:© 2011 Kuiyou Li
             return style
         }
 
-        /*  创建CSS类
-        @sheet  :StyleSheet(可选) CSS元素
-        @name   :String CSS类名
-        @cssText:String CSS内容
-        @return :StyleSheetRule CSS类
+        /*  Create CSS class
+        @sheet  :StyleSheet(not required) CSS element
+        @name   :String CSS class name
+        @cssText:String CSS content
+        @return :StyleSheetRule CSS class
         */
         this.createCssRule = function (sheet, name, cssText) {
             if ($.isStr(sheet)) {
@@ -2509,18 +2513,18 @@ copy:© 2011 Kuiyou Li
             return sheet.rules[sheet.rules.length - 1];
         }
 
-        /*	获取元素当前样式
-        @el		:Element 元素
+        /*	Get the current style of elements
+        @el		:Element 
         @return	:currentStyle
         */
         this.currentStyle = function (el) {
             return el.currentStyle || doc.defaultView.getComputedStyle(el, null)
         }
 
-        /*	检测样式值
-        @name	:String 样式名
-        @value	:Object 样式值
-        @return :Object 经处理过后的属性值
+        /*	Detect style value
+        @name	:String style name
+        @value	:Object style value
+        @return :Object the treated property value
         */
         this.checkValue = function (name, value) {
             if ((value || value === 0) && /width|height|top|left|right|bottom|margin|padding/i.test(name)) {
@@ -2534,10 +2538,10 @@ copy:© 2011 Kuiyou Li
         }
 
 
-        /*	获取元素样式
-        @el		:Element 要获取样式的元素
-        @name	:String 要设置的样式名
-        @return	:String 属性值
+        /*	Get element style
+        @el		:Element The element need to get css
+        @name	:String css name
+        @return	:String css value
         */
         this.get = function (el, n) {
             var camel = camelCase(n)
@@ -2555,19 +2559,19 @@ copy:© 2011 Kuiyou Li
             return ret
         }
 
-        /*	获取元素样式值
-        @el		:Element 要获取样式的元素
-        @name	:String 要设置的样式名
-        @return	:Number 属性值
+        /*	Get the number of the elements which name is the value of the paratemter 'name'
+        @el		:Element The element need to get style
+        @name	:String Style name
+        @return	:Number Style value
         */
         this.num = function (el, name) {
             return Number((me.get(el, name) + " ").replace(/[^\d-\.]/g, "")) || 0
         }
 
-        /*	设置元素样式
-        @el		:Element 被设置样式的元素
-        @name	:String 要设置的样式名
-        @value	:Object 样式值
+        /*	set element style
+        @el		:Element The element need to get style
+        @name	:String Style name
+        @value	:Object Style value
         @return	:fly.ui.Style
         */
         this.set = function (el, name, value) {
@@ -2621,7 +2625,7 @@ copy:© 2011 Kuiyou Li
         }
     } .inherit(ui.StyleUtils);
 
-    //样式处理
+    //Style processing
     fly.Style = fly.ui.Style = new ui.StyleUtils();
     var styleHelper = fly.ui.Style
     //#end
@@ -2629,7 +2633,7 @@ copy:© 2011 Kuiyou Li
 
     //## fly.ui.DomHelper
     /*#C path:fly.ui.DomHelper
-    Dom 工具类
+    Dom tools
     */
     fly.ui.DomUtils = function () {
         var $ab = "afterbegin", $ae = "afterend", $bb = "beforebegin", $be = "beforeend"
@@ -2679,18 +2683,18 @@ copy:© 2011 Kuiyou Li
             return getDom(obj);
         }
 
-        /*	获取元素唯一ID
-        @el	:Element Dom元素
-        @return	:Int 元素ID
+        /*	Get unique ID for element
+        @el	:Element Dom element
+        @return	:Int Element ID
         */
         this.getUniqueID = function (el) {
             el = el == doc ? docE : el
             return el.uniqueNumber != undefined ? el.uniqueNumber : (el.uniqueNumber = "$" + me.uniqueNumber++)
         }
 
-        /*	根据Html创建DOM元素
-        @html	:String html字符串
-        @return	:Element/Array<Element> 创建的DOM元素
+        /*	Create a DOM element according to Html
+        @html	:String html content
+        @return	:Element/Array<Element> DOM elements are created
         */
         this.create = function (html) {
             if (html === "" || html == null)
@@ -2725,12 +2729,12 @@ copy:© 2011 Kuiyou Li
         }
 
 
-        /*	插入对象
-        @pos	:String 插入位置(beforeBegin,afterBegin,beforeEnd,afterEnd)
-        @parent	:Element 父元素
-        @child	:Element/Array<Element> 子元素
-        @returnDom:Boolean 是否返回DOM元素
-        @return	:Element/Array returnDom等于true返回DOM对象，否则返回包含该元素的集合
+        /*	Insert object
+        @pos	:String insert position(beforeBegin,afterBegin,beforeEnd,afterEnd)
+        @parent	:Element parent element
+        @child	:Element/Array<Element> child element
+        @returnDom:Boolean Whether to return DOM element
+        @return	:Element/Array if returnDom equal true to return DOM element,otherwise return the element's collection
         */
         this.doInsert = function (pos, parent, child, returnDom) {
             var res
@@ -2792,33 +2796,33 @@ copy:© 2011 Kuiyou Li
             return returnDom == true ? res : $(res)
         }
 
-        /* 在元素前插入对象
-        @el	    :Element    在该元素前插入对象
-        @child  :Element/Array<Element> 要插入的一个或多个Dom元素
-        @returnDom:Boolean 是否返回DOM元素
-        @return	:Element/Array returnDom等于true返回DOM对象，否则返回包含该元素的集合
+        /* Inserted before the element object
+        @el	    :Element    Inserted before the element object
+        @child  :Element/Array<Element> To insert one or more of Dom elements
+        @returnDom:Boolean Whether to return DOM elements
+        @return	:Element/Array returnDom  is equal to true to return DOM object, otherwise returns a collection containing the elements
         */
         this.insertBefore = function (el, child, returnDom) {
             return me.doInsert($bb, el, child, returnDom);
         }
 
 
-        /* 在元素后插入对象
-        @el	    :Element    在该元素后插入对象
-        @child  :Element/Array<Element> 要插入的一个或多个Dom元素
-        @returnDom:Boolean 是否返回DOM元素
-        @return	:Element/Array returnDom等于true返回DOM对象，否则返回包含该元素的集合
+        /* Inserted after the element object
+        @el	    :Element    Inserted after the element object
+        @child  :Element/Array<Element> To insert one or more of Dom elements
+        @returnDom:Boolean Whether to return DOM elements
+        @return	:Element/Array returnDom  is equal to true to return DOM object, otherwise returns a collection containing the elements
         */
         this.insertAfter = function (el, child, returnDom) {
             return me.doInsert($ae, el, child, returnDom);
         }
 
 
-        /* 在元素开始位置插入对象
-        @el	    :Element    在该元素开始位置插入对象
-        @child  :Element/Array<Element> 要插入的一个或多个Dom元素
-        @returnDom:Boolean 是否返回DOM元素
-        @return	:Element/Array returnDom等于true返回DOM对象，否则返回包含该元素的集合
+        /* Insert the object in the element start
+        @el	    :Element   Insert the object in the element start
+        @child  :Element/Array<Element> To insert one or more of Dom elements
+        @returnDom:Boolean Whether to return DOM elements
+        @return	:Element/Array returnDom  is equal to true to return DOM object, otherwise returns a collection containing the elements
         */
         this.insertFirst = function (el, child, returnDom) {
             return me.doInsert($ab, el, child, returnDom);
@@ -2826,19 +2830,19 @@ copy:© 2011 Kuiyou Li
 
 
 
-        /* 将元素附加到一个对象结尾
-        @el	    :Element    在该元素结束位置插入对象
-        @child  :Element/Array<Element> 要插入的一个或多个Dom元素
-        @returnDom:Boolean 是否返回DOM元素
-        @return	:Element/Array returnDom等于true返回DOM对象，否则返回包含该元素的集合
+        /* An element attached to the end of an object
+        @el	    :Element   An element attached to the end of an object
+        @child  :Element/Array<Element>  To insert one or more of Dom elements
+        @returnDom:Boolean Whether to return DOM elements
+        @return	:Element/Array returnDom  is equal to true to return DOM object, otherwise returns a collection containing the elements
         */
         this.append = function (el, child, returnDom) {
             return me.doInsert($be, el, child, returnDom);
         }
 
-        /*	获取该Dom元素的子元素，不含 #text 
-        @child	:要获取子元素的Dom元素
-        @return	:Array 元素的所有子元素
+        /*	Get child elements of the Dom，not contains #text 
+        @child	:To obtain the child elements of the Dom element
+        @return	:Array  All child elements of the element
         */
         this.children = function (child) {
             if (child.children || (e == doc ? (e = docE).children : false))
@@ -2846,9 +2850,9 @@ copy:© 2011 Kuiyou Li
             return $.toArray(e.childNodes).where("o=>o.nodeType==1")
         }
 
-        /*  将所有内容转移至另一个元素
-        @from   :Element    将元素的所有内容移至另一个元素
-        @to     :Element    将移至该元素
+        /* Move content to another element
+        @from   :Element    Move all content to another element
+        @to     :Element    Element is to be moved
         @return :fly.ui.DomHelper   
         */
         this.moveContent = function (from, to) {
@@ -2861,8 +2865,8 @@ copy:© 2011 Kuiyou Li
             return this;
         }
 
-        /*  清空元素内容
-        @el   :Element    将元素的所有内容移至另一个元素
+        /*  clear element content
+        @el   :Element     clear element content
         @return :fly.ui.DomHelper   
         */
         this.empty = function (el) {
@@ -2874,27 +2878,28 @@ copy:© 2011 Kuiyou Li
             return this;
         }
 
-        /* 改变CSS样式
-        调用示例：
+        /* Change CSS style
+        Call Example：
         var cls=fly.simple.changeCss(document.body,"css-blue css-red","css-yellow")
-        给 document.body 移除 css-blue 和 css-red 样式后，追加 css-yellow 样式
-        
+        Remove document.body the css-blue and css-red style，add css-yellow style to document.body
+                
         var oldCls="css-gray css-blue css-red"
         var cls=fly.simple.changeCss(oldCls,"css-blue css-red","css-yellow")
-        给 oldCls 移除 css-blue 和 css-red 样式后，追加 css-yellow 样式
-        调用结果 cls 等于“css-gray css-yellow”
+        Remove oldCls,css-blue and css-red style，add css-yellow style
+        Call result cls equal“css-gray css-yellow”
 
-        注意：
-        该方法执行是先移除后追加，如果同一个样式同时出现在 removeCss 和 addCss 参数中时，该样式最终被追加，如：
+        Note：
+        The method is to add after the implementation of remove, if the same patterns appear in both removeCss and addCss parameters, the style was eventually added, 
+        such as:
         var oldCls="css-gray a b"
         var cls=fly.simple.changeCss(oldCls,"a b","b")
-        给 oldCls 移除 a 和 b 样式后，追加 b 样式
-        调用结果 cls 等于 “css-gray b”
+        To remove the a and b in oldCls style, then add b style
+        Call result cls equal “css-gray b”
 
-        @el    :Element/String 要改变样式的DOM对象或字符串
-        @removeCss  :String 要移除的样式,多个样式用空格隔开
-        @addCss :String 要追加的样式,多个样式用空格隔开
-        @return :String 改变后的样式
+        @el    :Element/String To change the style of the DOM object or string
+        @removeCss  :String To remove a style, a number of styles are separated by spaces
+        @addCss :String To additional style, a number of styles are separated by spaces
+        @return :String After the change of style
         */
         this.changeClass = function (el, removeCss, addCss) {
             if (el.isIList) {
@@ -2912,10 +2917,10 @@ copy:© 2011 Kuiyou Li
             return c;
         }
 
-        /*	添加CSS样式
-        @el    :Element DOM 元素
-        @css	:String 要添加的CSS名称
-        @return	:String 改变后的样式
+        /*	Add CSS style
+        @el    :Element DOM element
+        @css	:String additional style
+        @return	:String After the change of style
         */
         this.addClass = function (el, css) {
             if (el.isIList) {
@@ -2945,10 +2950,10 @@ copy:© 2011 Kuiyou Li
             return c;
         }
 
-        /*	移除CSS样式
-        @el    :Element DOM 元素
-        @css	:String 要移除的CSS名称
-        @return	:String 改变后的样式
+        /*	Remove CSS style
+        @el    :Element DOM element
+        @css	:String To remove the name of style
+        @return	:String After the change of style
         */
         this.removeClass = function (el, css) {
             if (el.isIList) {
@@ -2973,9 +2978,9 @@ copy:© 2011 Kuiyou Li
             return c;
         }
 
-        /*	是否包含某一CSS名称
-        @el    :Element DOM 元素
-        @css	:String 要检测的CSS名称
+        /*	Whether to include the name of a CSS
+        @el    :Element DOM Element
+        @css	:String To detect the CSS name
         @return	:Boolean
         */
         this.hasClass = function (el, css) {
@@ -2985,17 +2990,17 @@ copy:© 2011 Kuiyou Li
             return el && el.className.contains(css, false, ' ')
         }
 
-        /*  克隆元素
-        @el     :Element    要克隆的元素
-        @return :Element    克隆产生的新元素
+        /*  clone elements
+        @el     :Element    To clone the element
+        @return :Element    The new element to be cloned
         */
         this.clone = function (el) {
             return el.cloneNode();
         }
 
-        /*  转换为HTML
-        @el :Element    Html元素
-        @return :String 元素的HTML
+        /*  Converted to HTML
+        @el :Element    Html Element
+        @return :String HTML elements
         */
         this.toHtml = function (el) {
             if (el.isIList) {
@@ -3005,10 +3010,10 @@ copy:© 2011 Kuiyou Li
         }
 
         if (doc.compareDocumentPosition)
-        /*  检测元素是否包含另一个元素
-        @parent :Element   上级元素
-        @child  :Element   子元素
-        @return :Boolean    当parent包含child时返回true,否则返回false
+        /* Detect whether the element contains another element
+        @parent :Element   parent element
+        @child  :Element   child element
+        @return :Boolean   When the parent contains the child returns true, otherwise returns false
         */
             this.contains = function (parent, child) {
                 return !!(parent.compareDocumentPosition(child) & 16);
@@ -3018,9 +3023,9 @@ copy:© 2011 Kuiyou Li
                 return parent !== child && (parent.contains ? parent.contains(child) : true);
             }
 
-        /*  检测某元素是否可以获取焦点
-        @el :Element    要检测的元素
-        @return :Boolean    可以获取焦点返回 true,否则返回 false
+        /*  Detect whether an element can get the focus
+        @el :Element    To detect the elements
+        @return :Boolean    Can get the focus returns true, otherwise returns false
         */
         this.focusable = function (el) {
             var el2 = el
@@ -3035,41 +3040,41 @@ copy:© 2011 Kuiyou Li
             return false
         }
 
-        /*  检测元素是否接受Tab键
-        @el     :Element    要检测的元素
-        @return :Boolean    可以接受Tab键则返回 true,否则返回 false
+        /*  Detect the element whether to accept the Tab key  
+        @el     :Element   To detect the elements
+        @return :Boolean   Can get the focus returns true,otherwise returns false
         */
         this.tabbable = function (el) {
             var tabIndex = me.tabIndex(el);
             return (isNaN(tabIndex) || tabIndex >= 0) && me.focusable(el)
         }
 
-        /*  元素是否可见（visibility）
-        @el     :Element    DOM元素
+        /*  Detect element is visible
+        @el     :Element    DOM Element
         @return :Boolean
         */
         this.isVisible = function (el) {
             return styleHelper.get(el, 'visibility') !== "hidden"
         }
 
-        /*  元素是否显示（display）
-        @el     :Element    DOM元素
+        /*  Detect element is display
+        @el     :Element    DOM element
         @return :Boolean
         */
         this.isDisplay = function (el) {
             return styleHelper.get(el, 'display') !== 'none'
         }
 
-        /*  元素是否被隐藏（visibility、display）
-        @el     :Element    DOM元素
+        /*  Detect element is hidden
+        @el     :Element    DOM element
         @return :Boolean
         */
         this.isHidden = function (el) {
             return (el.nodeName === 'INPUT' && el.type === 'hidden') || !me.isDisplay(el) || !me.isVisible(el)
         }
 
-        /*  获取元素的   tabindex
-        @el     :Element    DOM元素
+        /*  Get the tabindex of element
+        @el     :Element    DOM element
         @return :Int
         */
         this.tabIndex = $.attrGeters.tabindex = function (el) {
@@ -3079,7 +3084,7 @@ copy:© 2011 Kuiyou Li
             return $.foucsableTypeRegs.test(el.nodeName) || ($.clickableTypeRegs.test(el.nodeName) && el.href) ? 0 : undefined;
         }
 
-        /*  取消页面的选择
+        /* Cancel the selection of the page
         @return :this
         */
         this.unSelection = function () {
@@ -3091,9 +3096,9 @@ copy:© 2011 Kuiyou Li
             } catch (e) { }
             return this
         }
-        /*  获取元素在页面中的位置和大小
-        @el     :Element    DOM元素
-        @return :Json   包含元素在页面中的位置和大小信息的Json对象
+        /*  Get element's location and size in the page
+        @el     :Element    DOM element
+        @return :Json   Json object that element in the page  contains the location and size information 
         */
         this.rect = function (el) {
             var pos = { top: el.offsetTop, left: el.offsetLeft, width: el.offsetWidth, height: el.offsetHeight }
@@ -3127,15 +3132,15 @@ copy:© 2011 Kuiyou Li
 
     //## fly.collection.IList
     /*#C path:fly.collection.IList
-    用来扩展 collection 对象
+    Extend collection object
     */
     fly.collection.IList = fly.fn = qp = {
         $: $,
         find: $,
         allTypes: [],
-        /* 扩展 fly.collection.IList 成员
-        @name   :String/Json 成员名称或包含多个成员的键值对
-        @v     :Function/Object 成员
+        /* extend fly.collection.IList member
+        @name   :String/Json member name or contains keyValue several members
+        @v     :Function/Object member
         */
         extend: function (name, v) {
             var i = $.isStr(name)
@@ -3159,22 +3164,22 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*	Class 原始类型*/
+        /*	Class original type*/
         $type: null,
 
-        /*	创建新的实例
-        @arr	:Array 初始元素
-        @return	:IList IList新对象
+        /*	Create new instance
+        @arr	:Array The initial element
+        @return	:IList IList new object
         */
         $create: function (arr) {
             return new this.$type(arr)
         },
 
-        /*	Boolean fly.collection.IList标识*/
+        /*	Boolean fly.collection.IList symbol*/
         isIList: true,
 
-        /*	获取可遍历的对象
-        @obj:如果传递该参数，这获取该对象的可遍历对象，否则返回当前对象的可遍历对象
+        /*	Get the object can traverse
+        @obj:If you pass the parameters to obtain the object can be traversed, otherwise return the current object can traverse
         @return:Array
         */
         getItems: function (obj) {
@@ -3185,7 +3190,7 @@ copy:© 2011 Kuiyou Li
             return this.items || this
         },
 
-        /*	更新长度
+        /*	Update length
         @return	:this
         */
         updateLength: function () {
@@ -3193,8 +3198,8 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*	获取指定位置的项
-        @index	:Int 从0开始的索引
+        /*	Get the specified item's location
+        @index	:Int index starts at 0
         @return :Object
         */
         item: function (index) {
@@ -3202,10 +3207,10 @@ copy:© 2011 Kuiyou Li
         },
 
         //##
-        /*	生成一个新IList对象,将每一项中的项合并
-        @evaluator:计算值的函数
-        @scope  :域
-        @params	:Object(可选) 可变参数，要传递的任意多个参数,
+        /*	Generate a new IList object,each of the items will be combined
+        @evaluator:evaluator
+        @scope  :scope
+        @params	:Object(not required) any number of variable parameters
         @return	:IList
         */
         selectMany: function (evaluator, scope, params) {
@@ -3215,10 +3220,10 @@ copy:© 2011 Kuiyou Li
             return this._select.apply(this, arguments)
         },
 
-        /*	生成一个新IList对象,忽略空值
-        @evaluator:计算值的函数
-        @scope  :域
-        @params	:Object(可选) 可变参数，要传递的任意多个参数,
+        /*	Generate a new IList object,null values ​​ignored
+        @evaluator:evaluator
+        @scope  :scope
+        @params	:Object(not required) any number of variable parameters
         @return	:IList
         */
         selectNotNull: function (evaluator, scope, params) {
@@ -3228,10 +3233,10 @@ copy:© 2011 Kuiyou Li
             return this._select.apply(this, arguments)
         },
 
-        /*	生成一个新IList对象
-        @evaluator:计算值的函数
-        @scope  :域
-        @params	:Object(可选) 可变参数，要传递的任意多个参数,
+        /*	Generate a new IList object
+        @evaluator:evaluator
+        @scope  :scope
+        @params	:Object(not required) any number of variable parameters
         @return	:IList
         */
         select: function (evaluator, scope, params) {
@@ -3264,11 +3269,11 @@ copy:© 2011 Kuiyou Li
 
 
 
-        /*	从序列的开头返回指定数量的连续元素
-        @count:int 要获取的数量，可以是负整数。
-        isAssending	: Boolean 是否升序
-        @predicate	:Function/String/Object 用于测试每个元素是否满足条件的函数。
-        @params	:Object(可选) 可变参数，要传递的任意多个参数
+        /*	Return a specified number of consecutive elements from the beginning of the sequence
+        @count:int get the number can be negative integers
+        isAssending	: Boolean Is ascending
+        @predicate	:Function/String/Object Each element is used to test the function satisfy the condition
+        @params	:Object(not required) any number of variable parameters
         @return	:IList
         */
         take: function (count, isAscending, predicate, params) {
@@ -3309,10 +3314,10 @@ copy:© 2011 Kuiyou Li
         },
         //#end
 
-        //## 遍历所有项
-        /*	遍历所有项
-        @action	:Function/String/Object 处理每一项的回调函数
-        @params	:Object(可选) 可变参数，要传递的任意多个参数
+        //## Traversal all items
+        /*	Traversal all items
+        @action	:Function/String/Object Processing a callback function for each
+        @params	:Object(not required) any number of variable parameters
         @return	:this
         */
         each: function (action, scope, params) {
@@ -3344,8 +3349,8 @@ copy:© 2011 Kuiyou Li
         //#end
 
 
-        /*	得到一个不重复的集合
-        comparer:Function 一个对值进行比较的相等比较器
+        /*	Get a collection of non-repetition
+        comparer:Function A comparer that compare the value
         @return	:IList
         */
         uniquelize: function (comparer) {
@@ -3356,9 +3361,9 @@ copy:© 2011 Kuiyou Li
             return this.create ? this.create(r) : r
         },
 
-        /*	返回不在指定集合中的元素
-        @list :用来比较的另一个集合
-        @comparer:Function 一个对值进行比较的相等比较器
+        /*	Get the elements not in the specified collection
+        @list :Another element used to compare
+        @comparer:Function a comparer that used to compare value
         @return	:IList 
         */
         notIn: function (list, comparer) {
@@ -3368,10 +3373,10 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	返回两个集合的交集
-        @list :用来求交集的另一个集合
-        @comparer:Function 一个对值进行比较的相等比较器
-        @return	:IList 连个集合的交集
+        /*	  Get the intersection of two collection
+        @list :Another collection is used to find intersection
+        @comparer:Function a comparer that used to compare value
+        @return	:IList the intersection of two collection
         */
         intersect: function (list, comparer) {
             return this.where(function (o) {
@@ -3379,9 +3384,9 @@ copy:© 2011 Kuiyou Li
             })
         },
 
-        /*	转换为Json
-        @keySelector	:Function 用于从每个元素中提取键的函数。
-        @valueSelector	:Function 用于从每个元素产生结果元素值的转换函数。
+        /*	Convert to json
+        @keySelector	:Function Function that get key from each element
+        @valueSelector	:Function Convered function that produce result from each element
         return :Json
         */
         toJson: function (keySelector, valueSelector) {
@@ -3402,10 +3407,10 @@ copy:© 2011 Kuiyou Li
             return j
         },
 
-        /*	为每一项添加事件
-        @eNames	:Object/Array<Object> 一个或多个事件类型
-        @actions	:Function/Array<Function> 一个或多个回调函数
-        @data	:要传递的数据
+        /*	Add an event for each item
+        @eNames	:Object/Array<Object>  One or more event type
+        @actions	:Function/Array<Function> One or more callback functions
+        @data	:The data to be passed
         @return:this
         */
         on: function (eNames, actions, data) {
@@ -3414,9 +3419,9 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	为每一项卸载事件
-        eNames	:Object/Array<Object> 一个或多个事件类型
-        actions	:Function/Array<Function> 一个或多个回调函数
+        /*	Unload events for each
+        eNames	:Object/Array<Object>  One or more event type
+        actions	:Function/Array<Function> One or more callback functions
         @return:this
         */
         un: function (eNames, actions) {
@@ -3424,18 +3429,18 @@ copy:© 2011 Kuiyou Li
             return this;
         },
 
-        /*	为每一项卸载事件
-        eNames	:Object/Array<Object> 一个或多个事件类型
-        actions	:Function/Array<Function> 一个或多个回调函数
+        /*	Unload events for each
+        eNames	:Object/Array<Object> One or more event type
+        actions	:Function/Array<Function>  One or more callback functions
         @return:this
         */
         fire: function (eNames, params) {
             $.Event.fire.apply($.Event, [this.getItems()].merge(arguments));
             return this;
         },
-        /*  排序
-        @dir    :Boolean/String 排序方向,false,"DESC" 表示降序,其它标识升序
-        @compare:Object/Function 排序比较规则,可以是一个字段名字,可以是一个函数
+        /*  Sort 
+        @dir    :Boolean/String Sort direction,false,"DESC" indicate descending,others indicate ascending
+        @compare:Object/Function Sort comparison rules, can be a field name, can be a function
         */
         sort: function (dir, compare) {
             if (compare != null && !$.isFun(compare)) {
@@ -3450,18 +3455,18 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        //## 其他
-        /*	添加到集合后面
-        @item	:Object 要添加的新项
+        //## Other
+        /*	Add after the collection 
+        @item	:Object To add a new item
         @return:this
         */
         add: function (item) {
             return this.addRange(item)
         },
 
-        //## 其他
-        /*	批量添加到集合后
-        @items	:Array 要添加的新项
+        //## Other
+        /*	Batch add after the collection 
+        @items	:Array Object To add a new item
         @return:this
         */
         addRange: function (items) {
@@ -3472,9 +3477,9 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	插入
-        @index	:Int 插入的目标位置(从0开始)
-        @items	:Array(可选) 要插入的任意多个项
+        /*	Insert
+        @index	:Int Insert the target position (from 0)
+        @items	:Array(not required) To insert any number of items
         @return:this
         */
         insert: function (index, items) {
@@ -3487,9 +3492,9 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	删除
-        @index	:Int 要删除的目标位置(从0开始)
-        @items	:Array(可选) 在该位置插入的任意多个项
+        /*	Delete
+        @index	:Int Delete the target position (from 0)
+        @items	:Array(not required) To delete any number of items
         @return:this
         */
         remove: function (index, items) {
@@ -3519,12 +3524,12 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /* 搜索第一个匹配项在集合中的索引
-        @value	:搜索的值
-        @startIndex:Int 开始位置
-        @endIndex   :Int 结束位置
-        @comparer:Function/String/Object 一个对值进行比较的相等比较器
-        @return	:Int 如果找到 item 的第一个匹配项，则为该项的从零开始的索引；否则为 -1。
+        /* Search the index of the first match in the collection
+        @value	:Search value
+        @startIndex:Int Start position
+        @endIndex   :Int End position
+        @comparer:Function/String/Object A comparer that used to compare value
+        @return	:Int If you find the item of the first match, compared to the zero-based index,otherwise -1
         */
         indexOf: function (item, startIndex, endIndex, comparer) {
             var all = this.getItems ? this.getItems() : this
@@ -3537,11 +3542,11 @@ copy:© 2011 Kuiyou Li
             return -1
         },
 
-        /* 搜索最后一个匹配项在集合中的索引
-        @value	:搜索的值
-        @startIndex:Int 开始位置
-        @comparer:Function/String/Object 一个对值进行比较的相等比较器
-        @return	:Int 如果找到 item 的最后一个匹配项，则为该项的从零开始的索引；否则为 -1。
+        /* Search for the index of the last match in the collection
+        @value	:The value of search
+        @startIndex:Int Start postion
+        @comparer:Function/String/Object A comparer that used to compare to value
+        @return	:Int If you find an item's final match, compared to the zero-based index,otherwise -1
         */
         lastIndexOf: function (item, startIndex, endIndex, comparer) {
             var all = this.getItems ? this.getItems() : this
@@ -3554,7 +3559,7 @@ copy:© 2011 Kuiyou Li
             return -1
         },
         /*
-        //	    @predicate	:Function/String/Object 用于测试每个元素是否满足条件的函数。
+        //	    @predicate	:Function/String/Object Each element is used to test the function satisfy the condition
         //	    */
         //	    findIndex: function (predicate, startIndex, endIndex, comparer) {
         //	        var fn = $.toFun(predicate)
@@ -3565,7 +3570,7 @@ copy:© 2011 Kuiyou Li
         //	    },
 
         //	    /*
-        //	    @predicate	:Function/String/Object 用于测试每个元素是否满足条件的函数。
+        //	    @predicate	:Function/String/Object Each element is used to test the function satisfy the condition
         //	    */
         //	    findLastIndex: function (predicate, startIndex, endIndex, comparer) {
         //	        var fn = $.toFun(predicate)
@@ -3576,10 +3581,10 @@ copy:© 2011 Kuiyou Li
         //	    },
 
 
-        /* 判断值在集合中是否存在
-        @value	:搜索的值
-        @startIndex:Int 开始位置
-        @comparer:Function/String/Object 一个对值进行比较的相等比较器
+        /* Detect value exists in collection
+        @value	:The value of search
+        @startIndex:Int Start position
+        @comparer:Function/String/Object A comparer that used to compare to value
         @return	:Boolean
         */
         contains: function (value, startIndex, comparer) {
@@ -3587,9 +3592,9 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	复制到新的数组
-        @index	:Int 插入目标位置(0开始)
-        @arr	:Array 复制到该数组,为空将生成新的数组
+        /*	Copied to the new array
+        @index	:Int Insert the target position (from 0)
+        @arr	:Array Copied to the array, empty array will generate a new array
         @return	:arr
         */
         copyTo: function (index, arr) {
@@ -3597,9 +3602,9 @@ copy:© 2011 Kuiyou Li
             return arr;
         },
 
-        /*	复制
-        @index	:Int 插入目标位置(0开始)
-        @arr	:Array 复制到该数组,为空将生成新的数组
+        /*	Copy
+        @index	:Int Insert the target position (from 0)
+        @arr	:Array Copied to the array, empty array will generate a new array
         @return	:arr
         */
         copy: function (start, end) {
@@ -3608,8 +3613,8 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*  合并多个对象
-        @params  :Object(可选) 可变参数，任意多个对象
+        /*  Combine multiple objects
+        @params  :Any number of variable parameters
         @return:this
         */
         merge: function (params) {
@@ -3620,8 +3625,8 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*  设置对象属性
-        @properties  :Object 包含多个属性和属性值的键值对
+        /*  Set object properties
+        @properties  :Object Contains serveral properties and keyValue
         @return:this
         */
         //	    setAttr: function (properties) {
@@ -3633,9 +3638,9 @@ copy:© 2011 Kuiyou Li
         //#end
 
 
-        /*	获取或设置对象的Css属性，只传递 name 参数时则，获取该属性值。
-        @name	:String 属性名或要应用到对象Css属性的键值对
-        @value	:Object(可选) Css属性值
+        /*	Get or set property of the object, only the name parameter is to get the property value
+        @name	:String Property name or property to be applied to the object keys and values ​
+        @value	:Object(not required) Css property value
         @return:this
         */
         css: function (name, value) {
@@ -3661,9 +3666,9 @@ copy:© 2011 Kuiyou Li
             return isNaN(v) ? v : 0
         },
 
-        /*	获取或设置对象的属性，只传递 name 参数时则，获取该属性值。
-        @name	:String 属性名或要应用到对象属性的键值对
-        @value	:Object(可选) 属性值
+        /*	Get or set the object's attribute, only the name parameter is passed, to get the property value
+        @name	:String Property name or to apply to the key and value object property
+        @value	:Object(not required) Property value
         @return	:this
         */
         data: function (name, value) {
@@ -3683,9 +3688,9 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*	获取或设置对象的属性，只传递 name 参数时则，获取该属性值。
-        @name	:String 属性名或要应用到对象属性的键值对
-        @value	:Object(可选) 属性值
+        /*	Get or set the object's attribute, only the name parameter is passed, to get the property value.
+        @name	:String Property name or to apply to the key and value object property
+        @value	:Object(not required) Property value
         @return	:this
         */
         attr: function (name, value) {
@@ -3705,8 +3710,8 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	移除对象属性
-        @name	:String 要移除的属性名
+        /*	Remove the object property
+        @name	:String To remove the attribute name
         @return	:this
         */
         removeAttr: function (name) {
@@ -3723,9 +3728,9 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*  获取或设置多个表单元素值
-        @values :KeyValue(可选) 设置到多个表单元素的值,为空则是获取表单元素值
-        @ignoreDisabled:是否忽略已禁用元素
+        /*  Get or set multiple element value
+        @values :KeyValue(not required) Set the value to more than one element, empty to get the element's value
+        @ignoreDisabled:Disabled elements are ignored
         */
         values: function (values, ignoreDisabled) {
             var boxs = this.filter(":input").merge(this.find(":input"));
@@ -3755,9 +3760,9 @@ copy:© 2011 Kuiyou Li
                 return vs;
             }
         },
-        /*  获取或设置value，不指定value参数时则获取
-        @value  :Object 设置的值
-        @return :Object/this    当不指定value参数时返回第一个元素的值，指定value参数时则返回当前对象
+        /* Get or set value
+        @value  :Object The new value
+        @return :Object/this   When you do not specify value parameter,then return value of the first element, specify the value parameter returns the current object
         */
         value: function (value) {
             if (arguments.length == 0) {
@@ -3771,15 +3776,15 @@ copy:© 2011 Kuiyou Li
             })
         },
 
-        /*  将所以元素值进行url编码
+        /*  Values ​​of all elements set url encoding
         @return :String
         */
         serialize: function () {
             return lib.Json.urlEncode(this.values())
         },
 
-        /*  指定元素是否当前元素的子元素
-        @child  :Selector/Element   子元素
+        /*  Whether the specified element is child elements of the current element
+        @child  :Selector/Element   child element
         @return :Boolean 
         */
         hasChild: function (child) {
@@ -3791,18 +3796,18 @@ copy:© 2011 Kuiyou Li
             }).length == 0;
         },
 
-        /*  指定元素是否当前元素的父元素
-        @parent  :Selector/Element   父元素
+        /*  The specified element is the parent element of the current
+        @parent  :Selector/Element   parent element
         @return :Boolean 
         */
         hasParent: function (parent) {
             return $(parent).isChild(this);
         },
 
-        /*  改变每一项的样式
-        @removeCss  :String 要移除的样式,多个样式用空格隔开
-        @addCss :String 要追加的样式,多个样式用空格隔开
-        @return :String 改变后的样式
+        /*  To change the style of each
+        @removeCss  :String To remove a style, a number of styles are separated by spaces
+        @addCss :String To append the style, many styles are separated by spaces
+        @return :String After the change of style
         */
         changeClass: function (removeCss, addCss) {
             dh.changeClass(this, removeCss, addCss);
@@ -3810,8 +3815,8 @@ copy:© 2011 Kuiyou Li
         },
 
 
-        /*	为每一项添加CSS样式
-        @css	:String 要添加的CSS名称
+        /*	Add a CSS style for each
+        @css	:String Add the new css
         @return	:this
         */
         addClass: function (css) {
@@ -3819,8 +3824,8 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*	为每一项移除CSS样式
-        @css	:String 要移除的CSS名称
+        /*	Remove the CSS styles for each
+        @css	:String To remove the name of style
         @return	:this
         */
         removeClass: function (css) {
@@ -3828,8 +3833,8 @@ copy:© 2011 Kuiyou Li
             return this
         },
 
-        /*	第一项是否包含某一CSS名称
-        @css	:String 要检测的CSS名称
+        /*	Whether to include an style name of the first item
+        @css	:String The CSS name is to be detected
         @return	:this
         */
         hasClass: function (css) {
@@ -3839,14 +3844,14 @@ copy:© 2011 Kuiyou Li
             return false
         },
 
-        /*  转换为HTML
+        /*  Convert to HTML
         @return :String 
         */
         toHtml: function () {
             return dh.toHtml(this)
         },
 
-        /*  克隆元素
+        /*  Clone element
         @return :Element
         */
         clone: function () {
@@ -3857,28 +3862,27 @@ copy:© 2011 Kuiyou Li
             return ne;
         },
 
-        /*  获取第一个元素在页面中的位置和大小
-        @return :Json   包含元素在页面中的位置和大小信息的Json对象
+        /*  Get the first element in the location and size of the page
+        @return :Json   Elements in the page that contains the location and size information Json object
         */
         rect: function () {
             return dh.rect(this.item(0))
         },
 
-        /*	获取第一项的偏移量
-        @return	:Json   形如{left:123,top:456}
+        /*	Get the position of the first
+        @return	:Json   such as:{left:123,top:456}
         */
         pos: function () {
-            var el=this.item(0),s=ui.Style
             return {
-                left: s.num(el, "left") || 0,
-                top: s.num(el, "top") || 0,
-                bottom: s.num(el, "bottom") || 0,
-                right: s.num(el, "right") || 0
+                left: parseInt(this.left()) || 0,
+                top: parseInt(this.top()) || 0,
+                bottom: parseInt(this.bottom()) || 0,
+                right: parseInt(this.right()) || 0
             }
         },
 
-        /*	获取第一项的偏移量
-        @return	:Json   形如{left:123,top:456}
+        /*	Get the offset of the first
+        @return	:Json   such as:{left:123,top:456}
         */
         offset: function () {
             var i = this.item(0)
@@ -3892,8 +3896,8 @@ copy:© 2011 Kuiyou Li
             }
         },
 
-        /*	获取第一项的大小
-        @return	:Json   形如{width:123,height:456}
+        /*	Get the size of the first
+        @return	:Json   such as:{width:123,height:456}
         */
         size: function () {
             return {
@@ -3902,7 +3906,7 @@ copy:© 2011 Kuiyou Li
             }
         },
 
-        /*	移除焦点
+        /*	Remove the focus
         @return	:this
         */
         blur: function (delay, fn) {
@@ -3925,7 +3929,7 @@ copy:© 2011 Kuiyou Li
                 return this.on.apply(this, arrP.concat.apply(["blur"], arguments))
         },
 
-        /*	设置焦点
+        /*	Set the focus 
         @return	:this
         */
         focus: function (delay, fn) {
@@ -3964,52 +3968,52 @@ copy:© 2011 Kuiyou Li
         //            }
         //            return 0;
         //        },
-        /*	检测第一个元素是否可以获取焦点
+        /*	Detect whether the first element can get focus
         @return	:Boolean
         */
         focusable: function () {
             return this.length && dh.focusable(this.item(0))
         },
 
-        /*	检测第一个元素是否可以接受Tab键
+        /* Detect whether the first element can accept Tab key
         @return	:Boolean
         */
         tabbable: function () {
             return this.length && dh.tabbable(this.item(0))
         },
-        /*	为每一个元素追加内容
-        @el     :Html/Element   附加的内容
+        /*	Add content for each element
+        @el     :Html/Element   The additional concent
         @return	:this
         */
         append: function (el, returnDom) {
             dh.append(this, el)
             return this
         },
-        /*	将所有元素追加到指定元素
-        @to     :Element   将附加到该元素下
+        /*	Add all the element to the specifield element
+        @to     :Element   
         @return	:this
         */
         appendTo: function (to, returnDom) {
             dh.append(to, this)
             return this
         },
-        /*	将元素开始位置追加内容
-        @content     :Element/String   追加的内容
+        /*	Start position will add additional content
+        @content     :Element/String   Additional content
         @return	:this
         */
         prepend: function (content) {
             dh.insertFirst(this, content)
             return this
         },
-        /*	将所有元素追加到指定元素开始位置
-        @to     :Element   将追加到该元素下
+        /*	All elements will be appended to the beginning of the specified element
+        @to     :Element   The specified element
         @return	:this
         */
         prependTo: function (to) {
             dh.insertFirst(to, this)
             return this
         },
-        /*	删除每个元素的所有子节点。 
+        /*	Delete all the child nodes of each element. 
         @return	:this
         */
         empty: function () {
@@ -4017,28 +4021,28 @@ copy:© 2011 Kuiyou Li
                 dh.empty(o);
             })
         },
-        /*  在每个元素之前插入内容。 */
+        /*  Insert content before each element */
         before: function (el) {
             dh.insertBefore(this, el)
             return this
         },
-        /*  在每个元素之后插入内容。 */
+        /*  Insert content after each element */
         after: function (el) {
             dh.insertAfter(this, el)
             return this
         },
-        /*把所有匹配的元素插入到另一个、指定的元素集合的前面。*/
+        /*Insert all of the matched elements to another specified collection of elements*/
         insertBefore: function (el) {
             dh.insertBefore(el, this)
             return this
         },
 
-        /*把所有匹配的元素插入到另一个、指定的元素集合的后面。*/
+        /*Insert all of the matched elements to another specified element*/
         insertAfter: function (el) {
             dh.insertAfter(el, this)
             return this;
         },
-        /*结束最近的“破坏性”操作，把匹配的元素列表回复到前一个状态。*/
+        /*End of the recent "destructive"operation, to return to the list of elements that match a previous state*/
         end: function () {
             return this.context || []
         },
@@ -4053,6 +4057,7 @@ copy:© 2011 Kuiyou Li
         }
     }
     //#end
+
     ; (function () {
         var style = docE.style;
         var getCssMethod = function (name) {
@@ -4061,27 +4066,23 @@ copy:© 2011 Kuiyou Li
             }
         }
 
-        var style = "border,borderWidth,borderColor,borderStyle,margin,padding,font,fontSize,color".split(',')
-        for (var i = 0; i < style.length; i++)
-            qp[name] = getCssMethod(name)
+        if (browser.isSafari || browser.isChrome) {
+            style = doc.defaultView.getComputedStyle(docE)
+            for (var i = 0; i < style.length; i++) {
+                var name = camelCase(style[i])
+                if (name.charAt(0) != '-' && !qp[name])
+                    qp[name] = getCssMethod(name)
+            }
 
-        //        if (browser.isSafari || browser.isChrome) {
-        //            style = doc.defaultView.getComputedStyle(docE)
-        //            for (var i = 0; i < style.length; i++) {
-        //                var name = camelCase(style[i])
-        //                if (name.charAt(0) != '-' && !qp[name])
-        //                    qp[name] = getCssMethod(name)
-        //            }
-
-        //            var style = "border,borderWidth,borderColor,borderStyle,margin,padding,font".split(',')
-        //            for (var i = 0; i < style.length; i++)
-        //                qp[name] = getCssMethod(name)
-        //        }
-        //        else {
-        //            for (var name in style)
-        //                if (!qp[name])
-        //                    qp[name] = getCssMethod(name)
-        //        }
+            var style = "border,borderWidth,borderColor,borderStyle,margin,padding,font".split(',')
+            for (var i = 0; i < style.length; i++)
+                qp[name] = getCssMethod(name)
+        }
+        else {
+            for (var name in style)
+                if (!qp[name])
+                    qp[name] = getCssMethod(name)
+        }
 
 
         var num = ui.Style.num
@@ -4118,27 +4119,27 @@ copy:© 2011 Kuiyou Li
 	{
 	    ready: $.ready,
 	    val: qp.value,
-	    /*	禁用每一项
-	    @disabled:Boolean(可选) 是否禁用
+	    /*	Each disabled element
+	    @disabled:Boolean(not required) Are disabled
 	    @return	:this
 	    */
 	    disable: function (disabled) {
 	        return this.attr("disabled", disabled != false)
 	    },
-	    /*	启用每一项
-	    @enable:Boolean(可选) 是否启用
+	    /*	Enable each element
+	    @enable:Boolean(not required) Are enabled
 	    @return	:this
 	    */
 	    enable: function (enable) {
 	        return this.attr("disabled", enable == false)
 	    },
 
-	    /*	隐藏每一项
+	    /*	Hide each element
 	    @return	:this
 	    */
 	    hide: qp.css.$format("display", "none"),
 
-	    /*	显示每一项
+	    /*	Show each element
 	    @return	:this
 	    */
 	    show: function () {
@@ -4146,16 +4147,16 @@ copy:© 2011 Kuiyou Li
 	        return this;
 	    },
 
-	    /*	生成一个新IList对象
-	    @evaluator:Function/String/Object 计算值的函数
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Generate a new IList object
+	    @evaluator:Function/String/Object evaluator
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:IList
 	    */
 	    map: qp.select,
 
-	    /*	确定是否有满足条件的元素,如果不指定条件,将返回集合长度。
-	    @predicate	:Function/String/Object 用于测试每个元素是否满足条件的函数。
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Determine whether there is an element to fit the conditions, if you do not specify the conditions, will return the collection length
+	    @predicate	:Function/String/Object A function that determine each item of the collection fit the conditions
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:Boolean
 	    */
 	    any: function (predicate, params) {
@@ -4165,9 +4166,9 @@ copy:© 2011 Kuiyou Li
 	        return (this.___take || qp.___take).apply(this, arguments).length > 0
 	    },
 
-	    /*	确定序列中的所有元素是否都满足条件,如果不指定条件,将返回所有元素。
-	    @predicate	:Function/String/Object 用于测试每个元素是否满足条件的函数。
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Determine whether all elements of the sequence satisfies the condition, if collection do not specify the conditions, will return all elements.
+	    @predicate	:Function/String/Object Each element is used to detect the function satisfy the condition
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:Boolean
 	    */
 	    all: function (predicate, params) {
@@ -4179,9 +4180,9 @@ copy:© 2011 Kuiyou Li
 	    },
 
 
-	    /*	查询
-	    @predicate	:Function/String/Object 查询条件
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Query
+	    @predicate	:Function/String/Object search condition
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:IList
 	    */
 	    where: function (predicate, params) {
@@ -4198,9 +4199,9 @@ copy:© 2011 Kuiyou Li
 	        })
 	        return seed;
 	    },
-	    /*求和
-	    @selector   :Function(可选)   获取元素用于计算的值的函数
-	    @filter     :Function(可选)   过滤出参与计算元素的函数
+	    /*Sum
+	    @selector   :Function(not required)   Get used to calculate the value of the element functions
+	    @filter     :Function(not required)   Filter out the function of elements involved in the calculation
 	    @return     :Number/String
 	    */
 	    sum: function (selector, filter) {
@@ -4234,44 +4235,44 @@ copy:© 2011 Kuiyou Li
 	        if (c === undefined) return
 	        return resultSelector == null ? cItem : resultSelector.apply(cItem, cItem, c, this);
 	    },
-	    /*最大值
-	    @selector   :Function(可选) 获取元素用于计算的值的函数
+	    /*maximum
+	    @selector   :Function(not required) Get used to calculate the value of the element functions
 	    @return :Number
 	    */
 	    max: function (selector, resultSelector) {
 	        return this.compareOne(selector, resultSelector, true)
 	    },
-	    /*最小值
-	    @selector   :Function(可选) 获取元素用于计算的值的函数
+	    /*minimum
+	    @selector   :Function(not required) Get used to calculate the value of the element functions
 	    @return :Number
 	    */
 	    min: function (selector, resultSelector) {
 	        return this.compareOne(selector, resultSelector, false)
 	    },
-	    /*求平均
-	    @selector   :Function(可选) 获取元素用于计算的值的函数
+	    /*Averaging
+	    @selector   :Function(not required) Get used to calculate the value of the element functions
 	    @return :Number    
 	    */
 	    average: function (selector) {
 	        return this.sum.apply(this, arguments) / this.length
 	    },
-	    /*计数
-	    @selector   :Function(可选) 获取元素用于计算的值的函数
-	    @return     :Int    满足条件的元素数量
+	    /* Count
+	    @selector   :Function(not required) Get used to calculate the value of the element functions
+	    @return     :Int    The number of elements to satisfy the conditions
 	    */
 	    count: function (predicate, params) {
 	        return this.where.apply(this, arguments).length
 	    },
-	    /*去掉重复元素
-	    @comparer   :Function(可选) 比较元素的函数
+	    /*Removing repetitive elements
+	    @comparer   :Function(not required) The function to compare elements
 	    @return :this
 	    */
 	    distinct: qp.uniquelize,
 
-	    /*对元素进行分组
-	    @keySelector   :Function(可选) 获取元素用于分组的键
-	    @itemSelector  :Function(可选) 获取分组内容
-	    @return :Json   包含分组的Json对象
+	    /*Grouping of elements
+	    @keySelector   :Function(not required) Get the key element for the group
+	    @itemSelector  :Function(not required) Get the content of group
+	    @return :Json   Json object  that contains group
 	    */
 	    groupBy: function (keySelector, itemSelector) {
 	        var gs = {}
@@ -4283,7 +4284,7 @@ copy:© 2011 Kuiyou Li
 	        })
 	        return gs
 	    },
-	    /*清除所以元素
+	    /* clear all the elements
 	    @return :this
 	    */
 	    clear: function () {
@@ -4293,9 +4294,9 @@ copy:© 2011 Kuiyou Li
 	        return this
 	    },
 
-	    /*	获取第一项
-	    @predicate	:Function/String/Object 查询条件
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*	Get the first item
+	    @predicate	:Function/String/Object Query condition
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:Object
 	    */
 	    first: function (predicate, params) {
@@ -4310,9 +4311,9 @@ copy:© 2011 Kuiyou Li
 	        return (this.___take || qp.___take).apply(this, arguments)
 	    },
 
-	    /*	获取最后一项
-	    @predicate	:Function/String/Object 查询条件
-	    @params	:Object(可选) 可变参数，要传递的任意多个参数
+	    /*  Get the last item
+	    @predicate	:Function/String/Object Query condition
+	    @params	:Object(not required) Any number of variable parameters
 	    @return	:Object
 	    */
 	    last: function (predicate, params) {
@@ -4333,8 +4334,8 @@ copy:© 2011 Kuiyou Li
 	    lastIndex: qp.lastIndexOf,
 
 
-	    /*	匹配所有元素的上级元素，对应选择器 “<”			
-	    @layersOrSelector	:Int/Selector(可选) 往上的级数,或者特定的选择器，默认 1
+	    /*	Matches all elements of the parent element, corresponding to the selector “<”			
+	    @layersOrSelector	:Int/Selector(not required) Up the series, or a particular selector，default 1
 	    @return :Array<Element>
 	    */
 	    parent: function (ls) {
@@ -4344,39 +4345,39 @@ copy:© 2011 Kuiyou Li
 	        return q.parent(this);
 	    },
 
-	    /*	匹配所有元素的子级元素，对应选择器 “>”			
-	    @layers	:Int(可选) 往下的级数，默认 1
+	    /*	Matches all elements's child elements, corresponding to the selector “>”			
+	    @layers	:Int(not required) Down the series，default 1
 	    @return :Array<Element>
 	    */
 	    children: function (layers) {
 	        return this.$(">" + (layers || 1))
 	    },
 
-	    /*	匹配所有元素的之后的元素，对应选择器 “+”
-	    @offset	:Int(可选) 往后的偏移量，默认 1
+	    /* Match the elements after all the elements, corresponding to the selector “+”
+	    @offset	:Int(not required) Subsequent offset，default 1
 	    @return :Array<Element>
 	    */
 	    next: function (offset) {
 	        return this.$("+" + (layers || 1))
 	    },
 
-	    /*	匹配所有元素的之前的元素，对应选择器 “-”
-	    @offset	:Int(可选) 往前的偏移量，默认 1
+	    /* Match the elements before all the elements, corresponding to the selector “-”
+	    @offset	:Int(not required) Forward offset，default 1
 	    @return :Array<Element>
 	    */
 	    previous: function (offset) {
 	        return this.$("-" + (layers || 1))
 	    },
 
-	    /*	匹配所有元素的兄弟元素，对应选择器 “~”
+	    /*	Matches all sibling elements，corresponding to the selector “~”
 	    @return :Array<Element>
 	    */
 	    sibling: function () {
 	        return this.$("~" + (layers || 1))
 	    },
-	    /*为元素添加鼠标事件
-	    @over   :Function  鼠标进入时执行
-	    @out    :Function  鼠标移开时执行
+	    /*Add a mouse event for the element
+	    @over   :Function  Performed when the mouse entered
+	    @out    :Function  Performed when the mouse move out
 	    @return :this
 	    */
 	    hover: function (over, out, data) {
@@ -4401,13 +4402,13 @@ copy:© 2011 Kuiyou Li
             if (!qp[m])
                 qp[m] = qp[m2m[m]]
         }
-        /* #M path:fly.collection.IList.disabled 获取或设置元素disabled属性*/
-        /* #M path:fly.collection.IList.id 获取或设置元素id属性*/
-        /* #M path:fly.collection.IList.name 获取或设置元素name属性*/
-        /* #M path:fly.collection.IList.title 获取或设置元素title属性*/
-        /* #M path:fly.collection.IList.className 获取或设置元素className属性*/
-        /* #M path:fly.collection.IList.text 获取或设置元素innerText属性*/
-        /* #M path:fly.collection.IList.html 获取或设置元素innerHTML属性*/
+        /* #M path:fly.collection.IList.disabled Get or set the 'disabled' property of the element*/
+        /* #M path:fly.collection.IList.id Get or set the 'id' property of the element*/
+        /* #M path:fly.collection.IList.name Get or set the 'name' property of the element*/
+        /* #M path:fly.collection.IList.title Get or set the 'title' property of the element*/
+        /* #M path:fly.collection.IList.className Get or set the 'className' property of the element*/
+        /* #M path:fly.collection.IList.text Get or set the 'innerText' property of the element*/
+        /* #M path:fly.collection.IList.html Get or set the 'innerHTML' property of the element*/
         var props = ["disabled", "id", "name", "title", "className", "text:innerText", "html:innerHTML"]
         for (var i = 0; i < props.length; i++) {
             var att = props[i].replace(/.*:/g, '')
@@ -4418,29 +4419,29 @@ copy:© 2011 Kuiyou Li
             } (att)
         }
 
-        /* #M path:fly.collection.IList.onBlur 为元素绑定 onblur 事件*/
-        /* #M path:fly.collection.IList.onFocus 为元素绑定 onfocus 事件*/
-        /* #M path:fly.collection.IList.onLoad 为元素绑定 onload 事件*/
-        /* #M path:fly.collection.IList.onResize 为元素绑定 onresize 事件*/
-        /* #M path:fly.collection.IList.onScroll 为元素绑定 onscroll 事件*/
-        /* #M path:fly.collection.IList.onUnload 为元素绑定 onunload 事件*/
-        /* #M path:fly.collection.IList.onDblClick 为元素绑定 ondblclick 事件*/
-        /* #M path:fly.collection.IList.onContextMenu 为元素绑定 oncontextmenu 事件*/
-        /* #M path:fly.collection.IList.onMouseDown 为元素绑定 onmouseDown 事件*/
-        /* #M path:fly.collection.IList.onMouseUp 为元素绑定 onmouseup 事件*/
-        /* #M path:fly.collection.IList.onMouseMove 为元素绑定 onmousemove 事件*/
-        /* #M path:fly.collection.IList.onMouseOver 为元素绑定 onmouseover 事件*/
-        /* #M path:fly.collection.IList.onMouseOut 为元素绑定 onmouseout 事件*/
-        /* #M path:fly.collection.IList.onMouseEnter 为元素绑定 onmouseenter 事件*/
-        /* #M path:fly.collection.IList.onMouseLeave 为元素绑定 onmouseleave 事件*/
-        /* #M path:fly.collection.IList.onChange 为元素绑定 onchange 事件*/
-        /* #M path:fly.collection.IList.onSelect 为元素绑定 onselect 事件*/
-        /* #M path:fly.collection.IList.onSelectStart 为元素绑定 onselectstart 事件*/
-        /* #M path:fly.collection.IList.onSubmit 为元素绑定 onsubmit 事件*/
-        /* #M path:fly.collection.IList.onKeyDown 为元素绑定 onkeydown 事件*/
-        /* #M path:fly.collection.IList.onKeyPress 为元素绑定 onkeypress 事件*/
-        /* #M path:fly.collection.IList.onKeyUp 为元素绑定 onkeyup 事件*/
-        /* #M path:fly.collection.IList.onError 为元素绑定 onerror 事件*/
+        /* #M path:fly.collection.IList.onBlur Binding Onblur event for the element */
+        /* #M path:fly.collection.IList.onFocus Binding onfocus event for the element*/
+        /* #M path:fly.collection.IList.onLoad Binding onload event for the element*/
+        /* #M path:fly.collection.IList.onResize Binding onresize event for the element*/
+        /* #M path:fly.collection.IList.onScroll Binding onscroll event for the element*/
+        /* #M path:fly.collection.IList.onUnload Binding onunload event for the element*/
+        /* #M path:fly.collection.IList.onDblClick Binding ondblclick event for the element*/
+        /* #M path:fly.collection.IList.onContextMenu Binding oncontextmenu event for the element*/
+        /* #M path:fly.collection.IList.onMouseDown Binding onmouseDown event for the element*/
+        /* #M path:fly.collection.IList.onMouseUp Binding onmouseup event for the element*/
+        /* #M path:fly.collection.IList.onMouseMove Binding onmousemove event for the element*/
+        /* #M path:fly.collection.IList.onMouseOver Binding onmouseover event for the element*/
+        /* #M path:fly.collection.IList.onMouseOut Binding onmouseout event for the element*/
+        /* #M path:fly.collection.IList.onMouseEnter Binding onmouseenter event for the element*/
+        /* #M path:fly.collection.IList.onMouseLeave Binding onmouseleave event for the element*/
+        /* #M path:fly.collection.IList.onChange Binding onchange event for the element*/
+        /* #M path:fly.collection.IList.onSelect Binding onselect event for the element*/
+        /* #M path:fly.collection.IList.onSelectStart Binding onselectstart event for the element*/
+        /* #M path:fly.collection.IList.onSubmit Binding onsubmit event for the element*/
+        /* #M path:fly.collection.IList.onKeyDown Binding onkeydown event for the element*/
+        /* #M path:fly.collection.IList.onKeyPress Binding onkeypress event for the element*/
+        /* #M path:fly.collection.IList.onKeyUp Binding onkeyup event for the element*/
+        /* #M path:fly.collection.IList.onError Binding onerror event for the element*/
 
         qp.bind = qp.on
         $.Event.events = ("Blur,Focus,Load,Resize,Scroll,Unload,Click,DblClick,ContextMenu," +
@@ -4902,14 +4903,14 @@ copy:© 2011 Kuiyou Li
 		        }
 
 		        var exp = selector.selector.replace(utils.trimMiddleBrackets, '').$trim();
-		        //索引
+		        //Index
 		        if (/^\d+$/.test(exp)) {
 		            var node = all[exp]
 		            if (node)
 		                collector.result.push(node)
 		            return
 		        }
-		        //属性
+		        //Property
 		        else if (/^[\w$][\w\d$]*$/.test(exp))
 		            exp = "o.getAttribute('" + exp + "')!=undefined"
 		        else if (/^('[^']+')|("[^"]+")$/.test(exp))
@@ -4996,7 +4997,7 @@ copy:© 2011 Kuiyou Li
 
         //## Selectors
         /*#C path:fly.ui.selector
-        选择器
+        Selector
         */
         nsSelector.Selectors =
 		{
@@ -5074,9 +5075,9 @@ copy:© 2011 Kuiyou Li
 			},
 		    //#end
 
-		    /*	扩展选择器
-		    @selectors	:多个选择器
-		    @return	:无
+		    /*	Extend Selector
+		    @selectors	:Multiple Selector
+		    @return	:None
 		    */
 		    extendSelector: function (selectors) {
 		        for (var s in selectors)
@@ -5085,9 +5086,9 @@ copy:© 2011 Kuiyou Li
 		        this.splitReg = new RegExp(this.splitRegFormat.$format(reg), 'g')
 		    },
 
-		    /*	扩展过滤选择器
-		    @filters	:多个选择器
-		    @return	:无
+		    /*	Extend filter selector
+		    @filters	:Multiple Selector
+		    @return	:None
 		    */
 		    extendFilter: function (filters) {
 		        $.extendIf(this.filters, filters)
@@ -5100,8 +5101,8 @@ copy:© 2011 Kuiyou Li
 		            }
 		    },
 
-		    /*	扩展表达式运算符
-		    @operators:{String} 多个运算符
+		    /*	Extend expression and operator
+		    @operators:{String} Multiple operator
 		    @return	:无
 		    */
 		    extendOperator: function (operators) {
@@ -5414,7 +5415,7 @@ copy:© 2011 Kuiyou Li
 
         //## DomQuery
         /*#C path:fly.ui.selector.DomQuery
-        Dom对象查询类
+        Dom  object query class
         */
         nsSelector.DomQuery = function (context, selectors) {
             this.context = context
@@ -5445,8 +5446,8 @@ copy:© 2011 Kuiyou Li
 		        }
 		        return this
 		    },
-		    /*	查找Dom对象
-		    @return	:Array 查找到的Dom对象
+		    /*	Query Dom object
+		    @return	:Array Dom object to find
 		    */
 		    find: function () {
 		        if (this.selectors.length == 1 && this.selectors[0] && this.selectors[0].$isIList == true)
@@ -5477,8 +5478,8 @@ copy:© 2011 Kuiyou Li
 		            return false;
 		        },
 
-		        /*	匹配所有元素的第一个与表达式匹配的上级元素，
-		        @selectors	:String(可选) 选择器
+		        /*	Matches all elements that match the first parent element with the expression
+		        @selectors	:String(not required) Selector
 		        @return :Array<Element>
 		        */
 		        closest: function (all) {
@@ -5503,8 +5504,8 @@ copy:© 2011 Kuiyou Li
 		            return this.createResult(col.result, context);
 		        },
 
-		        /*	匹配所有元素的第一个与表达式匹配的上级元素，
-		        @selectors	:String(可选) 选择器
+		        /*	Matches all elements that match the first parent element with the expression
+		        @selectors	:String(not required) Selector
 		        @return :Array<Element>
 		        */
 		        parent: function (all) {
@@ -5522,8 +5523,8 @@ copy:© 2011 Kuiyou Li
 		        },
 
 
-		        /*	匹配所有元素的第一个与表达式匹配的上级元素，
-		        @selectors	:String(可选) 选择器
+		        /*	Matches all elements that match the first parent element with the expression
+		        @selectors	:String(not required) Selector
 		        @return :Array<Element>
 		        */
 		        parents: function (all) {
@@ -5560,10 +5561,10 @@ copy:© 2011 Kuiyou Li
     if (config.onLoad)
         $.onLoad(config.onLoad, $, $)
 
-    /*	document 对象*/
+    /*	document object*/
     $.doc = $(docE)
     $.getBody = function () {
-        /*	document.body 对象*/
+        /*	document.body object*/
         if ($.body)
             return $.body
         if (!doc.body)

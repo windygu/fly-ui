@@ -23,13 +23,16 @@ function API() {
     this.rightRoot = $('#rightRoot');
     
     $.ajax.get("API.js", function (ms) {
-        me.apiModules = $.Json.decode(ms);
-        me.createTree();
+        me.apiData = $.Json.decode(ms);
+        
     });
 }
 
 API.extend({
-
+    apply: function () {
+        document.title=this.apiData
+        me.createTree();
+    },
     createTree: function () {
         var me = this
         function ms(m) {
@@ -60,7 +63,7 @@ API.extend({
             return node;
         }
 
-        var nodes = this.apiModules.classs.select(s)
+        var nodes = this.apiData.classs.select(s)
         var tree = new fly.simple.Tree({ items: nodes, useEffect: false, showLine: true, onSelected: function (node) {
             me["show" + node.type.firstUpper()](node, node.tag);
         }
