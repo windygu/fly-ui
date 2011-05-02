@@ -74,13 +74,13 @@
 }
 
 
-.right-welcome
+#right-welcome
 {
     margin-top: 50px;
     text-align: center;
 }
 
-.right-welcome-title
+#right-welcome-title
 {
     font-size: 40px;
     display: inline-block;
@@ -88,14 +88,14 @@
     margin-bottom: 40px;
 }
 
-.right-welcome-info
+#right-welcome-info
 {
     text-align: center;
     border-top:1px dotted gray;
     padding-top:5px;
 }
 
-.right-welcome-info-inner
+#right-welcome-info-inner
 {
     font-size: 18px;
     margin-right: 50px;
@@ -103,7 +103,7 @@
     display: inline-block;
 }
 
-.right-welcome-info a
+#right-welcome-info a
 {
     text-decoration:none;
     color:Gray;
