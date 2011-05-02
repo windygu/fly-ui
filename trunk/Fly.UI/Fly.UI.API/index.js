@@ -21,17 +21,24 @@ function showType() {
 function API() {
     var me = this;
     this.rightRoot = $('#rightRoot');
-    
     $.ajax.get("API.js", function (ms) {
         me.apiData = $.Json.decode(ms);
-        
+        me.apply();
     });
 }
 
 API.extend({
     apply: function () {
-        document.title=this.apiData
-        me.createTree();
+        var title = this.apiData.name + ' ' + this.apiData.version
+        document.title = title
+        window.topDiv.html('{name}<a href="{site}" target="_blank">{title}</a>'.format(this.apiData));
+        window.rightWelcomeTitle.text(title);
+        var info = '<a target="_blank" href="{site}">{site}</a><br />' +
+            '<a target="_blank" href="{source}">{source}</a><br />' +
+            '{copy}';
+        window.rightWelcomeInfoInner.html(info.format(this.apiData));
+
+        this.createTree();
     },
     createTree: function () {
         var me = this
@@ -40,31 +47,54 @@ API.extend({
         }
 
         function s(cls) {
-            var node = { text: cls.name, tag: cls, type: 'class' }
+            var node = { text: cls.path, tag: cls, type: 'class' }
             node.children = []
-            var propsNode = { text: '属性', type: 'propertys', tag: cls.propertys }
-            node.children.push(propsNode);
-            propsNode.children = cls.propertys.select(ms, "property")
+            if (cls.propertys.length) {
+                var propsNode = { text: '属性', type: 'propertys', tag: cls.propertys }
+                node.children.push(propsNode);
+                propsNode.children = cls.propertys.select(ms, "property")
+            }
 
-            var methodsNode = { text: '方法', type: 'methods', tag: cls.methods }
-            node.children.push(methodsNode);
+            if (cls.methods.length) {
+                var methodsNode = { text: '方法', type: 'methods', tag: cls.methods }
+                node.children.push(methodsNode);
 
-            cls.methods.each(function (m) {
-                if (m.ret)
-                    m.type = m.ret.type;
-            });
+                cls.methods.each(function (m) {
+                    if (m.ret)
+                        m.type = m.ret.type;
+                });
 
-            methodsNode.children = cls.methods.select(ms, "method")
+                methodsNode.children = cls.methods.select(ms, "method")
+            }
 
-            var eventsNode = { text: '事件', type: 'events', tag: cls.events }
-            node.children.push(eventsNode);
-            eventsNode.children = cls.events.select(ms, "event")
+            if (cls.events.length) {
+                var eventsNode = { text: '事件', type: 'events', tag: cls.events }
+                node.children.push(eventsNode);
+                eventsNode.children = cls.events.select(ms, "event")
+            }
 
             return node;
         }
-
+        var pRoot = [];
         var nodes = this.apiData.classs.select(s)
-        var tree = new fly.simple.Tree({ items: nodes, useEffect: false, showLine: true, onSelected: function (node) {
+        nodes.each(function (o) {
+            if (o.tag.path)
+                o.tag.pPath = o.tag.path.replace(/\.?[^\.]+$/, '');
+            if (o.tag.pPath) {
+                var p = nodes.first(function (n) {
+                    return n.tag.path == o.tag.pPath
+                })[0];
+                if (p)
+                    p.children.push(o)
+                else
+                    pRoot.push(o);
+            }
+            else {
+                pRoot.push(o);
+            }
+        });
+        pRoot[0].expanded = true;
+        var tree = new fly.simple.Tree({ items: pRoot, useEffect: false, showLine: true, onSelected: function (node) {
             me["show" + node.type.firstUpper()](node, node.tag);
         }
         });
@@ -224,8 +254,9 @@ API.extend({
 
 $(function () {
     window.rootTable = $("#rootTable");
-    var topDiv = $('#top-div');
-
+    window.topDiv = $('#top-div');
+    window.rightWelcomeTitle = $('#right-welcome-title');
+    window.rightWelcomeInfoInner = $('#right-welcome-info-inner');
     var right = $("#right-cell");
 
     function resize() {
@@ -233,7 +264,7 @@ $(function () {
         rootTable.height(parseInt(height) - parseInt(topDiv.height()));
     }
 
-    $.getBody().on('sizechange',resize);
+    $.getBody().on('sizechange', resize);
     resize();
     setTimeout(resize, 300);
     API.current = new API();
